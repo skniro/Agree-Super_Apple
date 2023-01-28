@@ -1,0 +1,30 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+
+name: Java CI with Gradle
+
+name: Check
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      matrix:
+        java: [ 17-jdk, 19-jdk ]
+    runs-on: ubuntu-22.04
+    container:
+      image: eclipse-temurin:${{ matrix.java }}
+      options: --user root
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./gradlew runDatagen --stacktrace
+      - run: ./gradlew build --stacktrace -x runDatagen
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: build/libs/
