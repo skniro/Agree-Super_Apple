@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:iron_block"
+        },
+        {
+            "item": "minecraft:redstone_block"
+        },
+        {
+            "item": "minecraft:diamond_block"
+        },
+        {
+            "item": "minecraft:gold_block"
+        },
+        {
+            "item": "minecraft:enchanted_golden_apple"
+        },
+        {
+            "item": "agree:ruby_block"
+        },
+        {
+            "item": "minecraft:lapis_block"
+        },
+        {
+            "item": "minecraft:emerald_block"
+        },
+        {
+            "item": "minecraft:netherite_ingot"
+        }
+    ],
+    "result": {
+        "item": "agree:super_apple",
+        "count": 1
+    }
+}

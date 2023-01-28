@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "agree",
+  "version": "${version}",
+  "name": "Agree",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/agree/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.skniro.agree.client.AgreeClient"
+    ],
+    "main": [
+      "com.skniro.agree.Agree"
+    ]
+  },
+  "mixins": [
+    "agree.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.13",
+    "fabric": "*",
+    "minecraft": "1.19.x"
+  }
+}
