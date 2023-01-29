@@ -12,5 +12,6 @@
   "block.agree.ruby_ore": "ruby ore",
   "block.agree.deepslate_ruby_ore": "deepslate ruby ore",
   "block.agree.ruby_block": "ruby block",
-  "itemGroup.agree.test_group": "Super Apple"
+  "itemGroup.agree.test_group": "Super Apple",
+  "enchantment.agree.advanced_projection": "Advanced Projection"
 }

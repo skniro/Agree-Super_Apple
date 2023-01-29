@@ -12,5 +12,6 @@
   "block.agree.ruby_ore": "红宝石矿",
   "block.agree.deepslate_ruby_ore": "深板岩红宝石矿",
   "block.agree.ruby_block": "红宝石块",
-  "itemGroup.agree.test_group": "超级苹果"
+  "itemGroup.agree.test_group": "超级苹果",
+  "enchantment.agree.advanced_projection": "高级保护"
 }

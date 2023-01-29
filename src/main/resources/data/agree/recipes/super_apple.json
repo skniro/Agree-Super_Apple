@@ -17,7 +17,7 @@
             "item": "minecraft:enchanted_golden_apple"
         },
         {
-            "item": "agree:ruby_block"
+            "tag": "c:ruby_blocks"
         },
         {
             "item": "minecraft:lapis_block"
