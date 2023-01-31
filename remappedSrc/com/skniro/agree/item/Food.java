@@ -1,17 +1,12 @@
 package com.skniro.agree.item;
 
-import com.skniro.agree.Agree;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.util.Rarity;
 
 public class Food {
- public static final Item HASTE_APPLE = new Item(new FabricItemSettings().rarity(Rarity.RARE).group(Agree.Agree_Group)
-                 .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.3f).alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.HASTE,6000,2),1.0F).build()));
 
+ public static final FoodComponent HASTE_APPLE = new FoodComponent.Builder().hunger(6).saturationModifier(0.3f).alwaysEdible().statusEffect(new StatusEffectInstance(StatusEffects.HASTE,6000,2),1.0F).build();
  public static final FoodComponent SUPER_APPLE = new FoodComponent.Builder()
          .hunger(8)
          .saturationModifier(0.6f)

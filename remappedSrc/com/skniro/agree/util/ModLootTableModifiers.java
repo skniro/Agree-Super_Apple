@@ -1,7 +1,6 @@
 package com.skniro.agree.util;
 
 import com.skniro.agree.Agree;
-import com.skniro.agree.item.Food;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
@@ -79,7 +78,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -100,7 +99,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -121,7 +120,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.55f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -142,7 +141,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -163,7 +162,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -184,7 +183,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -205,7 +204,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -226,7 +225,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -247,7 +246,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.45f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -268,7 +267,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -289,7 +288,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -310,7 +309,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -331,7 +330,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -352,7 +351,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -373,7 +372,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -394,7 +393,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -415,7 +414,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -436,7 +435,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -457,7 +456,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -478,7 +477,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -499,7 +498,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -520,7 +519,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -541,7 +540,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
@@ -562,7 +561,7 @@ public class ModLootTableModifiers {
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
-                        .with(ItemEntry.builder(Food.HASTE_APPLE))
+                        .with(ItemEntry.builder(Agree.HASTE_APPLE))
                         .with(ItemEntry.builder(Agree.STRENGTH_APPLE))
                         .with(ItemEntry.builder(Agree.FIRE_RESISTANCE_APPLE))
                         .with(ItemEntry.builder(Agree.HEALTH_BOOST_APPLE))
