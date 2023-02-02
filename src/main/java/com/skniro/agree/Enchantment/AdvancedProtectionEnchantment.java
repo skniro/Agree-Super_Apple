@@ -2,14 +2,12 @@ package com.skniro.agree.Enchantment;
 
 import net.minecraft.enchantment.*;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.util.math.MathHelper;
 
 
-public class DefEnchant extends ProtectionEnchantment {
+public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
 
-    public DefEnchant(Rarity rarity, Type type, EquipmentSlot... slots) {
+    public AdvancedProtectionEnchantment(Rarity rarity, Type type, EquipmentSlot... slots) {
         super(rarity, type, slots);
     }
 
