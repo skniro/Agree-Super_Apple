@@ -8,8 +8,8 @@
     "skniro"
   ],
   "contact": {
-    "sources": "https://github.com/skniro/Agree-Super_Apple"},
-    "issues": "https://github.com/skniro/Agree-Super_Apple/issues",
+    "sources": "https://github.com/skniro/Agree-Super_Apple",
+    "issues": "https://github.com/skniro/Agree-Super_Apple/issues"},
   "license": "MIT",
   "icon": "assets/agree/icon.png",
   "environment": "*",
