@@ -7,7 +7,8 @@
     "Mixin_LuckEnchantment",
     "Mixin_ThornsEnchantment",
     "Mixin_EfficiencyEnchantment",
-    "Mixin_SweepingEnchantment"
+    "Mixin_SweepingEnchantment",
+    "Mixin_UnbreakingEnchantment"
   ],
   "client": [
   ],
