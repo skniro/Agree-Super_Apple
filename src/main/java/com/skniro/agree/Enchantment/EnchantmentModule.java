@@ -3,6 +3,7 @@ package com.skniro.agree.Enchantment;
 import com.skniro.agree.Agree;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.ProtectionEnchantment;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
@@ -25,6 +26,9 @@ public class EnchantmentModule {
 
     public static Enchantment Advanced_PROJECTILE_PROTECTION = register("advanced_projectile_projection",
             new AdvancedProtectionEnchantment(Enchantment.Rarity.RARE, ProtectionEnchantment.Type.PROJECTILE, ALL_ARMOR));
+
+    public static Enchantment Advanced_SHARPNESS = register("advanced_sharpness",
+            new AdvancedDamageEnchantment(Enchantment.Rarity.UNCOMMON,0, EquipmentSlot.MAINHAND));
 
 
     public static Enchantment register(String name, Enchantment enchantment) {
