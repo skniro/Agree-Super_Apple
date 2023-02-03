@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "Mixin_LuckEnchantment",
-    "Mixin_ThornsEnchantment"
+    "Mixin_ThornsEnchantment",
+    "Mixin_SweepingEnchantment"
   ],
   "client": [
   ],
