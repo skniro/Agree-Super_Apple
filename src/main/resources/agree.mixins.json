@@ -6,6 +6,7 @@
   "mixins": [
     "Mixin_LuckEnchantment",
     "Mixin_ThornsEnchantment",
+    "Mixin_EfficiencyEnchantment",
     "Mixin_SweepingEnchantment"
   ],
   "client": [
