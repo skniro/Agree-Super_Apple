@@ -20,7 +20,7 @@ import static com.skniro.agree.item.Apples.AppleFoodComponents.HASTE_APPLE;
 
 public class Agree implements ModInitializer {
     public static final String MOD_ID = "agree";
-    public static final Logger LOGGER = LoggerFactory.getLogger("modid");
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
     public static final ItemGroup Agree_Group = FabricItemGroup.builder(new Identifier(MOD_ID, "test_group"))
