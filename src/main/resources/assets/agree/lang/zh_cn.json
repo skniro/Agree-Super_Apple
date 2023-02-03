@@ -13,5 +13,10 @@
   "block.agree.deepslate_ruby_ore": "深板岩红宝石矿",
   "block.agree.ruby_block": "红宝石块",
   "itemGroup.agree.test_group": "超级苹果",
-  "enchantment.agree.advanced_projection": "高级保护"
+  "enchantment.agree.advanced_projection": "高级保护",
+  "enchantment.agree.advanced_fire_projection": "高级火焰保护",
+  "enchantment.agree.advanced_feather_falling": "高级摔落保护",
+  "enchantment.agree.advanced_blast_projection": "高级爆炸保护",
+  "enchantment.agree.advanced_projectile_projection": "高级弹射物保护",
+  "enchantment.agree.advanced_sharpness": "高级锋利"
 }
