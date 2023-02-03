@@ -13,5 +13,10 @@
   "block.agree.deepslate_ruby_ore": "deepslate ruby ore",
   "block.agree.ruby_block": "ruby block",
   "itemGroup.agree.test_group": "Super Apple",
-  "enchantment.agree.advanced_projection": "Advanced Projection"
+  "enchantment.agree.advanced_projection": "Advanced Projection",
+  "enchantment.agree.advanced_fire_projection": "Advanced Fire Protection",
+  "enchantment.agree.advanced_feather_falling": "Advanced Feather Falling",
+  "enchantment.agree.advanced_blast_projection": "Advanced Blast Projection",
+  "enchantment.agree.advanced_projectile_projection": "Advanced Projectile Projection",
+  "enchantment.agree.advanced_sharpness": "Advanced Sharpness"
 }
