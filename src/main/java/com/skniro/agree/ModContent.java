@@ -45,19 +45,6 @@ public class ModContent {
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "deepslate_ruby_ore"), DEEPSLATE_RUBY_ORE);
 
     }
-    public static Enchantment Advanced_Protection = register("advanced_projection",
-            new AdvancedProtectionEnchantment(Enchantment.Rarity.UNCOMMON, ProtectionEnchantment.Type.ALL, ALL_ARMOR));
-
-
-
-    private static Enchantment register(String name, Enchantment enchantment) {
-        return  Registry.register(ENCHANTMENT, new Identifier(Agree.MOD_ID, name), enchantment);
-    }
-
-
-    public static void registerModEnchantments() {
-        System.out.println("Registering Enchantments for " + Agree.MOD_ID);
-    }
 
     public static void CreativeTab() {
         ItemGroupEvents.modifyEntriesEvent(Agree_Group).register(content -> {

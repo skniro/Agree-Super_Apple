@@ -1,5 +1,6 @@
 package com.skniro.agree;
 
+import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.item.Food;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
@@ -32,7 +33,7 @@ public class Agree implements ModInitializer {
         ModContent.registerBlock();
         ModContent.CreativeTab();
                     OreBiomeModifications.addOres();
-        ModContent.registerModEnchantments();
+        EnchantmentModule.registerModEnchantments();
         ModLootTableModifiers.modifyLootTables();
     }
 }
