@@ -37,13 +37,13 @@ public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
             return level * 2;
         }
         if (this.protectionType == Type.FIRE && source.isFire()) {
-            return level * 3;
-        }
-        if (this.protectionType == Type.FALL && source.isFromFalling()) {
             return level * 4;
         }
+        if (this.protectionType == Type.FALL && source.isFromFalling()) {
+            return level * 5;
+        }
         if (this.protectionType == Type.EXPLOSION && source.isExplosive()) {
-            return level * 3;
+            return level * 4;
         }
         if (this.protectionType == Type.PROJECTILE && source.isProjectile()) {
             return level * 4;
