@@ -1,23 +1,20 @@
 package com.skniro.agree;
 
 
-
-import com.skniro.agree.Enchantment.AdvancedProtectionEnchantment;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.ProtectionEnchantment;
-import net.minecraft.item.*;
-import net.minecraft.registry.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-import static com.skniro.agree.Agree.*;
-import static com.skniro.agree.Enchantment.AdvancedProtectionEnchantment.ALL_ARMOR;
+import static com.skniro.agree.Agree.Agree_Group;
+import static com.skniro.agree.Agree.MOD_ID;
+import static com.skniro.agree.block.Gemstone_Block.RUBY_BLOCK;
+import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
+import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
-import static com.skniro.agree.item.Gemstone.*;
-import static com.skniro.agree.block.Gemstone_Block.*;
-import static com.skniro.agree.block.Gemstone_ore.*;
-import static net.minecraft.registry.Registries.ENCHANTMENT;
+import static com.skniro.agree.item.Gemstone.RUBY;
 
 
 public class ModContent {

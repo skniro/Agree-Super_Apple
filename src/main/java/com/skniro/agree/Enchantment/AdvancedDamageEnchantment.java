@@ -18,8 +18,8 @@ public class AdvancedDamageEnchantment
         public static final int UNDEAD_INDEX = 1;
         public static final int ARTHROPODS_INDEX = 2;
         private static final String[] TYPE_NAMES = new String[]{"all", "undead", "arthropods"};
-        private static final int[] BASE_POWERS = new int[]{1, 5, 5};
-        private static final int[] POWERS_PER_LEVEL = new int[]{11, 8, 8};
+        private static final int[] BASE_POWERS = new int[]{5, 5, 5};
+        private static final int[] POWERS_PER_LEVEL = new int[]{13, 8, 8};
         private static final int[] MIN_MAX_POWER_DIFFERENCES = new int[]{20, 20, 20};
         public final int typeIndex;
 
@@ -46,7 +46,7 @@ public class AdvancedDamageEnchantment
         @Override
         public float getAttackDamage(int level, EntityGroup group) {
             if (this.typeIndex == 0) {
-                return 1.0f + (float)Math.max(0, level - 1) * 1.5f;
+                return 1.5f + (float)Math.max(0, level - 1) * 2.0f;
             }
             if (this.typeIndex == 1 && group == net.minecraft.entity.EntityGroup.UNDEAD) {
                 return (float)level * 2.5f;
