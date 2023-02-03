@@ -8,7 +8,8 @@
     "Mixin_ThornsEnchantment",
     "Mixin_EfficiencyEnchantment",
     "Mixin_SweepingEnchantment",
-    "Mixin_UnbreakingEnchantment"
+    "Mixin_UnbreakingEnchantment",
+    "Mixin_PowerEnchantment"
   ],
   "client": [
   ],
