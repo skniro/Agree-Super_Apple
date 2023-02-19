@@ -1,9 +1,9 @@
 package com.skniro.agree.Enchantment;
 
-import net.minecraft.class_8103;
 import net.minecraft.enchantment.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.registry.tag.DamageTypeTags;
 
 
 public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
@@ -31,22 +31,22 @@ public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
-        if (source.method_48789(class_8103.BYPASSES_INVULNERABILITY)) {
+        if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return 0;
         }
         if (this.protectionType == Type.ALL) {
             return level * 2;
         }
-        if (this.protectionType == Type.FIRE && source.method_48789(class_8103.IS_FIRE)) {
+        if (this.protectionType == Type.FIRE && source.isIn(DamageTypeTags.IS_FIRE)) {
             return level * 4;
         }
-        if (this.protectionType == Type.FALL && source.method_48789(class_8103.IS_FALL)) {
+        if (this.protectionType == Type.FALL && source.isIn(DamageTypeTags.IS_FALL)) {
             return level * 5;
         }
-        if (this.protectionType == Type.EXPLOSION && source.method_48789(class_8103.IS_EXPLOSION)) {
+        if (this.protectionType == Type.EXPLOSION && source.isIn(DamageTypeTags.IS_EXPLOSION)) {
             return level * 4;
         }
-        if (this.protectionType == Type.PROJECTILE && source.method_48789(class_8103.IS_PROJECTILE)) {
+        if (this.protectionType == Type.PROJECTILE && source.isIn(DamageTypeTags.IS_PROJECTILE)) {
             return level * 4;
         }
         return 0;
