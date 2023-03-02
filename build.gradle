@@ -67,6 +67,9 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            groupId project.name
+            artifactId project.archivesBaseName  + "-" + getBranch()
+            version project.version
             from components.java
         }
     }
