@@ -67,8 +67,8 @@ jar {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId project.name
-            artifactId project.archivesBaseName  + "-" + getBranch()
+            groupId project.maven_group
+            artifactId project.archivesBaseName
             version project.version
             from components.java
         }
@@ -76,9 +76,13 @@ publishing {
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
+        maven {
+            name = 'mavenLocal2'
+            url = file('I:/.m2/repository')
+        }
         // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
+                // Notice: This block does NOT have the same function as the block in the top level.
+                // The repositories here will be used for publishing your artifact, not for
+                // retrieving dependencies.
     }
 }
