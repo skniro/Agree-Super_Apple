@@ -1,11 +1,11 @@
 package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.item.Food;
+import com.skniro.agree.item.SuspiciousAppleItem;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.EnchantedGoldenAppleItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
+import net.minecraft.item.*;
 import net.minecraft.util.Rarity;
 
 public class AppleFoodComponents {
@@ -157,4 +157,19 @@ public class AppleFoodComponents {
                             )
                     )
             );
+    public static final Item SUSPICIOUS_APPLE = new SuspiciousAppleItem
+            (new Item
+                    .Settings()
+                    .food(
+                            AppleFoodComponents
+                                    .createStew(6)
+                                    .alwaysEdible()
+                                    .build()
+                    )
+            );
+    private static FoodComponent.Builder createStew(int hunger) {
+        return new FoodComponent.Builder().hunger(hunger).saturationModifier(0.6f);
+    }
+
 }
+

@@ -1,9 +1,13 @@
 package com.skniro.agree;
 
 
+import com.skniro.agree.item.Apples.AppleFoodComponents;
+import com.skniro.agree.recipe.SuspiciousAppleRecipe;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.BlockItem;
+import net.minecraft.item.*;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -34,9 +38,10 @@ public class ModContent {
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "ruby_ore"), new BlockItem(RUBY_ORE, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "deepslate_ruby_ore"), new BlockItem(DEEPSLATE_RUBY_ORE, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "ruby_block"), new BlockItem(RUBY_BLOCK, new FabricItemSettings()));
-
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID,"suspicious_apple"),SUSPICIOUS_APPLE);
     }
     public static void registerBlock(){
+
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "ruby_block"), RUBY_BLOCK);
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "ruby_ore"), RUBY_ORE);
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "deepslate_ruby_ore"), DEEPSLATE_RUBY_ORE);
@@ -58,6 +63,7 @@ public class ModContent {
             content.add(RUBY_ORE);
             content.add(DEEPSLATE_RUBY_ORE);
             content.add(RUBY_BLOCK);
+            content.add(SUSPICIOUS_APPLE);
         });
     }
 }
