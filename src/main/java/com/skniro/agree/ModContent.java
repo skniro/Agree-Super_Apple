@@ -34,6 +34,8 @@ public class ModContent {
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "ruby_ore"), new BlockItem(RUBY_ORE, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "deepslate_ruby_ore"), new BlockItem(DEEPSLATE_RUBY_ORE, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "ruby_block"), new BlockItem(RUBY_BLOCK, new FabricItemSettings()));
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID,"suspicious_apple"),SUSPICIOUS_APPLE);
+
 
     }
     public static void registerBlock(){
@@ -58,6 +60,7 @@ public class ModContent {
             content.add(RUBY_ORE);
             content.add(DEEPSLATE_RUBY_ORE);
             content.add(RUBY_BLOCK);
+            content.add(SUSPICIOUS_APPLE);
         });
     }
 }

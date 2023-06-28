@@ -2,6 +2,7 @@ package com.skniro.agree;
 
 import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.item.Food;
+import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
 import net.fabricmc.api.ModInitializer;
@@ -35,5 +36,6 @@ public class Agree implements ModInitializer {
                     OreBiomeModifications.addOres();
         EnchantmentModule.registerModEnchantments();
         ModLootTableModifiers.modifyLootTables();
+        AgreeRecipeSerializer.agreerecipeseroalizer();
     }
 }
