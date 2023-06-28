@@ -1,6 +1,7 @@
 package com.skniro.agree;
 
 import com.skniro.agree.Enchantment.EnchantmentModule;
+import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.ModConfiguredFeatures;
 import com.skniro.agree.world.ModOreGeneration;
@@ -31,5 +32,6 @@ public class Agree implements ModInitializer {
                     ModOreGeneration.generateOres();
         EnchantmentModule.registerModEnchantments();
         ModLootTableModifiers.modifyLootTables();
+        AgreeRecipeSerializer.agreerecipeseroalizer();
     }
 }

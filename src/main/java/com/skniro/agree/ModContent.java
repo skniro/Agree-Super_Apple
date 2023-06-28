@@ -32,6 +32,7 @@ public class ModContent {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "ruby_ore"), new BlockItem(RUBY_ORE, new FabricItemSettings().group(Agree.Agree_Group)));
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "deepslate_ruby_ore"), new BlockItem(DEEPSLATE_RUBY_ORE, new FabricItemSettings().group(Agree.Agree_Group)));
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "ruby_block"), new BlockItem(RUBY_BLOCK, new FabricItemSettings().group(Agree.Agree_Group)));
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID,"suspicious_apple"),SUSPICIOUS_APPLE);
 
     }
     public static void registerBlock(){

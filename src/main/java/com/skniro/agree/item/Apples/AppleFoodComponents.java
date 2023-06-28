@@ -1,6 +1,7 @@
 package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.Agree;
+import com.skniro.agree.item.misc.SuspiciousAppleItem;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.EnchantedGoldenAppleItem;
@@ -166,4 +167,18 @@ public class AppleFoodComponents {
                             )
                     )
             );
+    public static final Item SUSPICIOUS_APPLE = new SuspiciousAppleItem
+            (new Item
+                    .Settings()
+                    .group(Agree.Agree_Group)
+                    .food(
+                            AppleFoodComponents
+                                    .createStew(6)
+                                    .alwaysEdible()
+                                    .build()
+                    )
+            );
+    private static FoodComponent.Builder createStew(int hunger) {
+        return new FoodComponent.Builder().hunger(hunger).saturationModifier(0.6f);
+    }
 }
