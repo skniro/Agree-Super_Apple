@@ -1,6 +1,7 @@
 package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.item.Food;
+import com.skniro.agree.item.SuspiciousAppleItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -156,7 +157,7 @@ public class AppleFoodComponents {
                             )
                     )
             );
-    public static final Item SUSPICIOUS_APPLE = new SuspiciousStewItem
+    public static final Item SUSPICIOUS_APPLE = new SuspiciousAppleItem
             (new Item
                     .Settings()
                     .food(

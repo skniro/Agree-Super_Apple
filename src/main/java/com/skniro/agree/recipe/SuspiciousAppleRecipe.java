@@ -48,10 +48,10 @@ extends SpecialCraftingRecipe {
     public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE, 1);
         for (int i = 0; i < recipeInputInventory.size(); ++i) {
-            SuspiciousStewIngredient suspiciousStewIngredient;
+            SuspiciousStewIngredient suspiciousAppleIngredient;
             ItemStack itemStack2 = recipeInputInventory.getStack(i);
-            if (itemStack2.isEmpty() || (suspiciousStewIngredient = SuspiciousStewIngredient.of(itemStack2.getItem())) == null) continue;
-            SuspiciousStewItem.addEffectToStew(itemStack, suspiciousStewIngredient.getEffectInStew(), suspiciousStewIngredient.getEffectInStewDuration());
+            if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousStewIngredient.of(itemStack2.getItem())) == null) continue;
+            SuspiciousStewItem.addEffectToStew(itemStack, suspiciousAppleIngredient.getEffectInStew(), suspiciousAppleIngredient.getEffectInStewDuration());
             break;
         }
         return itemStack;
