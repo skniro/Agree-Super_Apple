@@ -1,8 +1,6 @@
 package com.skniro.agree.item.Apples;
 
-import com.skniro.agree.item.Food;
-import com.skniro.agree.item.SuspiciousAppleItem;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;

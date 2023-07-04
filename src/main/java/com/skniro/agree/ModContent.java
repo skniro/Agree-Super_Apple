@@ -1,22 +1,19 @@
 package com.skniro.agree;
 
 
-import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.recipe.SuspiciousAppleRecipe;
+import com.skniro.agree.item.AgreeItems;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import static com.skniro.agree.Agree.Agree_Group;
 import static com.skniro.agree.Agree.MOD_ID;
-import static com.skniro.agree.block.Gemstone_Block.RUBY_BLOCK;
-import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
-import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
+import static com.skniro.agree.block.Gemstone_Block.*;
+import static com.skniro.agree.block.Gemstone_ore.*;
+import static com.skniro.agree.item.AgreeItems.*;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
 import static com.skniro.agree.item.Gemstone.RUBY;
 
@@ -39,6 +36,7 @@ public class ModContent {
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "deepslate_ruby_ore"), new BlockItem(DEEPSLATE_RUBY_ORE, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "ruby_block"), new BlockItem(RUBY_BLOCK, new FabricItemSettings()));
         Registry.register(Registries.ITEM, new Identifier(MOD_ID,"suspicious_apple"),SUSPICIOUS_APPLE);
+        AgreeItems.registerModItems();
     }
     public static void registerBlock(){
 
@@ -59,11 +57,21 @@ public class ModContent {
             content.add(NIGHT_VISION_APPLE);
             content.add(JUMP_BOOST_APPLE);
             content.add(SUPER_APPLE);
+            content.add(SUSPICIOUS_APPLE);
             content.add(RUBY);
             content.add(RUBY_ORE);
             content.add(DEEPSLATE_RUBY_ORE);
             content.add(RUBY_BLOCK);
-            content.add(SUSPICIOUS_APPLE);
+            content.add(RUBY_HELMET);
+            content.add(RUBY_CHESTPLATE);
+            content.add(RUBY_LEGGINGS);
+            content.add(RUBY_BOOTS);
+            content.add(RUBY_SWORD);
+            content.add(RUBY_AXE);
+            content.add(RUBY_PICKAXE);
+            content.add(RUBY_SHOVEL);
+            content.add(RUBY_HOE);
+
         });
     }
 }
