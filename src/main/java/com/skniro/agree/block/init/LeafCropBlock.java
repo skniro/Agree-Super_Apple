@@ -31,7 +31,7 @@ import net.minecraft.world.event.GameEvent;
 
 import java.util.OptionalInt;
 
-public class LeafCropBlock extends PlantBlock {
+public class LeafCropBlock extends Block {
     public static final IntProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;

@@ -32,7 +32,7 @@ public class AgreeTreeConfiguredFeatures {
                 new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
-                new WeightedBlockStateProvider(pool().add(Blocks.OAK_LEAVES.getDefaultState(), 3).add(AgreeBlocks.HASTE_APPLE_LEAVES.getDefaultState(), 1)),
+                new WeightedBlockStateProvider(pool().add(Blocks.AZALEA_LEAVES.getDefaultState(), 3).add(AgreeBlocks.HASTE_APPLE_LEAVES.getDefaultState(), 1)),
                 new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)).build());
     }
