@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "b": {
+      "item": "agree:ruby"
+    }
+  },
+  "pattern": [
+    "bbb",
+    "b b"
+  ],
+  "result": {
+    "item": "agree:ruby_helmet"
+  },
+  "show_notification": true
+}
