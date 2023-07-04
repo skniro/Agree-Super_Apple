@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "agree:block/sweet_berry_bush_stage1"
+  }
+}

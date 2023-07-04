@@ -1,20 +1,16 @@
 package com.skniro.agree;
 
 
-import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.recipe.SuspiciousAppleRecipe;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import static com.skniro.agree.Agree.Agree_Group;
 import static com.skniro.agree.Agree.MOD_ID;
-import static com.skniro.agree.block.Gemstone_Block.RUBY_BLOCK;
+import static com.skniro.agree.block.AgreeBlocks.*;
 import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
 import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
@@ -64,6 +60,8 @@ public class ModContent {
             content.add(DEEPSLATE_RUBY_ORE);
             content.add(RUBY_BLOCK);
             content.add(SUSPICIOUS_APPLE);
+            content.add(HASTE_APPLE_LEAVES);
+            content.add(HASTE_APPLE_SAPLING);
         });
     }
 }
