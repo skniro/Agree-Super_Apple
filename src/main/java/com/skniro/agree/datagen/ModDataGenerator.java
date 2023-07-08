@@ -14,6 +14,10 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ModWorldGenerator::new);
         pack.addProvider(AgreeLootTableGenerator::new);
+        pack.addProvider(AgreeModelProvider::new);
+        pack.addProvider(AgreeRecipeProvider::new);
+        pack.addProvider(AgreeEnglishLanguageProvider::new);
+        pack.addProvider(AgreeSimplifiedChineseLanguageProvider::new);
     }
 
     @Override

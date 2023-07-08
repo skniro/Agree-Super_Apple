@@ -1,4 +1,4 @@
-package com.skniro.agree.item;
+package com.skniro.agree.item.init;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
