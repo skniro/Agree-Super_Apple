@@ -2,10 +2,8 @@ package com.skniro.agree.datagen;
 
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
@@ -35,6 +33,8 @@ public class AgreeModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerCrop(AgreeBlocks.HERO_VILLAGE_LEAVES,  Properties.AGE_2,0,0,2);
         blockStateModelGenerator.registerCrop(AgreeBlocks.NIGHT_VISION_LEAVES,  Properties.AGE_2,0,0,2);
         blockStateModelGenerator.registerCrop(AgreeBlocks.JUMP_BOOST_LEAVES,  Properties.AGE_2,0,0,2);
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(AgreeBlocks.Apple_Tree_LEAVES);
     }
 
     @Override

@@ -11,6 +11,6 @@ public class JumpBoostAppleSaplingGenerator extends SaplingGenerator {
         @Nullable
         @Override
         protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
+            return AgreeTreeConfiguredFeatures.JUMP_BOOST_APPLE_TREE;
         }
     }

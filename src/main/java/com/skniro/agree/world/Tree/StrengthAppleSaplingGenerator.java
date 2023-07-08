@@ -11,6 +11,6 @@ public class StrengthAppleSaplingGenerator extends SaplingGenerator {
         @Nullable
         @Override
         protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
+            return AgreeTreeConfiguredFeatures.STRENGTH_APPLE_TREE;
         }
     }

@@ -11,6 +11,6 @@ public class SpeedAppleSaplingGenerator extends SaplingGenerator {
         @Nullable
         @Override
         protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
+            return AgreeTreeConfiguredFeatures.SPEED_APPLE_TREE;
         }
     }

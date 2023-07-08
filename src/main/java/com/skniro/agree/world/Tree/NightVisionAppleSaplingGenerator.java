@@ -11,6 +11,6 @@ public class NightVisionAppleSaplingGenerator extends SaplingGenerator {
         @Nullable
         @Override
         protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
+            return AgreeTreeConfiguredFeatures.NIGHT_VISION_APPLE_TREE;
         }
     }

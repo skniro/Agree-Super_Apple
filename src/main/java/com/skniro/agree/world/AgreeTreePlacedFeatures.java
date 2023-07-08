@@ -14,12 +14,33 @@ import java.util.List;
 
 public class AgreeTreePlacedFeatures {
     public static final RegistryKey<PlacedFeature> HASTE_APPLE_TREE_PLACED = registerKey("haste_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> SPEED_APPLE_TREE_PLACED = registerKey("speed_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> HEALTH_BOOST_APPLE_TREE_PLACED = registerKey("health_boost_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> FIRE_RESISTANCE_APPLE_TREE_PLACED = registerKey("fire_resistance_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> HERO_VILLAGE_APPLE_TREE_PLACED = registerKey("village_hero_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> STRENGTH_APPLE_TREE_PLACED = registerKey("strength_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> NIGHT_VISION_APPLE_TREE_PLACED = registerKey("night_vision_apple_tree_placed");
+    public static final RegistryKey<PlacedFeature> JUMP_BOOST_APPLE_TREE_PLACED = registerKey("jump_boost_tree_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, HASTE_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.HASTE_APPLE_SAPLING));
+        register(context, SPEED_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.SPEED_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.SPEED_APPLE_SAPLING));
+        register(context, HEALTH_BOOST_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.HEALTH_BOOST_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.HEALTH_BOOST_SAPLING));
+        register(context, FIRE_RESISTANCE_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.FIRE_RESISTANCE_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.FIRE_RESISTANCE_SAPLING));
+        register(context, HERO_VILLAGE_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.HERO_VILLAGE_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.HERO_VILLAGE_SAPLING));
+        register(context, STRENGTH_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.STRENGTH_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.STRENGTH_SAPLING));
+        register(context, NIGHT_VISION_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.NIGHT_VISION_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.NIGHT_VISION_SAPLING));
+        register(context, JUMP_BOOST_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.JUMP_BOOST_APPLE_TREE),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), AgreeBlocks.JUMP_BOOST_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
