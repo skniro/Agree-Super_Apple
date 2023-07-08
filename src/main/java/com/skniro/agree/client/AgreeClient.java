@@ -12,6 +12,22 @@ import net.minecraft.client.render.RenderLayer;
 public class AgreeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HASTE_APPLE_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.SPEED_APPLE_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.STRENGTH_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HEALTH_BOOST_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.FIRE_RESISTANCE_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HERO_VILLAGE_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.NIGHT_VISION_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.JUMP_BOOST_SAPLING, RenderLayer.getCutout());
+
         BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HASTE_APPLE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.SPEED_APPLE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.STRENGTH_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HEALTH_BOOST_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.FIRE_RESISTANCE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.HERO_VILLAGE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.NIGHT_VISION_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(AgreeBlocks.JUMP_BOOST_LEAVES, RenderLayer.getCutout());
     }
 }

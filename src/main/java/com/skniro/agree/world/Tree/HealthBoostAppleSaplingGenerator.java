@@ -7,7 +7,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import org.jetbrains.annotations.Nullable;
 
-public class AppleSaplingGenerator extends SaplingGenerator {
+public class HealthBoostAppleSaplingGenerator extends SaplingGenerator {
         @Nullable
         @Override
         protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
