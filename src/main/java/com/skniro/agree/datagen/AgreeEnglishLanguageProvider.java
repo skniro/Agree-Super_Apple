@@ -1,7 +1,6 @@
 package com.skniro.agree.datagen;
 
 import com.skniro.agree.item.AgreeItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 
@@ -14,6 +13,7 @@ public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add(AgreeItems.RUBY_HELMET,"Ruby Helmet");
         translationBuilder.add(AgreeItems.RUBY_BOOTS,"Ruby Boots");
         translationBuilder.add(AgreeItems.RUBY_AXE,"Ruby Axe");
         translationBuilder.add(AgreeItems.RUBY_CHESTPLATE,"Ruby Chestplate");

@@ -13,6 +13,7 @@ public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvid
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder){
+        translationBuilder.add(AgreeItems.RUBY_HELMET,"红宝石头盔");
         translationBuilder.add(AgreeItems.RUBY_BOOTS,"红宝石靴子");
         translationBuilder.add(AgreeItems.RUBY_AXE,"红宝石斧");
         translationBuilder.add(AgreeItems.RUBY_CHESTPLATE,"红宝石胸甲");
