@@ -1,7 +1,7 @@
 package com.skniro.agree.item.Apples;
 
-import com.skniro.agree.item.Food;
-import com.skniro.agree.item.misc.SuspiciousAppleItem;
+
+import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.EnchantedGoldenAppleItem;
