@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agree:block/jump_boost_leave_stage2"
+  }
+}

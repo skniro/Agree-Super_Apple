@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agree:block/village_hero_leave_stage0"
+  }
+}

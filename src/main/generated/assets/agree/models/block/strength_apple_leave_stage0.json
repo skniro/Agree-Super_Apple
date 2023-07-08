@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agree:block/strength_apple_leave_stage0"
+  }
+}

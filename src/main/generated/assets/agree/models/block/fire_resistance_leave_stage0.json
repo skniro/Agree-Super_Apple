@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "agree:block/fire_resistance_leave_stage0"
+  }
+}
