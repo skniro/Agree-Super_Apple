@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "agree:village_hero_apple"
+        },
+        {
+            "item": "minecraft:oak_sapling"
+        }
+    ],
+    "result": {
+        "item": "agree:village_hero_apple_sapling",
+        "count": 1
+    }
+}
