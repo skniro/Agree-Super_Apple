@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "agree:block/health_boost_leave_stage2"
-  }
+  "parent": "agree:block/health_boost_leave_stage2"
 }
