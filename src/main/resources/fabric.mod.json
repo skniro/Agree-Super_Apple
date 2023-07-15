@@ -15,6 +15,9 @@
   "icon": "assets/agree/icon.png",
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+      "com.skniro.agree.datagen.ModDataGenerator"
+    ],
     "client": [
       "com.skniro.agree.client.AgreeClient"
     ],

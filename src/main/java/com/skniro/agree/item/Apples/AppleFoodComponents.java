@@ -1,12 +1,15 @@
 package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.Agree;
+import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.EnchantedGoldenAppleItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.Registry;
 
 public class AppleFoodComponents {
     public static final Item HASTE_APPLE = new Item
@@ -166,4 +169,28 @@ public class AppleFoodComponents {
                             )
                     )
             );
+    public static final Item SUSPICIOUS_APPLE = registerItem("suspicious_apple", new SuspiciousAppleItem
+            (new Item
+                    .Settings()
+                    .group(Agree.Agree_Group)
+                    .food(
+                            AppleFoodComponents
+                                    .createStew(6)
+                                    .alwaysEdible()
+                                    .build()
+                    )
+            ));
+
+    private static FoodComponent.Builder createStew(int hunger) {
+        return new FoodComponent.Builder().hunger(hunger).saturationModifier(0.6f);
+    }
+
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(Registry.ITEM, new Identifier(Agree.MOD_ID, name),item);
+    }
+
+    public static void registerModItems() {
+        Agree.LOGGER.info("Registering Ruby Items for " + Agree.MOD_ID);
+    }
+
 }

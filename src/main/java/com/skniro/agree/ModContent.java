@@ -1,6 +1,8 @@
 package com.skniro.agree;
 
 
+import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.Apples.AppleFoodComponents;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
@@ -32,7 +34,8 @@ public class ModContent {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "ruby_ore"), new BlockItem(RUBY_ORE, new FabricItemSettings().group(Agree.Agree_Group)));
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "deepslate_ruby_ore"), new BlockItem(DEEPSLATE_RUBY_ORE, new FabricItemSettings().group(Agree.Agree_Group)));
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "ruby_block"), new BlockItem(RUBY_BLOCK, new FabricItemSettings().group(Agree.Agree_Group)));
-
+        AgreeItems.registerModItems();
+        AppleFoodComponents.registerModItems();
     }
     public static void registerBlock(){
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "ruby_block"), RUBY_BLOCK);
