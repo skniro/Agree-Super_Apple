@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/haste_apple_leave"
+    "layer0": "agree:block/night_vision_leave_stage2"
   }
 }

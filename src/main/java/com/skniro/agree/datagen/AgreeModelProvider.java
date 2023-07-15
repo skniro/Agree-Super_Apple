@@ -25,15 +25,6 @@ public class AgreeModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerFlowerPotPlant(AgreeBlocks.NIGHT_VISION_SAPLING,AgreeBlocks.POTTED_NIGHT_VISION_SAPLING,BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(AgreeBlocks.JUMP_BOOST_SAPLING,AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,BlockStateModelGenerator.TintType.NOT_TINTED);
 
-        blockStateModelGenerator.registerCrop(AgreeBlocks.HASTE_APPLE_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.SPEED_APPLE_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.STRENGTH_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.HEALTH_BOOST_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.FIRE_RESISTANCE_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.HERO_VILLAGE_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.NIGHT_VISION_LEAVES,  Properties.AGE_2,0,0,2);
-        blockStateModelGenerator.registerCrop(AgreeBlocks.JUMP_BOOST_LEAVES,  Properties.AGE_2,0,0,2);
-
         blockStateModelGenerator.registerCubeAllModelTexturePool(AgreeBlocks.Apple_Tree_LEAVES);
     }
 

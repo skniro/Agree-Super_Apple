@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/jump_boost_leave"
+    "layer0": "agree:block/village_hero_leave_stage2"
   }
 }

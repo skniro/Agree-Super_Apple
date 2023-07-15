@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/health_boost_leave"
+    "layer0": "agree:block/speed_apple_leave_stage2"
   }
 }

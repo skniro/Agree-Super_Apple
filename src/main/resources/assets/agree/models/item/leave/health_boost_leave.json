@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/village_hero_leave"
+    "layer0": "agree:block/health_boost_leave_stage2"
   }
 }

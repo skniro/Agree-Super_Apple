@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/strength_apple_leave"
+    "layer0": "agree:block/fire_resistance_leave_stage2"
   }
 }

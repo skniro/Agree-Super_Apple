@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "agree:block/strength_apple_leave_stage2"
+  }
+}

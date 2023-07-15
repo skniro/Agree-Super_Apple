@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "agree:block/health_boost_leave_stage0"
-  }
-}

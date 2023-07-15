@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "agree:item/fire_resistance_leave"
+    "layer0": "agree:block/jump_boost_leave_stage2"
   }
 }
