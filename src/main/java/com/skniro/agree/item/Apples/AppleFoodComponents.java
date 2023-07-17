@@ -1,15 +1,19 @@
 package com.skniro.agree.item.Apples;
 
-import com.skniro.agree.item.init.SuspiciousAppleItem;
+import com.skniro.agree.Agree;
+import com.skniro.agree.item.misc.SuspiciousAppleItem;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
+import net.minecraft.item.EnchantedGoldenAppleItem;
+import net.minecraft.item.FoodComponent;
+import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
 public class AppleFoodComponents {
     public static final Item HASTE_APPLE = new Item
             (new Item
             .Settings()
+                    .group(Agree.Agree_Group)
             .rarity(Rarity.RARE)
             .food
                     (new FoodComponent
@@ -29,6 +33,7 @@ public class AppleFoodComponents {
     public static final Item SPEED_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -44,6 +49,7 @@ public class AppleFoodComponents {
     public static final Item HEALTH_BOOST_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -60,6 +66,7 @@ public class AppleFoodComponents {
     public static final Item FIRE_RESISTANCE_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -75,6 +82,7 @@ public class AppleFoodComponents {
     public static final Item HERO_VILLAGE_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -90,6 +98,7 @@ public class AppleFoodComponents {
     public static final Item STRENGTH_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -105,6 +114,7 @@ public class AppleFoodComponents {
     public static final Item NIGHT_VISION_APPLE = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -120,6 +130,7 @@ public class AppleFoodComponents {
     public static final Item JUMP_BOOST_APPLE  = new Item
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .rarity(Rarity.RARE)
                     .food
                             (new FoodComponent
@@ -135,6 +146,7 @@ public class AppleFoodComponents {
             new EnchantedGoldenAppleItem(
                     (
                     new Item.Settings()
+                            .group(Agree.Agree_Group)
                             .rarity(Rarity.EPIC)
                             .food(
                                     new FoodComponent.Builder()
@@ -158,6 +170,7 @@ public class AppleFoodComponents {
     public static final Item SUSPICIOUS_APPLE = new SuspiciousAppleItem
             (new Item
                     .Settings()
+                    .group(Agree.Agree_Group)
                     .food(
                             AppleFoodComponents
                                     .createStew(6)
@@ -168,6 +181,4 @@ public class AppleFoodComponents {
     private static FoodComponent.Builder createStew(int hunger) {
         return new FoodComponent.Builder().hunger(hunger).saturationModifier(0.6f);
     }
-
 }
-

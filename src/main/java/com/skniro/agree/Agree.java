@@ -3,16 +3,12 @@ package com.skniro.agree;
 import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
-import com.skniro.agree.world.OreBiomeModifications;
+import com.skniro.agree.world.ModConfiguredFeatures;
+import com.skniro.agree.world.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,20 +21,15 @@ public class Agree implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 
-
-
-     public static final RegistryKey<ItemGroup> Agree_Group = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, "test_group"));
-
+    public static final ItemGroup Agree_Group = FabricItemGroupBuilder.build(
+            new Identifier(MOD_ID, "test_group"),() -> new ItemStack(HASTE_APPLE));
     @Override
     public void onInitialize() {
-        Registry.register(Registries.ITEM_GROUP, Agree_Group, FabricItemGroup.builder()
-                .icon(() -> new ItemStack(HASTE_APPLE))
-                .displayName(Text.translatable("itemGroup.agree.test_group"))
-                .build()); // build() no longer registers by itself
         ModContent.registerItem();
         ModContent.registerBlock();
         ModContent.CreativeTab();
-                    OreBiomeModifications.addOres();
+                    ModConfiguredFeatures.registerConfiguredFeatures();
+                    ModOreGeneration.generateOres();
         EnchantmentModule.registerModEnchantments();
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();

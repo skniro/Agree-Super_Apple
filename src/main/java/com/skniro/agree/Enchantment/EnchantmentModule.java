@@ -4,11 +4,11 @@ import com.skniro.agree.Agree;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import static com.skniro.agree.Enchantment.AdvancedProtectionEnchantment.ALL_ARMOR;
-import static net.minecraft.registry.Registries.ENCHANTMENT;
+import static net.minecraft.util.registry.Registry.ENCHANTMENT;
 
 public class EnchantmentModule {
 

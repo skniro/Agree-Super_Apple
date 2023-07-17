@@ -1,15 +1,15 @@
 package com.skniro.agree.Enchantment;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.enchantment.ProtectionEnchantment;
+import net.minecraft.enchantment.*;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.util.math.MathHelper;
 
 
-public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
+public class DefEnchant extends ProtectionEnchantment {
 
-    public AdvancedProtectionEnchantment(Rarity rarity, Type type, EquipmentSlot... slots) {
+    public DefEnchant(Rarity rarity, Type type, EquipmentSlot... slots) {
         super(rarity, type, slots);
     }
 
@@ -39,13 +39,13 @@ public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
             return level * 2;
         }
         if (this.protectionType == Type.FIRE && source.isFire()) {
-            return level * 4;
+            return level * 3;
         }
         if (this.protectionType == Type.FALL && source.isFromFalling()) {
-            return level * 5;
+            return level * 4;
         }
         if (this.protectionType == Type.EXPLOSION && source.isExplosive()) {
-            return level * 4;
+            return level * 3;
         }
         if (this.protectionType == Type.PROJECTILE && source.isProjectile()) {
             return level * 4;

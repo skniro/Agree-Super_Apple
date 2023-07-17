@@ -1,6 +1,7 @@
 package com.skniro.agree.util;
 
 import com.skniro.agree.item.Apples.AppleFoodComponents;
+import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
@@ -8,7 +9,6 @@ import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 
 public class ModLootTableModifiers {
     private static final Identifier GRASS_BLOCK_ID
@@ -66,14 +66,14 @@ public class ModLootTableModifiers {
 
 
     public static void modifyLootTables() {
-        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+        LootTableLoadingCallback.EVENT.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if(IGLOO_STRUCTURE_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -85,16 +85,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Mineshaft_STRUCTURE_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
@@ -106,16 +106,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Ancient_City_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.55f)) // Drops 35% of the time
@@ -127,16 +127,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Bastion_Bridge_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -148,16 +148,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Bastion_Hoglin_Stable_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
@@ -169,16 +169,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Bastion_Other_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
@@ -190,16 +190,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Bastion_Treasure_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
@@ -211,16 +211,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Buried_Treasure_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
@@ -232,16 +232,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(End_City_Treasure_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.45f)) // Drops 35% of the time
@@ -253,16 +253,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Desert_Pyramid_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
@@ -274,16 +274,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Jungle_Temple_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -295,16 +295,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Jungle_Temple_Dispenser_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -316,16 +316,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Underwater_Ruin_Small_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -337,16 +337,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Underwater_Ruin_Big_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -358,16 +358,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Stronghold_Corridor_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -379,16 +379,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Stronghold_Crossing_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.1f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -400,16 +400,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Pillager_Outpost_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -421,16 +421,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Ruined_Portal_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -442,16 +442,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Simple_Dungeon_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.10f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -463,16 +463,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Woodland_Mansion_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.35f)) // Drops 35% of the time
@@ -484,16 +484,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Nether_Bridge_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f)) // Drops 35% of the time
@@ -505,16 +505,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Shipwreck_Map_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
@@ -526,16 +526,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Shipwreck_Supply_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
@@ -547,16 +547,16 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
             if(Shipwreck_Treasure_CHEST_ID.equals(id)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.05f)) // Drops 35% of the time
                         .with(ItemEntry.builder(AppleFoodComponents.SUPER_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder);
                 LootPool.Builder poolBuilder2 = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.15f)) // Drops 35% of the time
@@ -568,8 +568,8 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(AppleFoodComponents.JUMP_BOOST_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.NIGHT_VISION_APPLE))
                         .with(ItemEntry.builder(AppleFoodComponents.SPEED_APPLE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-                tableBuilder.pool(poolBuilder2.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
+                tableBuilder.pool(poolBuilder2);
             }
         });
     }

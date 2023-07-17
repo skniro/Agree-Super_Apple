@@ -23,7 +23,7 @@ public class AdvancedDamageEnchantment
         private static final int[] MIN_MAX_POWER_DIFFERENCES = new int[]{20, 20, 20};
         public final int typeIndex;
 
-    public AdvancedDamageEnchantment(Enchantment.Rarity weight, int typeIndex, EquipmentSlot... slots) {
+    public AdvancedDamageEnchantment(Rarity weight, int typeIndex, EquipmentSlot... slots) {
             super(weight, EnchantmentTarget.WEAPON, slots);
             this.typeIndex = typeIndex;
         }
@@ -48,10 +48,10 @@ public class AdvancedDamageEnchantment
             if (this.typeIndex == 0) {
                 return 1.5f + (float)Math.max(0, level - 1) * 2.0f;
             }
-            if (this.typeIndex == 1 && group == net.minecraft.entity.EntityGroup.UNDEAD) {
+            if (this.typeIndex == 1 && group == EntityGroup.UNDEAD) {
                 return (float)level * 2.5f;
             }
-            if (this.typeIndex == 2 && group == net.minecraft.entity.EntityGroup.ARTHROPOD) {
+            if (this.typeIndex == 2 && group == EntityGroup.ARTHROPOD) {
                 return (float)level * 2.5f;
             }
             return 0.0f;
@@ -74,7 +74,7 @@ public class AdvancedDamageEnchantment
         public void onTargetDamaged(LivingEntity user, Entity target, int level) {
             if (target instanceof LivingEntity) {
                 LivingEntity livingEntity = (LivingEntity)target;
-                if (this.typeIndex == 2 && level > 0 && livingEntity.getGroup() == net.minecraft.entity.EntityGroup.ARTHROPOD) {
+                if (this.typeIndex == 2 && level > 0 && livingEntity.getGroup() == EntityGroup.ARTHROPOD) {
                     int i = 20 + user.getRandom().nextInt(10 * level);
                     livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, i, 3));
                 }

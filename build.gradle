@@ -19,6 +19,7 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
@@ -31,24 +32,6 @@ processResources {
         expand "version": project.version
     }
 }
-
-def dataOutput = 'src/main/generated'
-
-loom {
-    runs {
-        datagen {
-            server()
-
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
-
-            runDir "build/datagen"
-        }
-    }
-}
-
-sourceSets { main { resources { srcDirs += dataOutput } } }
 
 def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
@@ -93,15 +76,13 @@ publishing {
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        if (System.getenv("MAVEN_URL")) {
-            maven {
-                name = 'mavenLocal2'
-                url System.getenv("MAVEN_URL")
-                // Add repositories to publish to here.
-                // Notice: This block does NOT have the same function as the block in the top level.
-                // The repositories here will be used for publishing your artifact, not for
-                // retrieving dependencies.
-            }
+        maven {
+            name = 'mavenLocal2'
+            url = file('I:/.m2/repository')
         }
+        // Add repositories to publish to here.
+        // Notice: This block does NOT have the same function as the block in the top level.
+        // The repositories here will be used for publishing your artifact, not for
+        // retrieving dependencies.
     }
 }
