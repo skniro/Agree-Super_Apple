@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.1.10'
+    id 'fabric-loom' version '1.2-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -80,13 +80,15 @@ publishing {
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-        maven {
-            name = 'mavenLocal2'
-            url = file('I:/.m2/repository')
+        if (System.getenv("MAVEN_URL")) {
+            maven {
+                name = 'mavenLocal2'
+                url System.getenv("MAVEN_URL")
+                // Add repositories to publish to here.
+                // Notice: This block does NOT have the same function as the block in the top level.
+                // The repositories here will be used for publishing your artifact, not for
+                // retrieving dependencies.
+            }
         }
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
     }
 }

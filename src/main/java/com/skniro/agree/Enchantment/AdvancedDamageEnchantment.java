@@ -23,23 +23,23 @@ public class AdvancedDamageEnchantment
         private static final int[] MIN_MAX_POWER_DIFFERENCES = new int[]{20, 20, 20};
         public final int typeIndex;
 
-    public AdvancedDamageEnchantment(Rarity weight, int typeIndex, EquipmentSlot... slots) {
+    public AdvancedDamageEnchantment(Weight weight, int typeIndex, EquipmentSlot... slots) {
             super(weight, EnchantmentTarget.WEAPON, slots);
             this.typeIndex = typeIndex;
         }
 
         @Override
-        public int getMinPower(int level) {
+        public int getMinimumPower(int level) {
             return BASE_POWERS[this.typeIndex] + (level - 1) * POWERS_PER_LEVEL[this.typeIndex];
         }
 
         @Override
-        public int getMaxPower(int level) {
-            return this.getMinPower(level) + MIN_MAX_POWER_DIFFERENCES[this.typeIndex];
+        public int getMaximumPower(int level) {
+            return this.getMinimumPower(level) + MIN_MAX_POWER_DIFFERENCES[this.typeIndex];
         }
 
         @Override
-        public int getMaxLevel() {
+        public int getMaximumLevel() {
             return 5;
         }
 
@@ -58,7 +58,7 @@ public class AdvancedDamageEnchantment
         }
 
         @Override
-        public boolean canAccept(Enchantment other) {
+        public boolean differs(Enchantment other) {
             return !(other instanceof DamageEnchantment);
         }
 

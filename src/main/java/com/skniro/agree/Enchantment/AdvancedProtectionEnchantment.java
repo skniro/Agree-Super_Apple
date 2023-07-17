@@ -5,29 +5,30 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.util.Rarity;
 
 
 public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
 
-    public AdvancedProtectionEnchantment(Rarity rarity, Type type, EquipmentSlot... slots) {
-        super(rarity, type, slots);
+    public AdvancedProtectionEnchantment(Weight weight, Type type, EquipmentSlot... slots) {
+        super(weight, type, slots);
     }
 
     public static final EquipmentSlot[] ALL_ARMOR = new EquipmentSlot[]{EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 
     @Override
-    public int getMaxLevel() {
+    public int getMaximumLevel() {
         return 5;
     }
 
     @Override
-    public int getMinPower(int level) {
+    public int getMinimumPower(int level) {
         return this.protectionType.getBasePower() + (level - 1) * this.protectionType.getPowerPerLevel();
     }
 
     @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + this.protectionType.getPowerPerLevel();
+    public int getMaximumPower(int level) {
+        return this.getMinimumPower(level) + this.protectionType.getPowerPerLevel();
     }
 
     @Override

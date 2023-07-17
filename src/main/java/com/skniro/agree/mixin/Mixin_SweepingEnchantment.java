@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SweepingEnchantment.class)
 public class Mixin_SweepingEnchantment {
-    @Inject(method = "getMaxLevel", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getMaximumLevel", at = @At("RETURN"), cancellable = true)
     public void maxLevel(CallbackInfoReturnable<Integer> cir){
         cir.setReturnValue(5);
     }
