@@ -6,10 +6,13 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.EnchantedGoldenAppleItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.minecraft.util.registry.Registry;
 
 public class AppleFoodComponents {
-    public static final Item HASTE_APPLE = new Item
+    public static final Item HASTE_APPLE = registerItem("haste_apple",
+            new Item
             (new Item
             .Settings()
                     .group(Agree.Agree_Group)
@@ -27,9 +30,11 @@ public class AppleFoodComponents {
                                     1.0F)
                             .build()
                     )
-            );
+            )
+    );
 
-    public static final Item SPEED_APPLE = new Item
+    public static final Item SPEED_APPLE = registerItem("speed_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -43,9 +48,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.SPEED,6000,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item HEALTH_BOOST_APPLE = new Item
+    public static final Item HEALTH_BOOST_APPLE = registerItem("health_boost_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -60,9 +67,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,300,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item FIRE_RESISTANCE_APPLE = new Item
+    public static final Item FIRE_RESISTANCE_APPLE = registerItem("fire_resistance_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -76,9 +85,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,6000,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item HERO_VILLAGE_APPLE = new Item
+    public static final Item HERO_VILLAGE_APPLE = registerItem("village_hero_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -92,9 +103,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE,6000,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item STRENGTH_APPLE = new Item
+    public static final Item STRENGTH_APPLE = registerItem("strength_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -108,9 +121,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,6000,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item NIGHT_VISION_APPLE = new Item
+    public static final Item NIGHT_VISION_APPLE = registerItem("night_vision_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -124,9 +139,11 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION,6000,2),1.0F)
                                     .build()
                             )
-            );
+            )
+    );
 
-    public static final Item JUMP_BOOST_APPLE  = new Item
+    public static final Item JUMP_BOOST_APPLE  = registerItem("jump_boost_apple",
+            new Item
             (new Item
                     .Settings()
                     .group(Agree.Agree_Group)
@@ -140,8 +157,9 @@ public class AppleFoodComponents {
                                     .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST ,6000,1),1.0F)
                                     .build()
                             )
-            );
-    public static final Item SUPER_APPLE =
+            )
+    );
+    public static final Item SUPER_APPLE =registerItem("super_apple",
             new EnchantedGoldenAppleItem(
                     (
                     new Item.Settings()
@@ -165,5 +183,12 @@ public class AppleFoodComponents {
                                             .build()
                             )
                     )
-            );
+            )
+    );
+    private static Item registerItem(String name,Item item) {
+        return Registry.register(Registry.ITEM, new Identifier(Agree.MOD_ID, name),item);
+    }
+    public static void registerMapleFoodItems() {
+        Agree.LOGGER.info("Registering Maple Food Items for " + Agree.MOD_ID);
+    }
 }
