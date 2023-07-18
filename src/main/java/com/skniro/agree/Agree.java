@@ -29,5 +29,6 @@ public class Agree implements ModInitializer {
         ModContent.CreativeTab();
         EnchantmentModule.registerModEnchantments();
         ModLootTableModifiers.modifyLootTables();
+        ModContent.AgreeWorldGen();
     }
 }

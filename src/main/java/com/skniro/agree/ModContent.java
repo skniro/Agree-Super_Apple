@@ -3,6 +3,8 @@ package com.skniro.agree;
 
 
 import com.skniro.agree.item.Apples.AppleFoodComponents;
+import com.skniro.agree.world.ModConfiguredFeatures;
+import com.skniro.agree.world.ModOreGeneration;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
@@ -31,5 +33,10 @@ public class ModContent {
     }
 
     public static void CreativeTab() {
+    }
+
+    public static void AgreeWorldGen() {
+        ModConfiguredFeatures.registerConfiguredFeatures();
+        ModOreGeneration.generateOres();
     }
 }
