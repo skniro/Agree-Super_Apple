@@ -12,4 +12,4 @@ Discord server https://discord.gg/pDaMyHDfBy
 
 ## License
 
-This project is licensed under Creative Commons Attribution Share Alike 4.0 International.
+This project is licensed under MIT.
