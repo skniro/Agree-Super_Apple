@@ -1,10 +1,13 @@
-name: " Reporting a bug template"
+name: Reporting a bug template
 about: Report with latest version, your issue is likely to be fixed.  Make sure you
   have searched issues and no similar is present.
-title: ''
-labels: ''
 
 body:
+     value: |
+
+        Report with latest version, your issue is likely to be fixed.
+
+        Make sure you have searched issues and no similar is present.
 - type: markdown
 - type: input
   id: version
