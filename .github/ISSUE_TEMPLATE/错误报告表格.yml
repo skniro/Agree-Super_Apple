@@ -1,13 +1,8 @@
----
 name: 错误报告表格
-about: 请使用最新的构建版本报告，你发现的问题很可能已经修复。  在进行错误报告之前，请确保没有类似的现有的报告。
-title: ''
-labels: bug
-assignees: ''
+description: 请使用最新的构建版本报告，你发现的问题很可能已经修复。  在进行错误报告之前，请确保没有类似的现有的报告。
 
----
-
-- type: input
+body:
+  - type: input
     id: version
     attributes:
       label: Mod 版本
