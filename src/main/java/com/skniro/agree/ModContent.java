@@ -1,9 +1,14 @@
 package com.skniro.agree;
 
 
+import com.skniro.agree.block.init.LeafCropBlock;
 import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.Apples.AppleFoodComponents;
+import com.skniro.agree.world.Tree.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -11,8 +16,9 @@ import net.minecraft.util.Identifier;
 
 import static com.skniro.agree.Agree.Agree_Group;
 import static com.skniro.agree.Agree.MOD_ID;
-import static com.skniro.agree.block.Gemstone_Block.*;
-import static com.skniro.agree.block.Gemstone_ore.*;
+import static com.skniro.agree.block.AgreeBlocks.*;
+import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
+import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.AgreeItems.*;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
 import static com.skniro.agree.item.Gemstone.RUBY;
@@ -57,10 +63,28 @@ public class ModContent {
             content.add(NIGHT_VISION_APPLE);
             content.add(JUMP_BOOST_APPLE);
             content.add(SUPER_APPLE);
-            content.add(SUSPICIOUS_APPLE);
             content.add(RUBY);
             content.add(RUBY_ORE);
             content.add(DEEPSLATE_RUBY_ORE);
+            content.add(RUBY_BLOCK);
+            content.add(SUSPICIOUS_APPLE);
+            content.add(HASTE_APPLE_SAPLING);
+            content.add(SPEED_APPLE_SAPLING);
+            content.add(HEALTH_BOOST_SAPLING);
+            content.add(FIRE_RESISTANCE_SAPLING);
+            content.add(HERO_VILLAGE_SAPLING);
+            content.add(STRENGTH_SAPLING);
+            content.add(NIGHT_VISION_SAPLING);
+            content.add(JUMP_BOOST_SAPLING);
+            content.add(HASTE_APPLE_LEAVES);
+            content.add(SPEED_APPLE_LEAVES);
+            content.add(HEALTH_BOOST_LEAVES);
+            content.add(FIRE_RESISTANCE_LEAVES);
+            content.add(HERO_VILLAGE_LEAVES);
+            content.add(STRENGTH_LEAVES);
+            content.add(NIGHT_VISION_LEAVES);
+            content.add(JUMP_BOOST_LEAVES);
+            content.add(Apple_Tree_LEAVES);
             content.add(RUBY_BLOCK);
             content.add(RUBY_HELMET);
             content.add(RUBY_CHESTPLATE);
@@ -71,7 +95,6 @@ public class ModContent {
             content.add(RUBY_PICKAXE);
             content.add(RUBY_SHOVEL);
             content.add(RUBY_HOE);
-
         });
     }
 }

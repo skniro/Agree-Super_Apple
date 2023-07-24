@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "agree:block/health_boost_apple_sapling"
+  }
+}

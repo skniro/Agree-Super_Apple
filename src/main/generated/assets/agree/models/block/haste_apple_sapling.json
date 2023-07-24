@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "agree:block/haste_apple_sapling"
+  }
+}
