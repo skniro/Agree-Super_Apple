@@ -11,7 +11,8 @@ import net.minecraft.util.Identifier;
 
 import static com.skniro.agree.Agree.Agree_Group;
 import static com.skniro.agree.Agree.MOD_ID;
-import static com.skniro.agree.block.Gemstone_Block.RUBY_BLOCK;
+import static com.skniro.agree.block.AgreeBlocks.*;
+import static com.skniro.agree.block.AgreeBlocks.Apple_Tree_LEAVES;
 import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
 import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.AgreeItems.*;
@@ -40,7 +41,6 @@ public class ModContent {
         AgreeItems.registerModItems();
     }
     public static void registerBlock(){
-
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "ruby_block"), RUBY_BLOCK);
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "ruby_ore"), RUBY_ORE);
         Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "deepslate_ruby_ore"), DEEPSLATE_RUBY_ORE);
@@ -62,6 +62,23 @@ public class ModContent {
             content.add(RUBY);
             content.add(RUBY_ORE);
             content.add(DEEPSLATE_RUBY_ORE);
+            content.add(HASTE_APPLE_SAPLING);
+            content.add(SPEED_APPLE_SAPLING);
+            content.add(HEALTH_BOOST_SAPLING);
+            content.add(FIRE_RESISTANCE_SAPLING);
+            content.add(HERO_VILLAGE_SAPLING);
+            content.add(STRENGTH_SAPLING);
+            content.add(NIGHT_VISION_SAPLING);
+            content.add(JUMP_BOOST_SAPLING);
+            content.add(HASTE_APPLE_LEAVES);
+            content.add(SPEED_APPLE_LEAVES);
+            content.add(HEALTH_BOOST_LEAVES);
+            content.add(FIRE_RESISTANCE_LEAVES);
+            content.add(HERO_VILLAGE_LEAVES);
+            content.add(STRENGTH_LEAVES);
+            content.add(NIGHT_VISION_LEAVES);
+            content.add(JUMP_BOOST_LEAVES);
+            content.add(Apple_Tree_LEAVES);
             content.add(RUBY_BLOCK);
             content.add(RUBY_HELMET);
             content.add(RUBY_CHESTPLATE);
