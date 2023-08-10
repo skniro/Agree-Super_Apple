@@ -2,12 +2,20 @@ package com.skniro.agree;
 
 
 import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemStackSet;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
+import java.util.Set;
 
 import static com.skniro.agree.Agree.Agree_Group;
 import static com.skniro.agree.Agree.MOD_ID;
@@ -89,7 +97,17 @@ public class ModContent {
             content.add(RUBY_PICKAXE);
             content.add(RUBY_SHOVEL);
             content.add(RUBY_HOE);
-
+            addSuspiciousApples(content, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
         });
+    }
+    private static void addSuspiciousApples(ItemGroup.Entries entries, ItemGroup.StackVisibility visibility) {
+        List<SuspiciousStewIngredient> list = SuspiciousStewIngredient.getAll();
+        Set<ItemStack> set = ItemStackSet.create();
+        for (SuspiciousStewIngredient suspiciousStewIngredient : list) {
+            ItemStack itemStack = new ItemStack(SUSPICIOUS_APPLE);
+            SuspiciousAppleItem.addEffectToStew(itemStack, suspiciousStewIngredient.getEffectInStew(),suspiciousStewIngredient.getEffectInStewDuration());
+            set.add(itemStack);
+        }
+        entries.addAll(set, visibility);
     }
 }
