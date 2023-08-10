@@ -51,7 +51,7 @@ extends SpecialCraftingRecipe {
             SuspiciousStewIngredient suspiciousAppleIngredient;
             ItemStack itemStack2 = recipeInputInventory.getStack(i);
             if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousStewIngredient.of(itemStack2.getItem())) == null) continue;
-            SuspiciousStewItem.addEffectToStew(itemStack, suspiciousAppleIngredient.getEffectInStew(), suspiciousAppleIngredient.getEffectInStewDuration());
+            SuspiciousStewItem.addEffectToStew(itemStack, suspiciousAppleIngredient.method_53233());
             break;
         }
         return itemStack;
