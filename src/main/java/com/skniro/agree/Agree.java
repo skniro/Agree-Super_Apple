@@ -1,6 +1,8 @@
 package com.skniro.agree;
 
 import com.skniro.agree.Enchantment.EnchantmentModule;
+import com.skniro.agree.conifg.AgreeConfig;
+import com.skniro.agree.conifg.Configuration;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
@@ -26,11 +28,14 @@ public class Agree implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        new Configuration(AgreeConfig.class, MOD_ID);
         ModContent.registerItem();
         ModContent.registerBlock();
         ModContent.CreativeTab();
                     OreBiomeModifications.addOres();
-        EnchantmentModule.registerModEnchantments();
+        if (AgreeConfig.Enchantment_Module) {
+            EnchantmentModule.registerModEnchantments();
+        }
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();
     }
