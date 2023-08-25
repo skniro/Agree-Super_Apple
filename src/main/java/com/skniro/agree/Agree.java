@@ -1,17 +1,25 @@
 package com.skniro.agree;
 
 import com.skniro.agree.Enchantment.EnchantmentModule;
+import com.skniro.agree.conifg.AgreeConfig;
+import com.skniro.agree.conifg.Configuration;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.screen.PlayerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -31,6 +39,7 @@ public class Agree implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        new Configuration(AgreeConfig.class, MOD_ID);
         Registry.register(Registries.ITEM_GROUP, Agree_Group, FabricItemGroup.builder()
                 .icon(() -> new ItemStack(HASTE_APPLE))
                 .displayName(Text.translatable("itemGroup.agree.test_group"))
@@ -39,7 +48,9 @@ public class Agree implements ModInitializer {
         ModContent.registerBlock();
         ModContent.CreativeTab();
                     OreBiomeModifications.addOres();
-        EnchantmentModule.registerModEnchantments();
+        if (AgreeConfig.Enchantment_Module) {
+            EnchantmentModule.registerModEnchantments();
+        }
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();
     }
