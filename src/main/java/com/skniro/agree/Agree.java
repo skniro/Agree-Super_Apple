@@ -1,6 +1,8 @@
 package com.skniro.agree;
 
 import com.skniro.agree.Enchantment.EnchantmentModule;
+import com.skniro.agree.conifg.AgreeConfig;
+import com.skniro.agree.conifg.Configuration;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
@@ -31,6 +33,7 @@ public class Agree implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        new Configuration(AgreeConfig.class, MOD_ID);
         Registry.register(Registries.ITEM_GROUP, Agree_Group, FabricItemGroup.builder()
                 .icon(() -> new ItemStack(HASTE_APPLE))
                 .displayName(Text.translatable("itemGroup.agree.test_group"))
@@ -39,7 +42,9 @@ public class Agree implements ModInitializer {
         ModContent.registerBlock();
         ModContent.CreativeTab();
                     OreBiomeModifications.addOres();
-        EnchantmentModule.registerModEnchantments();
+        if (AgreeConfig.Enchantment_Module) {
+            EnchantmentModule.registerModEnchantments();
+        }
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();
     }
