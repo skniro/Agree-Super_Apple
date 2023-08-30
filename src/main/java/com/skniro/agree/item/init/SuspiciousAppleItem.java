@@ -1,22 +1,11 @@
 package com.skniro.agree.item.init;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.text.Text;
-import net.minecraft.world.World;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
+
 
 public class SuspiciousAppleItem
         extends Item {
@@ -25,7 +14,7 @@ public class SuspiciousAppleItem
     public static final String EFFECT_DURATION_KEY = "EffectDuration";
     public static final int DEFAULT_DURATION = 160;
 
-    public SuspiciousAppleItem(Item.Settings settings) {
+    public SuspiciousAppleItem(Item.Properties settings) {
         super(settings);
     }
 
@@ -54,7 +43,7 @@ public class SuspiciousAppleItem
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+    public void appendTooltip(ItemStack stack, @Nullable Level world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (context.isCreative()) {
             ArrayList<StatusEffectInstance> list = new ArrayList<StatusEffectInstance>();
@@ -64,7 +53,7 @@ public class SuspiciousAppleItem
     }
 
     @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+    public ItemStack finishUsing(ItemStack stack, Level world, LivingEntity user) {
         ItemStack itemStack = super.finishUsing(stack, world, user);
         forEachEffect(itemStack, user::addStatusEffect);
         return itemStack;
