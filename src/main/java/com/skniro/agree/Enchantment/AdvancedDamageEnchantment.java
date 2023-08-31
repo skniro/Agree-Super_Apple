@@ -1,17 +1,5 @@
 package com.skniro.agree.Enchantment;
 
-import net.minecraft.enchantment.DamageEnchantment;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-
 public class AdvancedDamageEnchantment
     extends Enchantment {
         public static final int ALL_INDEX = 0;

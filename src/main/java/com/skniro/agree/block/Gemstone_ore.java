@@ -22,7 +22,7 @@ public class Gemstone_ore {
 
     public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
             ()-> new DropExperienceBlock(AbstractBlock.Settings.create().requiresTool().strength(3.0F, 3.0F), UniformIntProvider.create(3, 7)));
-    public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = registerBlock("ruby_ore",
+    public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
             ()-> new DropExperienceBlock(AbstractBlock.Settings.copy(RUBY_ORE).mapColor(MapColor.DEEPSLATE_GRAY).strength(4.5F, 3.0F).sounds(BlockSoundGroup.DEEPSLATE), UniformIntProvider.create(3, 7)));
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block) {

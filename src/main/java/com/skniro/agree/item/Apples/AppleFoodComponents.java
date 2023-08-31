@@ -1,173 +1,209 @@
 package com.skniro.agree.item.Apples;
 
+import com.skniro.agree.Agree;
 import com.skniro.agree.item.init.SuspiciousAppleItem;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.*;
-import net.minecraft.util.Rarity;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.EnchantedGoldenAppleItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.Supplier;
 
 public class AppleFoodComponents {
-    public static final Item HASTE_APPLE = new Item
-            (new Item
-            .Settings()
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Agree.MOD_ID);
+    public static final RegistryObject<Item> HASTE_APPLE =
+            registerItem("haste_apple",
+                    ()->     new Item(
+            new Item
+                    .Properties()
             .rarity(Rarity.RARE)
             .food
-                    (new FoodComponent
+                    (new FoodProperties
                     .Builder()
-                    .hunger(6)
-                    .saturationModifier(0.3f)
-                    .alwaysEdible()
-                    .statusEffect
-                            (new StatusEffectInstance(StatusEffects.HASTE,
+                    .nutrition(6)
+                    .saturationMod(0.3f)
+                    .alwaysEat()
+                    .effect
+                            (new MobEffectInstance(MobEffects.DIG_SPEED,
                                     6000,
                                     2),
                                     1.0F)
                             .build()
                     )
-            );
+            ));
 
-    public static final Item SPEED_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> SPEED_APPLE =
+            registerItem("speed_apple",
+                    ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.SPEED,6000,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,6000,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item HEALTH_BOOST_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> HEALTH_BOOST_APPLE = registerItem(
+            "health_boost_apple",
+            ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST,3000,1),1.0F)
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,300,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST,3000,1),1.0F)
+                                    .effect(new MobEffectInstance(MobEffects.REGENERATION,300,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item FIRE_RESISTANCE_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> FIRE_RESISTANCE_APPLE = registerItem(
+            "fire_resistance_apple",
+            ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,6000,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,6000,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item HERO_VILLAGE_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> HERO_VILLAGE_APPLE = registerItem(
+            "village_hero_apple",
+            ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.HERO_OF_THE_VILLAGE,6000,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE,6000,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item STRENGTH_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> STRENGTH_APPLE = registerItem(
+            "strength_apple",
+            ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,6000,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,6000,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item NIGHT_VISION_APPLE = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> NIGHT_VISION_APPLE = registerItem(
+            "night_vision_apple",
+            ()->     new Item(
+            new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION,6000,2),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.NIGHT_VISION,6000,2),1.0F)
                                     .build()
                             )
-            );
+            ));
 
-    public static final Item JUMP_BOOST_APPLE  = new Item
-            (new Item
-                    .Settings()
+    public static final RegistryObject<Item> JUMP_BOOST_APPLE  = registerItem(
+            "jump_boost_apple",
+            ()->  new Item(
+                  new Item
+                    .Properties()
                     .rarity(Rarity.RARE)
                     .food
-                            (new FoodComponent
+                            (new FoodProperties
                                     .Builder()
-                                    .hunger(6)
-                                    .saturationModifier(0.3f)
-                                    .alwaysEdible()
-                                    .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST ,6000,1),1.0F)
+                                    .nutrition(6)
+                                    .saturationMod(0.3f)
+                                    .alwaysEat()
+                                    .effect(new MobEffectInstance(MobEffects.JUMP, 6000,1),1.0F)
                                     .build()
                             )
-            );
-    public static final Item SUPER_APPLE =
-            new EnchantedGoldenAppleItem(
+            ));
+    public static final RegistryObject<Item> SUPER_APPLE = registerItem(
+            "super_apple",
+            ()->    new EnchantedGoldenAppleItem(
                     (
-                    new Item.Settings()
+                    new Item.Properties()
                             .rarity(Rarity.EPIC)
                             .food(
-                                    new FoodComponent.Builder()
-                                            .hunger(8)
-                                            .saturationModifier(0.6f)
-                                            .alwaysEdible()
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.HASTE,12000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.SPEED,12000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH,12000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION,1200,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,6000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST,12000,1),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE,12000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING,12000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST,6000,2),1.0F)
-                                            .statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION,1200,2),1.0F)
+                                    new FoodProperties.Builder()
+                                            .nutrition(8)
+                                            .saturationMod(0.6f)
+                                            .alwaysEat()
+                                            .effect(new MobEffectInstance(MobEffects.DIG_SPEED,12000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,12000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,12000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.REGENERATION,1200,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,6000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.JUMP,12000,1),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE,12000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.WATER_BREATHING,12000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST,6000,2),1.0F)
+                                            .effect(new MobEffectInstance(MobEffects.ABSORPTION,1200,2),1.0F)
                                             .build()
                             )
                     )
-            );
-    public static final Item SUSPICIOUS_APPLE = new SuspiciousAppleItem
-            (new Item
-                    .Settings()
+            ));
+    public static final RegistryObject<Item> SUSPICIOUS_APPLE = registerItem(
+            "suspicious_apple",
+            ()->    new Item(
+                    new Item
+                    .Properties()
                     .food(
                             AppleFoodComponents
                                     .createStew(6)
-                                    .alwaysEdible()
+                                    .alwaysEat()
                                     .build()
                     )
-            );
-    private static FoodComponent.Builder createStew(int hunger) {
-        return new FoodComponent.Builder().hunger(hunger).saturationModifier(0.6f);
+    ));
+    private static FoodProperties.Builder createStew(int hunger) {
+        return new FoodProperties.Builder().nutrition(hunger).saturationMod(0.6f);
+    }
+    private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
+        RegistryObject<T> toReturn = ITEMS.register(name, item);
+        return toReturn;
     }
 
+    public static void registerModItems(IEventBus eventBus) {
+        ITEMS.register(eventBus);
+    }
 }
 
