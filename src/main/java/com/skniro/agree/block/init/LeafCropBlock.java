@@ -2,142 +2,159 @@ package com.skniro.agree.block.init;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.RandomSequence;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 
 import java.util.OptionalInt;
 
 public class LeafCropBlock extends Block {
-    public static final IntProperty AGE;
+    public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
     private final Item fruitItem;
-    public static final IntProperty DISTANCE;
+    public static final IntegerProperty DISTANCE;
 
     public LeafCropBlock(Properties settings, Item fruitItem) {
         super(settings);
         this.fruitItem = fruitItem;
     }
 
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if ((Integer)state.get(AGE) == 0) {
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        if ((Integer)state.getValue(AGE) == 0) {
             return SMALL_SHAPE;
         } else {
-            return (Integer)state.get(AGE) < 2 ? LARGE_SHAPE : super.getOutlineShape(state, world, pos, context);
+            return (Integer)state.getValue(AGE) < 2 ? LARGE_SHAPE : super.getShape(state, world, pos, context);
         }
     }
-
-    public boolean hasRandomTicks(BlockState state) {
-        return (Integer)state.get(AGE) < 2;
+    @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return (Integer)state.getValue(AGE) < 2;
     }
 
-
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, RandomSource random) {
-        int i = (Integer)state.get(AGE);
-        if (i < 2 && random.nextInt(40) == 0 && world.getBaseLightLevel(pos.up(), 0) >= 9) {
-            BlockState blockState = (BlockState)state.with(AGE, i + 1);
-            world.setBlockState(pos, blockState, 2);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(blockState));
+    @Override
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        int i = (Integer)state.getValue(AGE);
+        if (i < 2 && random.nextInt(40) == 0 && world.getRawBrightness(pos.above(), 0) >= 9) {
+            BlockState blockState = (BlockState)state.setValue(AGE, i + 1);
+            world.setBlock(pos, blockState, 2);
+            world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
         }
         if (this.shouldDecay(state)) {
-            dropStacks(state, world, pos);
+            dropResources(state, world, pos);
             world.removeBlock(pos, false);
         }
 
     }
 
+
     protected boolean shouldDecay(BlockState state) {
-        return (Integer)state.get(DISTANCE) == 7;
+        return (Integer)state.getValue(DISTANCE) == 7;
     }
-
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, RandomSource random) {
-        world.setBlockState(pos, updateDistanceFromLogs(state, world, pos), 3);
+    @Override
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        world.setBlock(pos, updateDistance(state, world, pos), 3);
     }
-
-    public int getOpacity(BlockState state, BlockView world, BlockPos pos) {
+    @Override
+    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
         return 1;
     }
-
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    @Override
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
         int i = getDistanceFromLog(neighborState) + 1;
-        if (i != 1 || (Integer)state.get(DISTANCE) != i) {
-            world.scheduleBlockTick(pos, this, 1);
+        if (i != 1 || (Integer)state.getValue(DISTANCE) != i) {
+            world.scheduleTick(pos, this, 1);
         }
 
         return state;
     }
 
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        int i = (Integer)state.get(AGE);
+    @Override
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        int i = (Integer)state.getValue(AGE);
         boolean bl = i == 2;
         if (i > 1) {
             int j = 1;
-            dropStack(world, pos, new ItemStack(fruitItem, j ));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.with(AGE, 1);
-            world.setBlockState(pos, blockState, 2);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
-            return ActionResult.success(world.isClient);
+            popResource(world, pos, new ItemStack(fruitItem, j ));
+            world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            BlockState blockState = (BlockState)state.setValue(AGE, 1);
+            world.setBlock(pos, blockState, 2);
+            world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
+            return InteractionResult.sidedSuccess(world.isClientSide);
         } else {
-            return super.onUse(state, world, pos, player, hand, hit);
+            return super.use(state, world, pos, player, hand, hit);
         }
     }
-
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{AGE, DISTANCE});
     }
 
-
-    public boolean canGrow(Level world, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
-    public void grow(ServerWorld world, RandomSource random, BlockPos pos, BlockState state) {
-        int i = Math.min(2, (Integer)state.get(AGE) + 1);
-        world.setBlockState(pos, (BlockState)state.with(AGE, i), 2);
+    public void grow(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
+        int i = Math.min(2, (Integer)state.getValue(AGE) + 1);
+        world.setBlock(pos, (BlockState)state.setValue(AGE, i), 2);
     }
 
-    private static BlockState updateDistanceFromLogs(BlockState state, WorldAccess world, BlockPos pos) {
+    private static BlockState updateDistance(BlockState state, LevelAccessor world, BlockPos pos) {
         var i = 7;
-        var blockpos$mutable = new BlockPos.Mutable();
+        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
         for(Direction direction : Direction.values()) {
-            blockpos$mutable.set(pos, direction);
-            i = Math.min(i, getDistanceFromLog(world.getBlockState(blockpos$mutable)) + 1);
+            blockpos$mutableblockpos.setWithOffset(pos, direction);
+            i = Math.min(i, getDistanceFromLog(world.getBlockState(blockpos$mutableblockpos)) + 1);
             if (i == 1) {
                 break;
             }
         }
 
-        return state.with(DISTANCE, i);
+        return state.setValue(DISTANCE, i);
     }
+
 
     private static int getDistanceFromLog(BlockState state) {
         return getOptionalDistanceFromLog(state).orElse(7);
     }
 
     public static OptionalInt getOptionalDistanceFromLog(BlockState state) {
-        if (state.isIn(BlockTags.LOGS)) {
+        if (state.is(BlockTags.LOGS)) {
             return OptionalInt.of(0);
         } else {
-            return state.contains(DISTANCE) ? OptionalInt.of((Integer)state.get(DISTANCE)) : OptionalInt.empty();
+            return state.hasProperty(DISTANCE) ? OptionalInt.of((Integer)state.getValue(DISTANCE)) : OptionalInt.empty();
         }
     }
 
 
     static {
-        AGE = Properties.AGE_2;
-        DISTANCE = Properties.DISTANCE_1_7;
-        SMALL_SHAPE = Block.createCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-        LARGE_SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+        AGE = BlockStateProperties.AGE_2;
+        DISTANCE = BlockStateProperties.DISTANCE;
+        SMALL_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
+        LARGE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     }
 }

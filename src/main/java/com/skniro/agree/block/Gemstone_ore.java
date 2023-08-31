@@ -2,15 +2,16 @@ package com.skniro.agree.block;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.item.AgreeItems;
-import net.minecraft.block.*;
-import net.minecraft.item.Item;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
+import com.skniro.agree.item.ModCreativeModeTabs;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -21,9 +22,9 @@ public class Gemstone_ore {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Agree.MOD_ID);
 
     public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
-            ()-> new DropExperienceBlock(AbstractBlock.Settings.create().requiresTool().strength(3.0F, 3.0F), UniformIntProvider.create(3, 7)));
+            ()-> new DropExperienceBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(3.0F, 3.0F), UniformInt.of(3, 7)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
-            ()-> new DropExperienceBlock(AbstractBlock.Settings.copy(RUBY_ORE).mapColor(MapColor.DEEPSLATE_GRAY).strength(4.5F, 3.0F).sounds(BlockSoundGroup.DEEPSLATE), UniformIntProvider.create(3, 7)));
+            ()-> new DropExperienceBlock(BlockBehaviour.Properties.copy(RUBY_ORE.get()).mapColor(MapColor.DEEPSLATE).strength(4.5F, 3.0F).sound(SoundType.DEEPSLATE), UniformInt.of(3, 7)), ModCreativeModeTabs.Agree_Group);
 
     private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

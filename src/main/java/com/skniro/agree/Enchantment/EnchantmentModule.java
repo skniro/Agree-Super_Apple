@@ -11,8 +11,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.skniro.agree.Enchantment.AdvancedProtectionEnchantment.ALL_ARMOR;
-import static net.minecraft.registry.Registries.ENCHANTMENT;
-import static net.minecraftforge.registries.ForgeRegistries.ENCHANTMENTS;
 
 public class EnchantmentModule {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Agree.MOD_ID);
