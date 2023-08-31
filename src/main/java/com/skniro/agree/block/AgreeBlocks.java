@@ -2,6 +2,7 @@ package com.skniro.agree.block;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.block.init.LeafCropBlock;
+import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.world.Tree.*;
 import net.minecraft.block.*;
@@ -20,11 +21,13 @@ import java.util.function.Supplier;
 public class AgreeBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Agree.MOD_ID);
 
-    public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",new Block(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)));
+    public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",
+            new Block(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)));
 
 
     //SAPLING
-    public static final RegistryObject<Block> HASTE_APPLE_SAPLING = registerBlock("haste_apple_sapling",new SaplingBlock(new HasteAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final RegistryObject<Block> HASTE_APPLE_SAPLING = registerBlock("haste_apple_sapling",
+            new SaplingBlock(new HasteAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
     public static final RegistryObject<Block> SPEED_APPLE_SAPLING = registerBlock("speed_apple_sapling",new SaplingBlock(new SpeedAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
     public static final RegistryObject<Block> HEALTH_BOOST_SAPLING = registerBlock("health_boost_apple_sapling",new SaplingBlock(new HealthBoostAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
     public static final RegistryObject<Block> FIRE_RESISTANCE_SAPLING = registerBlock("fire_resistance_apple_sapling",new SaplingBlock(new FireResistanceAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
@@ -84,7 +87,7 @@ public class AgreeBlocks {
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block, RegistryObject<CreativeModeTab> tab) {
-        return MapleItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+        return AgreeItems.ITEMS.register(name, () -> new BlockItem(block.get(),
                 new Item.Properties()));
     }
 

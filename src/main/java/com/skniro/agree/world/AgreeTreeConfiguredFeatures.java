@@ -2,10 +2,12 @@ package com.skniro.agree.world;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
+import com.skniro.agree.block.Gemstone_ore;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
@@ -13,12 +15,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+
+import java.util.List;
 
 public class AgreeTreeConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> HASTE_APPLE_TREE = registerKey("haste_apple_tree");
@@ -29,12 +37,21 @@ public class AgreeTreeConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> STRENGTH_APPLE_TREE = registerKey("strength_apple_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NIGHT_VISION_APPLE_TREE = registerKey("night_vision_apple_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> JUMP_BOOST_APPLE_TREE = registerKey("jump_boost_apple_tree");
-
+    public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_Ruby_ORE = registerKey("overworld_ruby_ore");
     static SimpleWeightedRandomList.Builder<BlockState> pool() {
         return SimpleWeightedRandomList.builder();
     }
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> featureRegisterable) {
+        RuleTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest netherrackReplaceables = new BlockMatchTest(Blocks.NETHERRACK);
+        RuleTest endstoneReplaceables = new BlockMatchTest(Blocks.END_STONE);
+
+        List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(OreConfiguration.target(stoneReplaceables,
+                        Gemstone_ore.RUBY_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, Gemstone_ore.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
+
         register(featureRegisterable, HASTE_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),
@@ -91,6 +108,8 @@ public class AgreeTreeConfiguredFeatures {
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.get().defaultBlockState(), 3).add(AgreeBlocks.HEALTH_BOOST_LEAVES.get().defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
                         new TwoLayersFeatureSize(1, 0, 1)).build());
+
+        register(featureRegisterable, OVERWORLD_Ruby_ORE, Feature.ORE, new OreConfiguration(overworldRubyOres, 12));
     }
 
 

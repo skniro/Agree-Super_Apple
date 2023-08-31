@@ -1,16 +1,16 @@
 package com.skniro.agree.item.init;
 
 import com.skniro.agree.item.Gemstone;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.util.Lazy;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Supplier;
 
-public enum AgreeToolMaterials implements ToolMaterial {
+public enum AgreeToolMaterials implements Tier {
     RUBY(3, 3231, 12.0F, 3.0F, 22, () -> {
-        return Ingredient.ofItems(new ItemConvertible[]{Gemstone.RUBY});
+        return Ingredient.of(new ItemLike[]{Gemstone.RUBY.get()});
     });
 
     private final int miningLevel;
@@ -18,7 +18,7 @@ public enum AgreeToolMaterials implements ToolMaterial {
     private final float miningSpeed;
     private final float attackDamage;
     private final int enchantability;
-    private final Lazy<Ingredient> repairIngredient;
+    private final LazyLoadedValue<Ingredient> repairIngredient;
 
     private AgreeToolMaterials(int miningLevel, int itemDurability, float miningSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
         this.miningLevel = miningLevel;
@@ -26,29 +26,31 @@ public enum AgreeToolMaterials implements ToolMaterial {
         this.miningSpeed = miningSpeed;
         this.attackDamage = attackDamage;
         this.enchantability = enchantability;
-        this.repairIngredient = new Lazy(repairIngredient);
+        this.repairIngredient = new LazyLoadedValue(repairIngredient);
     }
 
-    public int getDurability() {
+    @Override
+    public int getUses() {
         return this.itemDurability;
     }
 
-    public float getMiningSpeedMultiplier() {
+    @Override
+    public float getSpeed() {
         return this.miningSpeed;
     }
-
-    public float getAttackDamage() {
+    @Override
+    public float getAttackDamageBonus() {
         return this.attackDamage;
     }
-
-    public int getMiningLevel() {
+    @Override
+    public int getLevel() {
         return this.miningLevel;
     }
-
-    public int getEnchantability() {
+    @Override
+    public int getEnchantmentValue() {
         return this.enchantability;
     }
-
+    @Override
     public Ingredient getRepairIngredient() {
         return (Ingredient)this.repairIngredient.get();
     }

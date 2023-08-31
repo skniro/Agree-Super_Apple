@@ -10,7 +10,9 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
@@ -25,6 +27,7 @@ public class AgreeTreePlacedFeatures {
     public static final ResourceKey<PlacedFeature> STRENGTH_APPLE_TREE_PLACED = registerKey("strength_apple_tree_placed");
     public static final ResourceKey<PlacedFeature> NIGHT_VISION_APPLE_TREE_PLACED = registerKey("night_vision_apple_tree_placed");
     public static final ResourceKey<PlacedFeature> JUMP_BOOST_APPLE_TREE_PLACED = registerKey("jump_boost_tree_placed");
+    public static final ResourceKey<PlacedFeature> Ruby_PLACED = registerKey("ruby_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -45,6 +48,10 @@ public class AgreeTreePlacedFeatures {
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2), AgreeBlocks.NIGHT_VISION_SAPLING.get()));
         register(context, JUMP_BOOST_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.JUMP_BOOST_APPLE_TREE),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2), AgreeBlocks.JUMP_BOOST_SAPLING.get()));
+        register(context, Ruby_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.OVERWORLD_Ruby_ORE),
+                OreBiomeModifications.modifiersWithCount(16, // veins per chunk
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(80))));
+
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {

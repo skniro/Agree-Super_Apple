@@ -4,19 +4,7 @@
 package com.skniro.agree.recipe;
 
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SuspiciousStewIngredient;
-import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.SuspiciousStewItem;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.SpecialCraftingRecipe;
-import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.registry.DynamicRegistryManager;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
+import net.minecraft.world.item.ItemStack;
 
 public class SuspiciousAppleRecipe
 extends SpecialCraftingRecipe {
