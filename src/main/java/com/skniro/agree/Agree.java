@@ -1,9 +1,11 @@
 package com.skniro.agree;
 
+import com.mojang.datafixers.kinds.App;
 import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.conifg.AgreeConfig;
 import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.item.Gemstone;
 import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
@@ -39,6 +41,7 @@ public class Agree {
         AgreeItems.registerModItems(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         EnchantmentModule.register(modEventBus);
+        AppleFoodComponents.registerModItems(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -63,7 +63,8 @@ extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AgreeRecipeSerializer.SUSPICIOUS_APPLE;
+        return null;
     }
+
 }
 
