@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "tag": "c:rubies"
+            "item": "agree:ruby"
         },
         {
             "item": "minecraft:golden_apple"
