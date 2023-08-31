@@ -4,26 +4,37 @@
 package com.skniro.agree.recipe;
 
 import com.skniro.agree.item.Apples.AppleFoodComponents;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SuspiciousStewItem;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CustomRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SuspiciousEffectHolder;
 
 public class SuspiciousAppleRecipe
-extends SpecialCraftingRecipe {
-    public SuspiciousAppleRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+extends CustomRecipe {
+    public SuspiciousAppleRecipe(ResourceLocation identifier, CraftingBookCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
     }
 
     @Override
-    public boolean matches(RecipeInputInventory recipeInputInventory, World world) {
+    public boolean matches(CraftingContainer recipeInputInventory, Level world) {
         boolean bl = false;
         boolean bl2 = false;
-        for (int i = 0; i < recipeInputInventory.size(); ++i) {
-            ItemStack itemStack = recipeInputInventory.getStack(i);
+        for (int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
+            ItemStack itemStack = recipeInputInventory.getItem(i);
             if (itemStack.isEmpty()) continue;
-            if (itemStack.isIn(ItemTags.SMALL_FLOWERS) && !bl) {
+            if (itemStack.is(ItemTags.SMALL_FLOWERS) && !bl) {
                 bl = true;
                 continue;
             }
-            if (itemStack.isOf(Items.APPLE) && !bl2) {
+            if (itemStack.is(Items.APPLE) && !bl2) {
                 bl2 = true;
                 continue;
             }
@@ -33,20 +44,20 @@ extends SpecialCraftingRecipe {
     }
 
     @Override
-    public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
-        ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE, 1);
-        for (int i = 0; i < recipeInputInventory.size(); ++i) {
-            SuspiciousStewIngredient suspiciousAppleIngredient;
-            ItemStack itemStack2 = recipeInputInventory.getStack(i);
-            if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousStewIngredient.of(itemStack2.getItem())) == null) continue;
-            SuspiciousStewItem.addEffectToStew(itemStack, suspiciousAppleIngredient.getEffectInStew(), suspiciousAppleIngredient.getEffectInStewDuration());
+    public ItemStack assemble(CraftingContainer recipeInputInventory, RegistryAccess dynamicRegistryManager) {
+        ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE.get(), 1);
+        for (int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
+            SuspiciousEffectHolder suspiciousAppleIngredient;
+            ItemStack itemStack2 = recipeInputInventory.getItem(i);
+            if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousEffectHolder.tryGet(itemStack2.getItem())) == null) continue;
+            SuspiciousStewItem.saveMobEffect(itemStack, suspiciousAppleIngredient.getSuspiciousEffect(), suspiciousAppleIngredient.getEffectDuration());
             break;
         }
         return itemStack;
     }
 
     @Override
-    public boolean fits(int width, int height) {
+    public boolean canCraftInDimensions(int width, int height) {
         return width >= 2 && height >= 2;
     }
 

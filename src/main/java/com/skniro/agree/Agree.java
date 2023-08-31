@@ -1,5 +1,6 @@
 package com.skniro.agree;
 
+import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.conifg.AgreeConfig;
 import com.skniro.agree.item.AgreeItems;
@@ -37,6 +38,7 @@ public class Agree {
         Gemstone.registerModItems(modEventBus);
         AgreeItems.registerModItems(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        EnchantmentModule.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }

@@ -1,9 +1,13 @@
 package com.skniro.agree.Enchantment;
 
-import net.minecraft.enchantment.*;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.registry.tag.DamageTypeTags;
+
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 
 
 public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
@@ -20,33 +24,33 @@ public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
     }
 
     @Override
-    public int getMinPower(int level) {
-        return this.protectionType.getBasePower() + (level - 1) * this.protectionType.getPowerPerLevel();
+    public int getMinCost(int level) {
+        return this.type.getMinCost() + (level - 1) * this.type.getLevelCost();
     }
 
     @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + this.protectionType.getPowerPerLevel();
+    public int getMaxCost(int level) {
+        return this.getMinCost(level) + this.type.getLevelCost();
     }
 
     @Override
-    public int getProtectionAmount(int level, DamageSource source) {
-        if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+    public int getDamageProtection(int level, DamageSource source) {
+        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return 0;
         }
-        if (this.protectionType == Type.ALL) {
+        if (this.type == Type.ALL) {
             return level * 2;
         }
-        if (this.protectionType == Type.FIRE && source.isIn(DamageTypeTags.IS_FIRE)) {
+        if (this.type == Type.FIRE && source.is(DamageTypeTags.IS_FIRE)) {
             return level * 4;
         }
-        if (this.protectionType == Type.FALL && source.isIn(DamageTypeTags.IS_FALL)) {
+        if (this.type == Type.FALL && source.is(DamageTypeTags.IS_FALL)) {
             return level * 5;
         }
-        if (this.protectionType == Type.EXPLOSION && source.isIn(DamageTypeTags.IS_EXPLOSION)) {
+        if (this.type == Type.EXPLOSION && source.is(DamageTypeTags.IS_EXPLOSION)) {
             return level * 4;
         }
-        if (this.protectionType == Type.PROJECTILE && source.isIn(DamageTypeTags.IS_PROJECTILE)) {
+        if (this.type == Type.PROJECTILE && source.is(DamageTypeTags.IS_PROJECTILE)) {
             return level * 4;
         }
         return 0;
@@ -56,14 +60,14 @@ public class AdvancedProtectionEnchantment extends ProtectionEnchantment {
      * Determines if the enchantment passed can be applyied together with this enchantment.
      */
     public boolean checkCompatibility(Enchantment ench) {
-        if (this == Enchantments.PROTECTION) return ench != this;
+        if (this == Enchantments.ALL_DAMAGE_PROTECTION) return ench != this;
         if (this == Enchantments.PROJECTILE_PROTECTION) return ench != this;
         if (ench instanceof ProtectionEnchantment) {
             ProtectionEnchantment pEnch = (ProtectionEnchantment) ench;
-            if (this.protectionType == pEnch.protectionType) {
+            if (this.type == pEnch.type) {
                 return false;
             }
-            return this.protectionType == Type.FALL || pEnch.protectionType == Type.FALL;
+            return this.type == Type.FALL || pEnch.type == Type.FALL;
         }
         return ench != this;
     }
