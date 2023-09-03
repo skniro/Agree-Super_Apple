@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -42,6 +43,9 @@ public class Gemstone_ore {
                 new Item.Properties()));
     }
 
+    public static void registerAgreeBlocks(IEventBus eventBus) {
+        BLOCKS.register(eventBus);
+    }
 }
 
 

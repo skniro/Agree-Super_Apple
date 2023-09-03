@@ -45,7 +45,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(RUBY_ORE.get());
                         pOutput.accept(DEEPSLATE_RUBY_ORE.get());
                         pOutput.accept(RUBY_BLOCK.get());
-                        pOutput.accept(SUSPICIOUS_APPLE.get());
+                        //pOutput.accept(SUSPICIOUS_APPLE.get());
                         pOutput.accept(HASTE_APPLE_SAPLING.get());
                         pOutput.accept(SPEED_APPLE_SAPLING.get());
                         pOutput.accept(HEALTH_BOOST_SAPLING.get());
@@ -73,7 +73,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(RUBY_PICKAXE.get());
                         pOutput.accept(RUBY_SHOVEL.get());
                         pOutput.accept(RUBY_HOE.get());
-                        addSuspiciousApples(pOutput, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                        //addSuspiciousApples(pOutput, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                     })
                     .build());
 

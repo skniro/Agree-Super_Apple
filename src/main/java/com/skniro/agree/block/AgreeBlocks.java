@@ -13,9 +13,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.*;
 
 import java.util.function.Supplier;
 
@@ -46,21 +44,21 @@ public class AgreeBlocks {
 
     //LEAVES
     public static final RegistryObject<Block> HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HASTE_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HASTE_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.SPEED_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.SPEED_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HEALTH_BOOST_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HEALTH_BOOST_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.FIRE_RESISTANCE_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.FIRE_RESISTANCE_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HERO_VILLAGE_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HERO_VILLAGE_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> STRENGTH_LEAVES =registerBlock("strength_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.STRENGTH_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.STRENGTH_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.NIGHT_VISION_APPLE.get()),ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.NIGHT_VISION_APPLE),ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.JUMP_BOOST_APPLE.get()), ModCreativeModeTabs.Agree_Group);
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.JUMP_BOOST_APPLE), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
             ()-> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)),ModCreativeModeTabs.Agree_Group);
 
@@ -87,8 +85,7 @@ public class AgreeBlocks {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         return toReturn;
     }
-
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, RegistryObject<CreativeModeTab> tab) {
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,RegistryObject<CreativeModeTab> tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn, tab);
         return toReturn;
