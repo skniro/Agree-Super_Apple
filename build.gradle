@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'idea'
@@ -10,7 +21,7 @@ version = "${project.mod_version}"
 group = "${project.mod_group_id}"
 
 base {
-    archivesName = "${project.mod_id}"
+    archivesName = "${project.mod_name}"
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -133,7 +144,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.testng:testng:7.1.0'
 
     // Specify the version of Minecraft to use.
     // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.

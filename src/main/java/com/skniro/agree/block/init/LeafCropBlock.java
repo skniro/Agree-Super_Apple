@@ -9,7 +9,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.RandomSequence;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,6 +25,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.RegistryObject;
 
 
 import java.util.OptionalInt;
@@ -34,10 +34,10 @@ public class LeafCropBlock extends Block {
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
-    private final Item fruitItem;
+    private final RegistryObject<Item> fruitItem;
     public static final IntegerProperty DISTANCE;
 
-    public LeafCropBlock(Properties settings, Item fruitItem) {
+    public LeafCropBlock(Properties settings, RegistryObject<Item> fruitItem) {
         super(settings);
         this.fruitItem = fruitItem;
     }
@@ -98,7 +98,7 @@ public class LeafCropBlock extends Block {
         boolean bl = i == 2;
         if (i > 1) {
             int j = 1;
-            popResource(world, pos, new ItemStack(fruitItem, j ));
+            popResource(world, pos, new ItemStack(fruitItem.get(), j ));
             world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             BlockState blockState = (BlockState)state.setValue(AGE, 1);
             world.setBlock(pos, blockState, 2);

@@ -2,6 +2,7 @@ package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.item.init.SuspiciousAppleItem;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -9,9 +10,8 @@ import net.minecraft.world.item.EnchantedGoldenAppleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.*;
 
 import java.util.function.Supplier;
 
@@ -194,6 +194,8 @@ public class AppleFoodComponents {
                                     .build()
                     )
     ));
+
+
     private static FoodProperties.Builder createStew(int hunger) {
         return new FoodProperties.Builder().nutrition(hunger).saturationMod(0.6f);
     }
@@ -201,6 +203,7 @@ public class AppleFoodComponents {
         RegistryObject<T> toReturn = ITEMS.register(name, item);
         return toReturn;
     }
+
 
     public static void registerModItems(IEventBus eventBus) {
         ITEMS.register(eventBus);
