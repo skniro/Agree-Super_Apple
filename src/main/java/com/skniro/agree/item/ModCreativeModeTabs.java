@@ -5,9 +5,7 @@ import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackLinkedSet;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -82,7 +80,7 @@ public class ModCreativeModeTabs {
         Set<ItemStack> set = ItemStackLinkedSet.createTypeAndTagSet();
         for (SuspiciousEffectHolder suspiciousStewIngredient : list) {
             ItemStack itemStack = new ItemStack(SUSPICIOUS_APPLE.get());
-            SuspiciousAppleItem.addEffectToStew(itemStack, suspiciousStewIngredient.getSuspiciousEffect(),suspiciousStewIngredient.getEffectDuration());
+            SuspiciousStewItem.saveMobEffects(itemStack, suspiciousStewIngredient.getSuspiciousEffects());
             set.add(itemStack);
         }
         entries.acceptAll(set, visibility);

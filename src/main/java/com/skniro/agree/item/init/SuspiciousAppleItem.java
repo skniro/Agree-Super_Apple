@@ -2,6 +2,7 @@ package com.skniro.agree.item.init;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
@@ -12,8 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.SuspiciousEffectHolder;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -30,44 +32,51 @@ public class SuspiciousAppleItem
         super(settings);
     }
 
-    public static void addEffectToStew(ItemStack stew, MobEffect effect, int duration) {
-        CompoundTag CompoundTag = stew.getOrCreateTag();
-        ListTag nbtList = CompoundTag.getList(EFFECTS_KEY, Tag.TAG_LIST);
-        CompoundTag CompoundTag2 = new CompoundTag();
-        CompoundTag2.putInt(EFFECT_ID_KEY, MobEffect.getId(effect));
-        CompoundTag2.putInt(EFFECT_DURATION_KEY, duration);
-        nbtList.add(CompoundTag2);
-        CompoundTag.put(EFFECTS_KEY, nbtList);
+    public static void saveMobEffects(ItemStack p_298817_, List<SuspiciousEffectHolder.EffectEntry> p_301117_) {
+        CompoundTag compoundtag = p_298817_.getOrCreateTag();
+        SuspiciousEffectHolder.EffectEntry.LIST_CODEC.encodeStart(NbtOps.INSTANCE, p_301117_).result().ifPresent((p_298613_) -> {
+            compoundtag.put("effects", p_298613_);
+        });
     }
 
-    private static void forEachEffect(ItemStack stew, Consumer<MobEffectInstance> effectConsumer) {
-        CompoundTag CompoundTag = stew.getTag();
-        if (CompoundTag != null && CompoundTag.contains(EFFECTS_KEY, Tag.TAG_LIST)) {
-            ListTag nbtList = CompoundTag.getList(EFFECTS_KEY, Tag.TAG_COMPOUND);
-            for (int i = 0; i < nbtList.size(); ++i) {
-                CompoundTag CompoundTag2 = nbtList.getCompound(i);
-                int j = CompoundTag2.contains(EFFECT_DURATION_KEY, Tag.TAG_ANY_NUMERIC) ? CompoundTag2.getInt(EFFECT_DURATION_KEY) : 160;
-                MobEffect statusEffect = MobEffect.byId(CompoundTag2.getInt(EFFECT_ID_KEY));
-                if (statusEffect == null) continue;
-                effectConsumer.accept(new MobEffectInstance(statusEffect, j));
-            }
-        }
+    public static void appendMobEffects(ItemStack p_298473_, List<SuspiciousEffectHolder.EffectEntry> p_301341_) {
+        CompoundTag compoundtag = p_298473_.getOrCreateTag();
+        List<SuspiciousEffectHolder.EffectEntry> list = new ArrayList<>();
+        listPotionEffects(p_298473_, list::add);
+        list.addAll(p_301341_);
+        SuspiciousEffectHolder.EffectEntry.LIST_CODEC.encodeStart(NbtOps.INSTANCE, list).result().ifPresent((p_299906_) -> {
+            compoundtag.put("effects", p_299906_);
+        });
     }
 
-    @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag context) {
-        super.appendHoverText(stack, world, tooltip, context);
-        if (context.isCreative()) {
-            ArrayList<MobEffectInstance> list = new ArrayList<MobEffectInstance>();
-            forEachEffect(stack, list::add);
-            PotionUtils.addPotionTooltip(list, tooltip, 1.0f);
+    private static void listPotionEffects(ItemStack p_260126_, Consumer<SuspiciousEffectHolder.EffectEntry> p_259500_) {
+        CompoundTag compoundtag = p_260126_.getTag();
+        if (compoundtag != null && compoundtag.contains("effects", 9)) {
+            SuspiciousEffectHolder.EffectEntry.LIST_CODEC.parse(NbtOps.INSTANCE, compoundtag.getList("effects", 10)).result().ifPresent((p_299369_) -> {
+                p_299369_.forEach(p_259500_);
+            });
         }
+
+    }
+
+    public void appendHoverText(ItemStack p_260314_, @Nullable Level p_259224_, List<Component> p_259700_, TooltipFlag p_260021_) {
+        super.appendHoverText(p_260314_, p_259224_, p_259700_, p_260021_);
+        if (p_260021_.isCreative()) {
+            List<MobEffectInstance> list = new ArrayList<>();
+            listPotionEffects(p_260314_, (p_297468_) -> {
+                list.add(p_297468_.createEffectInstance());
+            });
+            PotionUtils.addPotionTooltip(list, p_259700_, 1.0F);
+        }
+
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
         ItemStack itemStack = super.finishUsingItem(stack, world, user);
-        forEachEffect(itemStack, user::addEffect);
+        listPotionEffects(itemStack, (p_300365_) -> {
+            user.addEffect(p_300365_.createEffectInstance());
+        });
         return itemStack;
     }
 }

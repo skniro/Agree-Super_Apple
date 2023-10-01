@@ -16,16 +16,15 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
-import org.jetbrains.annotations.NotNull;
 
 public class SuspiciousAppleRecipe
 extends CustomRecipe {
-    public SuspiciousAppleRecipe(ResourceLocation identifier, CraftingBookCategory craftingRecipeCategory) {
-        super(identifier, craftingRecipeCategory);
+    public SuspiciousAppleRecipe(CraftingBookCategory craftingRecipeCategory) {
+        super(craftingRecipeCategory);
     }
 
     @Override
-    public boolean matches(CraftingContainer recipeInputInventory, @NotNull Level world) {
+    public boolean matches(CraftingContainer recipeInputInventory, Level world) {
         boolean bl = false;
         boolean bl2 = false;
         for (int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
@@ -45,13 +44,13 @@ extends CustomRecipe {
     }
 
     @Override
-    public @NotNull ItemStack assemble(CraftingContainer recipeInputInventory, @NotNull RegistryAccess dynamicRegistryManager) {
+    public ItemStack assemble(CraftingContainer recipeInputInventory,  RegistryAccess dynamicRegistryManager) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE.get(), 1);
         for (int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
             SuspiciousEffectHolder suspiciousAppleIngredient;
             ItemStack itemStack2 = recipeInputInventory.getItem(i);
             if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousEffectHolder.tryGet(itemStack2.getItem())) == null) continue;
-            SuspiciousStewItem.saveMobEffect(itemStack, suspiciousAppleIngredient.getSuspiciousEffect(), suspiciousAppleIngredient.getEffectDuration());
+            SuspiciousStewItem.saveMobEffects(itemStack, suspiciousAppleIngredient.getSuspiciousEffects());
             break;
         }
         return itemStack;
@@ -63,7 +62,7 @@ extends CustomRecipe {
     }
 
     @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<?> getSerializer() {
         return AgreeRecipeSerializer.SUSPICIOUS_APPLE.get();
     }
 }
