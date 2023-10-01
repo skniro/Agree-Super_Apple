@@ -1,8 +1,10 @@
 package com.skniro.agree.item.init;
 
+import com.mojang.serialization.Codec;
 import com.skniro.agree.item.Gemstone;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
@@ -24,7 +26,7 @@ public enum AgreeArmorMaterials implements StringIdentifiable, ArmorMaterial {
         return Ingredient.ofItems(new ItemConvertible[]{Gemstone.RUBY});
     });
 
-    public static final Codec<net.minecraft.item.ArmorMaterials> CODEC = StringIdentifiable.createCodec(net.minecraft.item.ArmorMaterials::values);
+    public static final Codec<ArmorMaterials> CODEC = StringIdentifiable.createCodec(net.minecraft.item.ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (map) -> {
         map.put(ArmorItem.Type.BOOTS, 13);
         map.put(ArmorItem.Type.LEGGINGS, 15);

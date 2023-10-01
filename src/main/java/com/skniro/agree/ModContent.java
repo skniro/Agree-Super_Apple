@@ -15,6 +15,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -106,11 +107,15 @@ public class ModContent {
     private static void addSuspiciousApples(ItemGroup.Entries entries, ItemGroup.StackVisibility visibility) {
         List<SuspiciousStewIngredient> list = SuspiciousStewIngredient.getAll();
         Set<ItemStack> set = ItemStackSet.create();
-        for (SuspiciousStewIngredient suspiciousStewIngredient : list) {
+        Iterator var4 = list.iterator();
+
+        while(var4.hasNext()) {
+            SuspiciousStewIngredient suspiciousStewIngredient = (SuspiciousStewIngredient)var4.next();
             ItemStack itemStack = new ItemStack(SUSPICIOUS_APPLE);
-            SuspiciousAppleItem.addEffectToStew(itemStack, suspiciousStewIngredient.getEffectInStew(),suspiciousStewIngredient.getEffectInStewDuration());
+            SuspiciousStewItem.writeEffectsToStew(itemStack, suspiciousStewIngredient.getStewEffects());
             set.add(itemStack);
         }
+
         entries.addAll(set, visibility);
     }
 }

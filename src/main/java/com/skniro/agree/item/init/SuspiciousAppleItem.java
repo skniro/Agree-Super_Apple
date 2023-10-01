@@ -1,7 +1,10 @@
 package com.skniro.agree.item.init;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
+
+import net.minecraft.block.SuspiciousStewIngredient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -13,6 +16,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
@@ -29,44 +33,53 @@ public class SuspiciousAppleItem
         super(settings);
     }
 
-    public static void addEffectToStew(ItemStack stew, StatusEffect effect, int duration) {
+    public static void writeEffectsToStew(ItemStack stew, List<SuspiciousStewIngredient.StewEffect> stewEffects) {
         NbtCompound nbtCompound = stew.getOrCreateNbt();
-        NbtList nbtList = nbtCompound.getList(EFFECTS_KEY, NbtElement.LIST_TYPE);
-        NbtCompound nbtCompound2 = new NbtCompound();
-        nbtCompound2.putInt(EFFECT_ID_KEY, StatusEffect.getRawId(effect));
-        nbtCompound2.putInt(EFFECT_DURATION_KEY, duration);
-        nbtList.add(nbtCompound2);
-        nbtCompound.put(EFFECTS_KEY, nbtList);
+        SuspiciousStewIngredient.StewEffect.LIST_CODEC.encodeStart(NbtOps.INSTANCE, stewEffects).result().ifPresent((nbtElement) -> {
+            nbtCompound.put("effects", nbtElement);
+        });
     }
 
-    private static void forEachEffect(ItemStack stew, Consumer<StatusEffectInstance> effectConsumer) {
+    public static void addEffectsToStew(ItemStack stew, List<SuspiciousStewIngredient.StewEffect> stewEffects) {
+        NbtCompound nbtCompound = stew.getOrCreateNbt();
+        List<SuspiciousStewIngredient.StewEffect> list = new ArrayList();
+        Objects.requireNonNull(list);
+        forEachEffect(stew, list::add);
+        list.addAll(stewEffects);
+        SuspiciousStewIngredient.StewEffect.LIST_CODEC.encodeStart(NbtOps.INSTANCE, list).result().ifPresent((nbtElement) -> {
+            nbtCompound.put("effects", nbtElement);
+        });
+    }
+
+    private static void forEachEffect(ItemStack stew, Consumer<SuspiciousStewIngredient.StewEffect> effectConsumer) {
         NbtCompound nbtCompound = stew.getNbt();
-        if (nbtCompound != null && nbtCompound.contains(EFFECTS_KEY, NbtElement.LIST_TYPE)) {
-            NbtList nbtList = nbtCompound.getList(EFFECTS_KEY, NbtElement.COMPOUND_TYPE);
-            for (int i = 0; i < nbtList.size(); ++i) {
-                NbtCompound nbtCompound2 = nbtList.getCompound(i);
-                int j = nbtCompound2.contains(EFFECT_DURATION_KEY, NbtElement.NUMBER_TYPE) ? nbtCompound2.getInt(EFFECT_DURATION_KEY) : 160;
-                StatusEffect statusEffect = StatusEffect.byRawId(nbtCompound2.getInt(EFFECT_ID_KEY));
-                if (statusEffect == null) continue;
-                effectConsumer.accept(new StatusEffectInstance(statusEffect, j));
-            }
+        if (nbtCompound != null && nbtCompound.contains("effects", 9)) {
+            SuspiciousStewIngredient.StewEffect.LIST_CODEC.parse(NbtOps.INSTANCE, nbtCompound.getList("effects", 10)).result().ifPresent((list) -> {
+                list.forEach(effectConsumer);
+            });
         }
+
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         if (context.isCreative()) {
-            ArrayList<StatusEffectInstance> list = new ArrayList<StatusEffectInstance>();
-            forEachEffect(stack, list::add);
-            PotionUtil.buildTooltip(list, tooltip, 1.0f);
+            List<StatusEffectInstance> list = new ArrayList();
+            forEachEffect(stack, (effect) -> {
+                list.add(effect.createStatusEffectInstance());
+            });
+            PotionUtil.buildTooltip(list, tooltip, 1.0F);
         }
+
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         ItemStack itemStack = super.finishUsing(stack, world, user);
-        forEachEffect(itemStack, user::addStatusEffect);
+        forEachEffect(itemStack, (effect) -> {
+            user.addStatusEffect(effect.createStatusEffectInstance());
+        });
         return itemStack;
     }
 }

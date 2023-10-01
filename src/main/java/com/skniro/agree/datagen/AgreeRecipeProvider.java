@@ -7,6 +7,7 @@ import com.skniro.agree.item.Gemstone;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -19,8 +20,9 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
         super(dataOutput);
     }
 
+
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, AgreeItems.RUBY_HELMET).pattern("bbb").pattern("b b")
                 .input('b', Gemstone.RUBY)
                 .criterion(FabricRecipeProvider.hasItem(Gemstone.RUBY),
