@@ -21,14 +21,14 @@ public class AgreeBlocks {
 
 
     //SAPLING
-    public static final Block HASTE_APPLE_SAPLING = registerBlock("haste_apple_sapling",new SaplingBlock(new HasteAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block SPEED_APPLE_SAPLING = registerBlock("speed_apple_sapling",new SaplingBlock(new SpeedAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block HEALTH_BOOST_SAPLING = registerBlock("health_boost_apple_sapling",new SaplingBlock(new HealthBoostAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block FIRE_RESISTANCE_SAPLING = registerBlock("fire_resistance_apple_sapling",new SaplingBlock(new FireResistanceAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block HERO_VILLAGE_SAPLING = registerBlock("village_hero_apple_sapling",new SaplingBlock(new VillageHeroAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block STRENGTH_SAPLING = registerBlock("strength_apple_sapling",new SaplingBlock(new StrengthAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block NIGHT_VISION_SAPLING = registerBlock("night_vision_sapling",new SaplingBlock(new NightVisionAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
-    public static final Block JUMP_BOOST_SAPLING = registerBlock("jump_boost_sapling",new SaplingBlock(new JumpBoostAppleSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block HASTE_APPLE_SAPLING = registerBlock("haste_apple_sapling",new SaplingBlock(HasteAppleSaplingGenerator.HasteAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block SPEED_APPLE_SAPLING = registerBlock("speed_apple_sapling",new SaplingBlock(SpeedAppleSaplingGenerator.SpeedAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block HEALTH_BOOST_SAPLING = registerBlock("health_boost_apple_sapling",new SaplingBlock(HealthBoostAppleSaplingGenerator.HealthBoostAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block FIRE_RESISTANCE_SAPLING = registerBlock("fire_resistance_apple_sapling",new SaplingBlock(FireResistanceAppleSaplingGenerator.FireResistanceApple, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block HERO_VILLAGE_SAPLING = registerBlock("village_hero_apple_sapling",new SaplingBlock(VillageHeroAppleSaplingGenerator.VillageHeroSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block STRENGTH_SAPLING = registerBlock("strength_apple_sapling",new SaplingBlock(StrengthAppleSaplingGenerator.StrengthAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block NIGHT_VISION_SAPLING = registerBlock("night_vision_sapling",new SaplingBlock(NightVisionAppleSaplingGenerator.NightVisionAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
+    public static final Block JUMP_BOOST_SAPLING = registerBlock("jump_boost_sapling",new SaplingBlock(JumpBoostAppleSaplingGenerator.JumpBoostAppleSapling, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)), Agree.Agree_Group);
 
     //LEAVES
     public static final Block HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",

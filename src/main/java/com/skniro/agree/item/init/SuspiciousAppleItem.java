@@ -69,7 +69,7 @@ public class SuspiciousAppleItem
             forEachEffect(stack, (effect) -> {
                 list.add(effect.createStatusEffectInstance());
             });
-            PotionUtil.buildTooltip(list, tooltip, 1.0F);
+            PotionUtil.buildTooltip(list, tooltip, 1.0f, world == null ? 20.0f : world.getTickManager().getTickRate());
         }
 
     }

@@ -1,16 +1,16 @@
 package com.skniro.agree.world.Tree;
 
 import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
-import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.block.SaplingGenerator;
 
-public class HasteAppleSaplingGenerator extends SaplingGenerator {
-        @Nullable
-        @Override
-        protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
-        }
+import java.util.Optional;
+
+public class HasteAppleSaplingGenerator {
+    public static final SaplingGenerator HasteAppleSapling =
+            new SaplingGenerator("hasteapplesapling", 0f, Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
     }
