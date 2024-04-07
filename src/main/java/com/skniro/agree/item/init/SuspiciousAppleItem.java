@@ -66,7 +66,7 @@ public class SuspiciousAppleItem
             listPotionEffects(p_260314_, (p_297468_) -> {
                 list.add(p_297468_.createEffectInstance());
             });
-            PotionUtils.addPotionTooltip(list, p_259700_, 1.0F);
+            PotionUtils.addPotionTooltip(list, p_259700_, 1.0F, p_259224_ == null ? 20.0F : p_259224_.tickRateManager().tickrate());
         }
 
     }

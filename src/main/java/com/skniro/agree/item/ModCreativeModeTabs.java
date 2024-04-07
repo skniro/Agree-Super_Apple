@@ -7,12 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import static com.skniro.agree.block.AgreeBlocks.*;
 import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
@@ -26,7 +26,7 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Agree.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> Agree_Group = CREATIVE_MODE_TABS.register("test_group",
+    public static final Supplier<CreativeModeTab> Agree_Group = CREATIVE_MODE_TABS.register("test_group",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(HASTE_APPLE.get()))
                     .title(Component.translatable("itemGroup.agree.test_group"))
                     .displayItems((pParameters, pOutput) -> {

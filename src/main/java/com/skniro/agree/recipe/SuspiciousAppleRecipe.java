@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
+import org.jetbrains.annotations.NotNull;
 
 public class SuspiciousAppleRecipe
 extends CustomRecipe {
@@ -62,8 +63,8 @@ extends CustomRecipe {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
-        return AgreeRecipeSerializer.SUSPICIOUS_APPLE.get();
+    public @NotNull RecipeSerializer<?> getSerializer() {
+        return AgreeRecipeSerializer.SUSPICIOUS_APPLE;
     }
 }
 

@@ -2,6 +2,7 @@ package com.skniro.agree.item.Apples;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.item.init.SuspiciousAppleItem;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -9,15 +10,14 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.EnchantedGoldenAppleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
 public class AppleFoodComponents {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Agree.MOD_ID);
-    public static final RegistryObject<Item> HASTE_APPLE =
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, Agree.MOD_ID);
+    public static final Supplier<Item> HASTE_APPLE =
             registerItem("haste_apple",
                     ()->     new Item(
             new Item
@@ -38,7 +38,7 @@ public class AppleFoodComponents {
                     )
             ));
 
-    public static final RegistryObject<Item> SPEED_APPLE =
+    public static final Supplier<Item> SPEED_APPLE =
             registerItem("speed_apple",
                     ()->     new Item(
             new Item
@@ -55,7 +55,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> HEALTH_BOOST_APPLE = registerItem(
+    public static final Supplier<Item> HEALTH_BOOST_APPLE = registerItem(
             "health_boost_apple",
             ()->     new Item(
             new Item
@@ -73,7 +73,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> FIRE_RESISTANCE_APPLE = registerItem(
+    public static final Supplier<Item> FIRE_RESISTANCE_APPLE = registerItem(
             "fire_resistance_apple",
             ()->     new Item(
             new Item
@@ -90,7 +90,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> HERO_VILLAGE_APPLE = registerItem(
+    public static final Supplier<Item> HERO_VILLAGE_APPLE = registerItem(
             "village_hero_apple",
             ()->     new Item(
             new Item
@@ -107,7 +107,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> STRENGTH_APPLE = registerItem(
+    public static final Supplier<Item> STRENGTH_APPLE = registerItem(
             "strength_apple",
             ()->     new Item(
             new Item
@@ -124,7 +124,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> NIGHT_VISION_APPLE = registerItem(
+    public static final Supplier<Item> NIGHT_VISION_APPLE = registerItem(
             "night_vision_apple",
             ()->     new Item(
             new Item
@@ -141,7 +141,7 @@ public class AppleFoodComponents {
                             )
             ));
 
-    public static final RegistryObject<Item> JUMP_BOOST_APPLE  = registerItem(
+    public static final Supplier<Item> JUMP_BOOST_APPLE  = registerItem(
             "jump_boost_apple",
             ()->  new Item(
                   new Item
@@ -157,7 +157,7 @@ public class AppleFoodComponents {
                                     .build()
                             )
             ));
-    public static final RegistryObject<Item> SUPER_APPLE = registerItem(
+    public static final Supplier<Item> SUPER_APPLE = registerItem(
             "super_apple",
             ()->    new EnchantedGoldenAppleItem(
                     (
@@ -182,7 +182,7 @@ public class AppleFoodComponents {
                             )
                     )
             ));
-    public static final RegistryObject<Item> SUSPICIOUS_APPLE = registerItem(
+    public static final Supplier<Item> SUSPICIOUS_APPLE = registerItem(
             "suspicious_apple",
             ()->    new Item(
                     new Item
@@ -199,8 +199,8 @@ public class AppleFoodComponents {
     private static FoodProperties.Builder createStew(int hunger) {
         return new FoodProperties.Builder().nutrition(hunger).saturationMod(0.6f);
     }
-    private static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<T> item) {
-        RegistryObject<T> toReturn = ITEMS.register(name, item);
+    private static <T extends Item> Supplier<T> registerItem(String name, Supplier<T> item) {
+        Supplier<T> toReturn = ITEMS.register(name, item);
         return toReturn;
     }
 

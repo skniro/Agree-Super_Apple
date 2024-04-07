@@ -25,19 +25,19 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.RegistryObject;
 
 
 import java.util.OptionalInt;
+import java.util.function.Supplier;
 
 public class LeafCropBlock extends Block {
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
-    private final RegistryObject<Item> fruitItem;
+    private final Supplier<Item> fruitItem;
     public static final IntegerProperty DISTANCE;
 
-    public LeafCropBlock(Properties settings, RegistryObject<Item> fruitItem) {
+    public LeafCropBlock(Properties settings, Supplier<Item> fruitItem) {
         super(settings);
         this.fruitItem = fruitItem;
     }
