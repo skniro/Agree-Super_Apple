@@ -26,21 +26,21 @@ public class AgreeBlocks {
 
     //SAPLING
     public static final RegistryObject<Block> HASTE_APPLE_SAPLING = registerBlock("haste_apple_sapling",
-            ()-> new SaplingBlock(new HasteAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(HasteAppleSaplingGenerator.HasteAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> SPEED_APPLE_SAPLING = registerBlock("speed_apple_sapling",
-            ()-> new SaplingBlock(new SpeedAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(SpeedAppleSaplingGenerator.SpeedAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> HEALTH_BOOST_SAPLING = registerBlock("health_boost_apple_sapling",
-            ()-> new SaplingBlock(new HealthBoostAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(HealthBoostAppleSaplingGenerator.HealthBoostAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> FIRE_RESISTANCE_SAPLING = registerBlock("fire_resistance_apple_sapling",
-            ()-> new SaplingBlock(new FireResistanceAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(FireResistanceAppleSaplingGenerator.FireResistanceApple, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> HERO_VILLAGE_SAPLING = registerBlock("village_hero_apple_sapling",
-            ()-> new SaplingBlock(new VillageHeroAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(VillageHeroAppleSaplingGenerator.VillageHeroSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> STRENGTH_SAPLING = registerBlock("strength_apple_sapling",
-            ()-> new SaplingBlock(new StrengthAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(StrengthAppleSaplingGenerator.StrengthAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> NIGHT_VISION_SAPLING = registerBlock("night_vision_sapling",
-            ()-> new SaplingBlock(new NightVisionAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(NightVisionAppleSaplingGenerator.NightVisionAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
     public static final RegistryObject<Block> JUMP_BOOST_SAPLING = registerBlock("jump_boost_sapling",
-            ()-> new SaplingBlock(new JumpBoostAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
+            ()-> new SaplingBlock(JumpBoostAppleSaplingGenerator.JumpBoostAppleSapling, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
 
     //LEAVES
     public static final RegistryObject<Block> HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",

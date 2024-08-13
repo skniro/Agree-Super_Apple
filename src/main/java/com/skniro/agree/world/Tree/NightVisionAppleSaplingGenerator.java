@@ -1,17 +1,16 @@
 package com.skniro.agree.world.Tree;
 
 import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
+import net.minecraft.world.level.block.grower.TreeGrower;
 
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import java.util.Optional;
 
-public class NightVisionAppleSaplingGenerator extends AbstractTreeGrower {
-    @Nullable
-    @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource p_222910_, boolean p_222911_) {
-        return AgreeTreeConfiguredFeatures.NIGHT_VISION_APPLE_TREE;
+public class NightVisionAppleSaplingGenerator {
+    public static final TreeGrower NightVisionAppleSapling =
+            new TreeGrower("nightvisionapplesapling", 0f, Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(AgreeTreeConfiguredFeatures.NIGHT_VISION_APPLE_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
     }
-}

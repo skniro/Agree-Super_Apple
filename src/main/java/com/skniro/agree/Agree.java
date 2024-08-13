@@ -13,6 +13,7 @@ import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -42,7 +43,7 @@ public class Agree {
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         AppleFoodComponents.registerModItems(modEventBus);
-        //AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
+        AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
         Gemstone.registerModItems(modEventBus);
         AgreeItems.registerModItems(modEventBus);
         AgreeBlocks.registerAgreeBlocks(modEventBus);
@@ -55,6 +56,12 @@ public class Agree {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+    }
+
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

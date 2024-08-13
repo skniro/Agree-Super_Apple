@@ -46,13 +46,18 @@ extends CustomRecipe {
     @Override
     public ItemStack assemble(CraftingContainer recipeInputInventory,  RegistryAccess dynamicRegistryManager) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE.get(), 1);
-        for (int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
-            SuspiciousEffectHolder suspiciousAppleIngredient;
-            ItemStack itemStack2 = recipeInputInventory.getItem(i);
-            if (itemStack2.isEmpty() || (suspiciousAppleIngredient = SuspiciousEffectHolder.tryGet(itemStack2.getItem())) == null) continue;
-            SuspiciousStewItem.saveMobEffects(itemStack, suspiciousAppleIngredient.getSuspiciousEffects());
-            break;
+
+        for(int i = 0; i < recipeInputInventory.getContainerSize(); ++i) {
+            ItemStack $$4 = recipeInputInventory.getItem(i);
+            if (!$$4.isEmpty()) {
+                SuspiciousEffectHolder $$5 = SuspiciousEffectHolder.tryGet($$4.getItem());
+                if ($$5 != null) {
+                    SuspiciousStewItem.saveMobEffects(itemStack, $$5.getSuspiciousEffects());
+                    break;
+                }
+            }
         }
+
         return itemStack;
     }
 

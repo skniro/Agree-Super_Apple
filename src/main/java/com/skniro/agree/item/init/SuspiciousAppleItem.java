@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.SuspiciousEffectHolder;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 
@@ -33,19 +34,21 @@ public class SuspiciousAppleItem
     }
 
     public static void saveMobEffects(ItemStack p_298817_, List<SuspiciousEffectHolder.EffectEntry> p_301117_) {
-        CompoundTag compoundtag = p_298817_.getOrCreateTag();
+        CompoundTag $$2 = p_298817_.getOrCreateTag();
         SuspiciousEffectHolder.EffectEntry.LIST_CODEC.encodeStart(NbtOps.INSTANCE, p_301117_).result().ifPresent((p_298613_) -> {
-            compoundtag.put("effects", p_298613_);
+            $$2.put("effects", p_298613_);
         });
     }
 
+
     public static void appendMobEffects(ItemStack p_298473_, List<SuspiciousEffectHolder.EffectEntry> p_301341_) {
-        CompoundTag compoundtag = p_298473_.getOrCreateTag();
-        List<SuspiciousEffectHolder.EffectEntry> list = new ArrayList<>();
-        listPotionEffects(p_298473_, list::add);
-        list.addAll(p_301341_);
-        SuspiciousEffectHolder.EffectEntry.LIST_CODEC.encodeStart(NbtOps.INSTANCE, list).result().ifPresent((p_299906_) -> {
-            compoundtag.put("effects", p_299906_);
+        CompoundTag $$2 = p_298473_.getOrCreateTag();
+        List<SuspiciousEffectHolder.EffectEntry> $$3 = new ArrayList();
+        Objects.requireNonNull($$3);
+        listPotionEffects(p_298473_, $$3::add);
+        $$3.addAll(p_301341_);
+        SuspiciousEffectHolder.EffectEntry.LIST_CODEC.encodeStart(NbtOps.INSTANCE, $$3).result().ifPresent((p_299906_) -> {
+            $$2.put("effects", p_299906_);
         });
     }
 
@@ -62,11 +65,11 @@ public class SuspiciousAppleItem
     public void appendHoverText(ItemStack p_260314_, @Nullable Level p_259224_, List<Component> p_259700_, TooltipFlag p_260021_) {
         super.appendHoverText(p_260314_, p_259224_, p_259700_, p_260021_);
         if (p_260021_.isCreative()) {
-            List<MobEffectInstance> list = new ArrayList<>();
+            List<MobEffectInstance> $$4 = new ArrayList();
             listPotionEffects(p_260314_, (p_297468_) -> {
-                list.add(p_297468_.createEffectInstance());
+                $$4.add(p_297468_.createEffectInstance());
             });
-            PotionUtils.addPotionTooltip(list, p_259700_, 1.0F);
+            PotionUtils.addPotionTooltip($$4, p_259700_, 1.0F, p_259224_ == null ? 20.0F : p_259224_.tickRateManager().tickrate());
         }
 
     }

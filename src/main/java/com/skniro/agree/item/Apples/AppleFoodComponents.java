@@ -184,7 +184,7 @@ public class AppleFoodComponents {
             ));
     public static final RegistryObject<Item> SUSPICIOUS_APPLE = registerItem(
             "suspicious_apple",
-            ()->    new Item(
+            ()->    new SuspiciousAppleItem(
                     new Item
                     .Properties()
                     .food(

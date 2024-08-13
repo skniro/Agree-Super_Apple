@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static com.skniro.agree.Enchantment.AdvancedProtectionEnchantment.ALL_ARMOR;
 
-public class EnchantmentModule {
+public class  EnchantmentModule {
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Agree.MOD_ID);
 
     public static RegistryObject<Enchantment> Advanced_Protection = ENCHANTMENTS.register("advanced_projection",
