@@ -42,7 +42,7 @@ public class Agree {
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         AppleFoodComponents.registerModItems(modEventBus);
-        //AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
+        AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
         Gemstone.registerModItems(modEventBus);
         AgreeItems.registerModItems(modEventBus);
         AgreeBlocks.registerAgreeBlocks(modEventBus);

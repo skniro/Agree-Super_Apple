@@ -2,6 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.skniro.agree.mixin",
+  "refmap": "mixins.agree.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "Mixin_LuckEnchantment",
