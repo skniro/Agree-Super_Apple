@@ -1,16 +1,16 @@
 package com.skniro.agree.world.Tree;
 
 import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.grower.TreeGrower;
 
-public class HasteAppleSaplingGenerator extends AbstractTreeGrower {
-        @Nullable
-        @Override
-        protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE;
-        }
+import java.util.Optional;
+
+public class HasteAppleSaplingGenerator {
+    public static final TreeGrower HasteAppleSapling =
+            new TreeGrower("hasteapplesapling", 0f, Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
     }

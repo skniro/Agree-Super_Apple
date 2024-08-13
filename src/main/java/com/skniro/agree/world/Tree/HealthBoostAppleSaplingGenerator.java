@@ -1,16 +1,17 @@
 package com.skniro.agree.world.Tree;
 
 import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.grower.TreeGrower;
 
-public class HealthBoostAppleSaplingGenerator extends AbstractTreeGrower {
-    @Nullable
-    @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource p_222910_, boolean p_222911_) {
-        return AgreeTreeConfiguredFeatures.HEALTH_BOOST_APPLE_TREE;
+import java.util.Optional;
+
+public class HealthBoostAppleSaplingGenerator {
+    public static final TreeGrower HealthBoostAppleSapling =
+            new TreeGrower("healthboostapplesapling", 0f, Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(AgreeTreeConfiguredFeatures.HEALTH_BOOST_APPLE_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
+
     }
-}

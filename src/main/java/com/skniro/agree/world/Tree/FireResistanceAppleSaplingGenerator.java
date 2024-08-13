@@ -1,16 +1,16 @@
 package com.skniro.agree.world.Tree;
 
 import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.level.block.grower.TreeGrower;
 
-public class FireResistanceAppleSaplingGenerator extends AbstractTreeGrower {
-        @Nullable
-        @Override
-        protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean bees) {
-            return AgreeTreeConfiguredFeatures.FIRE_RESISTANCE_APPLE_TREE;
-        }
+import java.util.Optional;
+
+public class FireResistanceAppleSaplingGenerator {
+    public static final TreeGrower FireResistanceApple =
+            new TreeGrower("fireresistanceapplesapling", 0f, Optional.empty(),
+                    Optional.empty(),
+                    Optional.of(AgreeTreeConfiguredFeatures.FIRE_RESISTANCE_APPLE_TREE),
+                    Optional.empty(),
+                    Optional.empty(),
+                    Optional.empty());
     }
