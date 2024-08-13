@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "item": "agree:ruby_pickaxe"
+    },
+    {
+      "item": "agree:ruby_shovel"
+    },
+    {
+      "item": "agree:ruby_axe"
+    },
+    {
+      "item": "agree:ruby_hoe"
+    },
+    {
+      "item": "agree:ruby_sword"
+    },
+    {
+      "item": "agree:ruby_helmet"
+    },
+    {
+      "item": "agree:ruby_chestplate"
+    },
+    {
+      "item": "agree:ruby_leggings"
+    },
+    {
+      "item": "agree:ruby_boots"
+    }
+  ],
+  "result": "agree:ruby"
+}
