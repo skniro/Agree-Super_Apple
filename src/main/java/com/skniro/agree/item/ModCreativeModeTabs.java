@@ -74,7 +74,7 @@ public class ModCreativeModeTabs {
                             pOutput.accept(RUBY_PICKAXE.get());
                             pOutput.accept(RUBY_SHOVEL.get());
                             pOutput.accept(RUBY_HOE.get());
-                            //addSuspiciousApples(pOutput, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                            addSuspiciousApples(pOutput, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                         })
                         .build());
     }
