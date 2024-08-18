@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ArrowDamageEnchantment.class)
 public class Mixin_PowerEnchantment {
-    @Inject(method = "getMaxLevel()I", at = @At("RETURN"), cancellable = true)
+    @Inject(method = "getMaxLevel()I", at = @At("HEAD"), cancellable = true)
     public void maxLevel(CallbackInfoReturnable<Integer> cir){
         if(AgreeConfig.Enchantment_Module.get()) {
             cir.setReturnValue(8);

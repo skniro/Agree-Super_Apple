@@ -1,8 +1,6 @@
 package com.skniro.agree.item;
 
 import com.skniro.agree.Agree;
-import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;

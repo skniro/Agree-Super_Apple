@@ -48,8 +48,8 @@ public class Agree {
         AgreeItems.registerModItems(modEventBus);
         AgreeBlocks.registerAgreeBlocks(modEventBus);
         Gemstone_ore.registerAgreeBlocks(modEventBus);
-        ModCreativeModeTabs.register(modEventBus);
         EnchantmentModule.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
