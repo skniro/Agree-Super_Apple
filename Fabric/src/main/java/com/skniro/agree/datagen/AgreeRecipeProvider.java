@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.data.server.recipe.RecipeGenerator;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -23,7 +24,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
 
 
     @Override
-    public void generate(RecipeExporter exporter) {
+    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registryLookup, RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, AgreeItems.RUBY_HELMET).pattern("bbb").pattern("b b")
                 .input('b', Gemstone.RUBY)
                 .criterion(FabricRecipeProvider.hasItem(Gemstone.RUBY),
@@ -102,5 +103,11 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(Blocks.OAK_SAPLING))
                 .offerTo(exporter);
 
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return "";
     }
 }

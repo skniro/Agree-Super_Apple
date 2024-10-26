@@ -18,6 +18,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(AgreeRecipeProvider::new);
         pack.addProvider(AgreeEnglishLanguageProvider::new);
         pack.addProvider(AgreeSimplifiedChineseLanguageProvider::new);
+        pack.addProvider(AgreeItemTagGeneration::new);
     }
 
     @Override
