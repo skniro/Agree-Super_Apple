@@ -1,8 +1,6 @@
 package com.skniro.agree.item;
 
 import com.skniro.agree.Agree;
-import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.item.init.SuspiciousAppleItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -17,12 +15,9 @@ import java.util.List;
 import java.util.Set;
 
 import static com.skniro.agree.block.AgreeBlocks.*;
-import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
-import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.AgreeItems.*;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.SUSPICIOUS_APPLE;
-import static com.skniro.agree.item.Gemstone.RUBY;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =

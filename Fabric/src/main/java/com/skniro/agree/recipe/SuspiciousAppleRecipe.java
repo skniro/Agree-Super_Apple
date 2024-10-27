@@ -26,7 +26,7 @@ extends SpecialCraftingRecipe {
     public boolean matches(CraftingRecipeInput craftingRecipeInput, World world) {
         boolean bl = false;
         boolean bl2 = false;
-        for (int i = 0; i < craftingRecipeInput.getSize(); ++i) {
+        for (int i = 0; i < craftingRecipeInput.size(); ++i) {
             ItemStack itemStack = craftingRecipeInput.getStackInSlot(i);
             if (itemStack.isEmpty()) continue;
             if (itemStack.isIn(ItemTags.SMALL_FLOWERS) && !bl) {
@@ -45,7 +45,7 @@ extends SpecialCraftingRecipe {
     @Override
     public ItemStack craft(CraftingRecipeInput craftingRecipeInput, RegistryWrapper.WrapperLookup wrapperLookup) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE, 1);
-        for(int i = 0; i < craftingRecipeInput.getSize(); ++i) {
+        for(int i = 0; i < craftingRecipeInput.size(); ++i) {
             ItemStack itemStack2 = craftingRecipeInput.getStackInSlot(i);
             if (!itemStack2.isEmpty()) {
                 SuspiciousStewIngredient suspiciousStewIngredient = SuspiciousStewIngredient.of(itemStack2.getItem());
@@ -58,13 +58,9 @@ extends SpecialCraftingRecipe {
         return itemStack;
     }
 
-    @Override
-    public boolean fits(int width, int height) {
-        return width >= 2 && height >= 2;
-    }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<? extends SpecialCraftingRecipe> getSerializer() {
         return AgreeRecipeSerializer.SUSPICIOUS_APPLE;
     }
 }

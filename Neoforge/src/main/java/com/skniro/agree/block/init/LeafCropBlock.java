@@ -11,9 +11,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -77,14 +75,15 @@ public class LeafCropBlock extends Block {
         world.setBlock(pos, updateDistance(state, world, pos), 3);
     }
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    public int getLightBlock(BlockState state) {
         return 1;
     }
+
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+    public BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
         int i = getDistanceFromLog(neighborState) + 1;
         if (i != 1 || (Integer)state.getValue(DISTANCE) != i) {
-            world.scheduleTick(pos, this, 1);
+            tickView.scheduleTick(pos, this, 1);
         }
 
         return state;
@@ -101,7 +100,7 @@ public class LeafCropBlock extends Block {
             BlockState blockState = (BlockState)state.setValue(AGE, 1);
             world.setBlock(pos, blockState, 2);
             world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
-            return InteractionResult.sidedSuccess(world.isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
             return super.useWithoutItem(state, world, pos, player, hit);
         }

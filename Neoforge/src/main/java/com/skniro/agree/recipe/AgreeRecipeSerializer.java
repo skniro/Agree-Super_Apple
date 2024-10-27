@@ -2,8 +2,8 @@ package com.skniro.agree.recipe;
 
 import com.skniro.agree.Agree;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -15,7 +15,7 @@ public class AgreeRecipeSerializer{
 
     public static final Supplier<RecipeSerializer<SuspiciousAppleRecipe>> SUSPICIOUS_APPLE =
             RECIPE_SERIALIZER.register("crafting_special_suspiciousapple",
-                    ()-> new SimpleCraftingRecipeSerializer<>(SuspiciousAppleRecipe::new));
+                    ()-> new CustomRecipe.Serializer<>(SuspiciousAppleRecipe::new));
 
     public static void agreerecipeseroalizer(IEventBus eventBus) {
         RECIPE_SERIALIZER.register(eventBus);

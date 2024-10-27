@@ -1,20 +1,15 @@
 package com.skniro.agree;
 
 import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.block.Gemstone_ore;
-import com.skniro.agree.conifg.AgreeConfig;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.item.Gemstone;
 import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,8 +21,8 @@ public class Agree {
     public static final String MOD_ID = "agree";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    public Agree() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public Agree(FMLJavaModLoadingContext context) {
+        IEventBus modEventBus = context.getModEventBus();
         //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AgreeConfig.GENERAL_SPEC, "agree_config.toml");
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -35,10 +30,8 @@ public class Agree {
         // Register the Deferred Register to the mod event bus so blocks get registered
         AppleFoodComponents.registerModItems(modEventBus);
         AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
-        Gemstone.registerModItems(modEventBus);
         AgreeItems.registerModItems(modEventBus);
         AgreeBlocks.registerAgreeBlocks(modEventBus);
-        Gemstone_ore.registerAgreeBlocks(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

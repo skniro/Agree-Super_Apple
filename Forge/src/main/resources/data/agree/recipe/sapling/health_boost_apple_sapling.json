@@ -1,12 +1,8 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "agree:health_boost_apple"
-        },
-        {
-            "item": "minecraft:oak_sapling"
-        }
+        "agree:health_boost_apple",
+        "minecraft:oak_sapling"
     ],
     "result": {
         "id": "agree:health_boost_apple_sapling",

@@ -6,9 +6,7 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "agree:ruby"
-        }
+        "#": "agree:ruby"
     },
     "result": {
         "id": "agree:ruby_block",

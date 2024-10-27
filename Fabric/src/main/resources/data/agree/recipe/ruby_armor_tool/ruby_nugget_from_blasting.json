@@ -1,38 +1,20 @@
 {
-  "type": "minecraft:blasting",
-  "category": "misc",
-  "cookingtime": 100,
-  "experience": 0.1,
-  "ingredient": [
-    {
-      "item": "agree:ruby_pickaxe"
-    },
-    {
-      "item": "agree:ruby_shovel"
-    },
-    {
-      "item": "agree:ruby_axe"
-    },
-    {
-      "item": "agree:ruby_hoe"
-    },
-    {
-      "item": "agree:ruby_sword"
-    },
-    {
-      "item": "agree:ruby_helmet"
-    },
-    {
-      "item": "agree:ruby_chestplate"
-    },
-    {
-      "item": "agree:ruby_leggings"
-    },
-    {
-      "item": "agree:ruby_boots"
+    "type": "minecraft:blasting",
+    "category": "misc",
+    "cookingtime": 100,
+    "experience": 0.1,
+    "ingredient": [
+        "agree:ruby_pickaxe",
+        "agree:ruby_shovel",
+        "agree:ruby_axe",
+        "agree:ruby_hoe",
+        "agree:ruby_sword",
+        "agree:ruby_helmet",
+        "agree:ruby_chestplate",
+        "agree:ruby_leggings",
+        "agree:ruby_boots"
+    ],
+    "result": {
+        "id": "agree:ruby"
     }
-  ],
-  "result": {
-    "id": "agree:ruby"
-  }
 }

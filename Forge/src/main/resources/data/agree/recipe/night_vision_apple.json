@@ -6,12 +6,8 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:lapis_lazuli"
-        },
-        "G": {
-            "item": "minecraft:golden_apple"
-        }
+        "#": "minecraft:lapis_lazuli",
+        "G": "minecraft:golden_apple"
     },
     "result": {
         "id": "agree:night_vision_apple",

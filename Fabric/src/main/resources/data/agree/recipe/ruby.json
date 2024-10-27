@@ -4,9 +4,7 @@
         "#"
     ],
     "key": {
-        "#": {
-            "item": "agree:ruby_block"
-        }
+        "#": "agree:ruby_block"
     },
     "result": {
         "id": "agree:ruby",

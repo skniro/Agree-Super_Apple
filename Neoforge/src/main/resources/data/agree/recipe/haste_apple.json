@@ -1,12 +1,8 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "agree:ruby"
-        },
-        {
-            "item": "minecraft:golden_apple"
-        }
+        "agree:ruby",
+        "minecraft:golden_apple"
     ],
     "result": {
         "id": "agree:haste_apple",

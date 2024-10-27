@@ -17,11 +17,8 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 import static com.skniro.agree.block.AgreeBlocks.*;
-import static com.skniro.agree.block.Gemstone_ore.DEEPSLATE_RUBY_ORE;
-import static com.skniro.agree.block.Gemstone_ore.RUBY_ORE;
 import static com.skniro.agree.item.AgreeItems.*;
 import static com.skniro.agree.item.Apples.AppleFoodComponents.*;
-import static com.skniro.agree.item.Gemstone.RUBY;
 
 public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =

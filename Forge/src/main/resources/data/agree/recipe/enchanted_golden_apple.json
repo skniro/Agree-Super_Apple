@@ -6,12 +6,8 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:gold_block"
-        },
-        "G": {
-            "item": "minecraft:golden_apple"
-        }
+        "#": "minecraft:gold_block",
+        "G": "minecraft:golden_apple"
     },
     "result": {
         "id": "minecraft:enchanted_golden_apple",

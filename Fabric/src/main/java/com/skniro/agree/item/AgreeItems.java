@@ -7,24 +7,32 @@ import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
+import java.util.function.Function;
+
 public class AgreeItems {
+    public static final Item RUBY = registerItem("ruby", Item::new, new Item.Settings());
+
     //Tool
-    public static final Item RUBY_SWORD = registerItem("ruby_sword", (new SwordItem(AgreeToolMaterials.RUBY, new Item.Settings().attributeModifiers(SwordItem.createAttributeModifiers(AgreeToolMaterials.RUBY, 3, -2.4F)))));
-    public static final Item RUBY_SHOVEL = registerItem("ruby_shovel", (new ShovelItem(AgreeToolMaterials.RUBY, new Item.Settings().attributeModifiers(ShovelItem.createAttributeModifiers(AgreeToolMaterials.RUBY, 2, -3.0F)))));
-    public static final Item RUBY_PICKAXE = registerItem("ruby_pickaxe", (new PickaxeItem(AgreeToolMaterials.RUBY, new Item.Settings().attributeModifiers(PickaxeItem.createAttributeModifiers(AgreeToolMaterials.RUBY, 1, -2.8F)))));
-    public static final Item RUBY_AXE = registerItem("ruby_axe", (new AxeItem(AgreeToolMaterials.RUBY, new Item.Settings().attributeModifiers(AxeItem.createAttributeModifiers(AgreeToolMaterials.RUBY, 5, -3.0F)))));
-    public static final Item RUBY_HOE = registerItem("ruby_hoe", (new HoeItem(AgreeToolMaterials.RUBY, new Item.Settings().attributeModifiers(HoeItem.createAttributeModifiers(AgreeToolMaterials.RUBY, -3, 0.0F)))));
+    public static final Item RUBY_SWORD = registerItem("ruby_sword", (settings)-> new SwordItem(AgreeToolMaterials.RUBY,  3, -2.4F,settings), new Item.Settings());
+    public static final Item RUBY_SHOVEL = registerItem("ruby_shovel", (settings)->  new ShovelItem(AgreeToolMaterials.RUBY,2, -3.0F, settings), new Item.Settings());
+    public static final Item RUBY_PICKAXE = registerItem("ruby_pickaxe", (settings)->  new PickaxeItem(AgreeToolMaterials.RUBY,1, -2.8F, settings), new Item.Settings());
+    public static final Item RUBY_AXE = registerItem("ruby_axe", (settings)->  new AxeItem(AgreeToolMaterials.RUBY,5, -3.0F, settings), new Item.Settings());
+    public static final Item RUBY_HOE = registerItem("ruby_hoe", (settings)->  new HoeItem(AgreeToolMaterials.RUBY,-3, 0.0F, settings), new Item.Settings());
 
     //Armor
-    public static final Item RUBY_HELMET = registerItem("ruby_helmet", (new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.HELMET, new Item.Settings().maxDamage(EquipmentType.HELMET.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)))));
-    public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate", (new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.CHESTPLATE, new Item.Settings().maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)))));
-    public static final Item RUBY_LEGGINGS = registerItem("ruby_leggings", (new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.LEGGINGS, new Item.Settings().maxDamage(EquipmentType.LEGGINGS.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)))));
-    public static final Item RUBY_BOOTS = registerItem("ruby_boots", (new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.BOOTS, new Item.Settings().maxDamage(EquipmentType.BOOTS.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)))));
+    public static final Item RUBY_HELMET = registerItem("ruby_helmet", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.HELMET, settings), new Item.Settings().maxDamage(EquipmentType.HELMET.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Item RUBY_CHESTPLATE = registerItem("ruby_chestplate", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.CHESTPLATE, settings), new Item.Settings().maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Item RUBY_LEGGINGS = registerItem("ruby_leggings", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.LEGGINGS, settings), new Item.Settings().maxDamage(EquipmentType.LEGGINGS.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Item RUBY_BOOTS = registerItem("ruby_boots", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, EquipmentType.BOOTS, settings), new Item.Settings().maxDamage(EquipmentType.BOOTS.getMaxDamage(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
 
-    private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, Identifier.of(Agree.MOD_ID, name),item);
+
+    private static Item registerItem(String name, Function<Item.Settings, Item> factory, Item.Settings settings) {
+        Item item = factory.apply(settings.registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Agree.MOD_ID, name))));
+        return Registry.register(Registries.ITEM, RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Agree.MOD_ID, name)), item);
     }
 
     public static void registerModItems() {

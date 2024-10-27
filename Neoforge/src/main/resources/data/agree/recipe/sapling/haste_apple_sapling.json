@@ -1,12 +1,8 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "agree:haste_apple"
-        },
-        {
-            "item": "minecraft:oak_sapling"
-        }
+        "agree:haste_apple",
+        "minecraft:oak_sapling"
     ],
     "result": {
         "id": "agree:haste_apple_sapling",

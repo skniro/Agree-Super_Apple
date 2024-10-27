@@ -2,7 +2,6 @@ package com.skniro.agree.world;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.block.Gemstone_ore;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -49,8 +48,8 @@ public class AgreeTreeConfiguredFeatures {
         RuleTest endstoneReplaceables = new BlockMatchTest(Blocks.END_STONE);
 
         List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(OreConfiguration.target(stoneReplaceables,
-                        Gemstone_ore.RUBY_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, Gemstone_ore.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
+                        AgreeBlocks.RUBY_ORE.get().defaultBlockState()),
+                OreConfiguration.target(deepslateReplaceables, AgreeBlocks.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
 
         register(featureRegisterable, HASTE_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(

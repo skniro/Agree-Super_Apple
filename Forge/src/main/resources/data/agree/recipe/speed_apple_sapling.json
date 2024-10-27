@@ -1,15 +1,9 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
-      "item": "agree:night_vision_apple"
-    },
-    {
-      "item": "minecraft:oak_sapling"
-    }
-  ],
-  "result": {
-    "item": "agree:speed_apple_sapling"
-  }
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        "agree:night_vision_apple",
+        "minecraft:oak_sapling"
+    ],
+    "result": "agree:speed_apple_sapling"
 }

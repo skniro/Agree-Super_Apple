@@ -13,11 +13,21 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 public class AgreeBlocks {
-    public static final Block RUBY_BLOCK =new Block(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
+    public static final Block RUBY_BLOCK = registerBlock("ruby_block",
+            Block::new, AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
+
+    //Ore
+    public static final Block RUBY_ORE = registerBlock("ruby_ore",
+            (settings)-> new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), settings), AbstractBlock.Settings.create().requiresTool().strength(3.0F, 3.0F));
+    public static final Block DEEPSLATE_RUBY_ORE = registerBlock("deepslate_ruby_ore",
+            (settings)-> new ExperienceDroppingBlock(UniformIntProvider.create(3, 7), settings), AbstractBlock.Settings.copy(RUBY_ORE).mapColor(MapColor.DEEPSLATE_GRAY).strength(4.5F, 3.0F).sounds(BlockSoundGroup.DEEPSLATE));
+
 
 
     //SAPLING
@@ -97,5 +107,9 @@ public class AgreeBlocks {
 
     private static RegistryKey<Block> keyOf(String name) {
         return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Agree.MOD_ID, name));
+    }
+
+    public static void registerAgreeBlocks() {
+        Logger.getLogger("register mod blocks" + Agree.MOD_ID);
     }
 }

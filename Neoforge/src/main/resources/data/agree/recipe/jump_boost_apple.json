@@ -6,12 +6,8 @@
         "###"
     ],
     "key": {
-        "#": {
-            "item": "minecraft:copper_block"
-        },
-        "G": {
-            "item": "minecraft:golden_apple"
-        }
+        "#": "minecraft:copper_block",
+        "G": "minecraft:golden_apple"
     },
     "result": {
         "id": "agree:jump_boost_apple",

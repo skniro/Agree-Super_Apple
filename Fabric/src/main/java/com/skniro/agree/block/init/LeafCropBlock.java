@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
+import net.minecraft.world.tick.ScheduledTickView;
 
 import java.util.OptionalInt;
 
@@ -43,6 +44,7 @@ public class LeafCropBlock extends Block {
         this.fruitItem = fruitItem;
     }
 
+    @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         if ((Integer)state.get(AGE) == 0) {
             return SMALL_SHAPE;
@@ -51,11 +53,13 @@ public class LeafCropBlock extends Block {
         }
     }
 
+    @Override
     public boolean hasRandomTicks(BlockState state) {
         return (Integer)state.get(AGE) < 2;
     }
 
 
+    @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int i = (Integer)state.get(AGE);
         if (i < 2 && random.nextInt(40) == 0 && world.getBaseLightLevel(pos.up(), 0) >= 9) {
@@ -70,27 +74,31 @@ public class LeafCropBlock extends Block {
 
     }
 
+
     protected boolean shouldDecay(BlockState state) {
         return (Integer)state.get(DISTANCE) == 7;
     }
 
+    @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         world.setBlockState(pos, updateDistanceFromLogs(state, world, pos), 3);
     }
 
-    public int getOpacity(BlockState state, BlockView world, BlockPos pos) {
+    @Override
+    public int getOpacity(BlockState state) {
         return 1;
     }
 
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    public BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
         int i = getDistanceFromLog(neighborState) + 1;
         if (i != 1 || (Integer)state.get(DISTANCE) != i) {
-            world.scheduleBlockTick(pos, this, 1);
+            tickView.scheduleBlockTick(pos, this, 1);
         }
 
         return state;
     }
 
+    @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         int i = (Integer)state.get(AGE);
         boolean bl = i == 2;
@@ -101,12 +109,13 @@ public class LeafCropBlock extends Block {
             BlockState blockState = (BlockState)state.with(AGE, 1);
             world.setBlockState(pos, blockState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
-            return ActionResult.success(world.isClient);
+            return ActionResult.SUCCESS;
         } else {
             return super.onUse(state, world, pos, player, hit);
         }
     }
 
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{AGE, DISTANCE});
     }

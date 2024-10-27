@@ -1,6 +1,6 @@
 package com.skniro.agree.datagen;
 
-import com.skniro.agree.item.Gemstone;
+import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.tags.AgreeItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -19,9 +19,9 @@ public class AgreeItemTagGeneration extends FabricTagProvider<Item> {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
-                .add(Gemstone.RUBY);
+                .add(AgreeItems.RUBY);
         getOrCreateTagBuilder(AgreeItemTags.RUBY_TOOL_MATERIALS)
-                .add(Gemstone.RUBY);
+                .add(AgreeItems.RUBY);
     }
 
 }

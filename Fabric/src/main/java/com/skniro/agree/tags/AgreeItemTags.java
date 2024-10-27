@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class AgreeItemTags {
     public static final TagKey<Item> REPAIRS_RUBY_ARMOR = of("repairs_ruby_armor");
-    public static final TagKey<Item> RUBY_TOOL_MATERIALS = of("wooden_tool_materials");
+    public static final TagKey<Item> RUBY_TOOL_MATERIALS = of("ruby_tool_materials");
 
 
     private AgreeItemTags() {

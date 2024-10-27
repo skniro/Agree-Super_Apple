@@ -1,12 +1,11 @@
 package com.skniro.agree;
 
 import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.block.Gemstone_ore;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.item.Gemstone;
 import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
+import com.skniro.agree.tags.AgreeItemTags;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -31,10 +30,8 @@ public class Agree {
         // Register the Deferred Register to the mod event bus so blocks get registered
         AppleFoodComponents.registerModItems(modEventBus);
         AgreeRecipeSerializer.agreerecipeseroalizer(modEventBus);
-        Gemstone.registerModItems(modEventBus);
         AgreeItems.registerModItems(modEventBus);
         AgreeBlocks.registerAgreeBlocks(modEventBus);
-        Gemstone_ore.registerAgreeBlocks(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);

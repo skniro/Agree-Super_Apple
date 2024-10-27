@@ -1,25 +1,14 @@
 package com.skniro.agree.item.init;
 
-import com.skniro.agree.item.Gemstone;
 import com.skniro.agree.tags.AgreeItemTags;
-import net.minecraft.item.*;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentModels;
 import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public interface AgreeArmorMaterials
 {

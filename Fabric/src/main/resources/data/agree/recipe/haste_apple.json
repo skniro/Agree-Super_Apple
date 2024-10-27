@@ -1,12 +1,8 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "tag": "c:rubies"
-        },
-        {
-            "item": "minecraft:golden_apple"
-        }
+        "#c:rubies",
+        "minecraft:golden_apple"
     ],
     "result": {
         "id": "agree:haste_apple",

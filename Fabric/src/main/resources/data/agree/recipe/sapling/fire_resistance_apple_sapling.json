@@ -1,12 +1,8 @@
 {
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
-        {
-            "item": "agree:fire_resistance_apple"
-        },
-        {
-            "item": "minecraft:oak_sapling"
-        }
+        "agree:fire_resistance_apple",
+        "minecraft:oak_sapling"
     ],
     "result": {
         "id": "agree:fire_resistance_apple_sapling",

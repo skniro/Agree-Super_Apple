@@ -1,18 +1,13 @@
 package com.skniro.agree.datagen;
 
 import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.block.Gemstone_ore;
-import com.skniro.agree.item.Gemstone;
+import com.skniro.agree.item.AgreeItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootTable;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
 
 
 public class AgreeLootTableGenerator extends FabricBlockLootTableProvider {
@@ -40,8 +35,8 @@ public class AgreeLootTableGenerator extends FabricBlockLootTableProvider {
             addDrop(AgreeBlocks.NIGHT_VISION_LEAVES,leavesDrops(AgreeBlocks.NIGHT_VISION_LEAVES,AgreeBlocks.NIGHT_VISION_SAPLING,SAPLING_DROP_CHANCE));
             addDrop(AgreeBlocks.JUMP_BOOST_LEAVES ,leavesDrops(AgreeBlocks.JUMP_BOOST_LEAVES,AgreeBlocks.JUMP_BOOST_SAPLING,SAPLING_DROP_CHANCE));
             addDrop(AgreeBlocks.Apple_Tree_LEAVES ,leavesDrops(AgreeBlocks.Apple_Tree_LEAVES, Blocks.OAK_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(Gemstone_ore.DEEPSLATE_RUBY_ORE, oreDrops(Gemstone_ore.DEEPSLATE_RUBY_ORE, Gemstone.RUBY));
-            addDrop(Gemstone_ore.RUBY_ORE, oreDrops(Gemstone_ore.RUBY_ORE, Gemstone.RUBY));
+            addDrop(AgreeBlocks.DEEPSLATE_RUBY_ORE, oreDrops(AgreeBlocks.DEEPSLATE_RUBY_ORE, AgreeItems.RUBY));
+            addDrop(AgreeBlocks.RUBY_ORE, oreDrops(AgreeBlocks.RUBY_ORE, AgreeItems.RUBY));
     }
 
     public static final float[] SAPLING_DROP_CHANCE = new float[]{0.028F, 0.0225F, 0.022333336F, 0.1F};
