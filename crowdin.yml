@@ -1,5 +1,5 @@
 files:
-  - source: /src/main/resources/assets/agree/lang/en_us.json
-    translation: /src/main/resources/assets/agree/lang/%locale%.json
+  - source: Fabric/src/main/resources/assets/agree/lang/en_us.json
+    translation: Fabric/src/main/resources/assets/agree/lang/%locale%.json
 bundles:
   - 2
