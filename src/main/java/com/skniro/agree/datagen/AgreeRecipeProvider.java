@@ -82,7 +82,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, AgreeBlocks.SPEED_APPLE_SAPLING)
-                .input(AppleFoodComponents.NIGHT_VISION_APPLE)
+                .input(AppleFoodComponents.SPEED_APPLE)
                 .input(Blocks.OAK_SAPLING)
                 .criterion(FabricRecipeProvider.hasItem(AppleFoodComponents.SPEED_APPLE),
                         FabricRecipeProvider.conditionsFromItem(AppleFoodComponents.SPEED_APPLE))
@@ -91,7 +91,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, AgreeBlocks.STRENGTH_SAPLING)
-                .input(AppleFoodComponents.NIGHT_VISION_APPLE)
+                .input(AppleFoodComponents.STRENGTH_APPLE)
                 .input(Blocks.OAK_SAPLING)
                 .criterion(FabricRecipeProvider.hasItem(AppleFoodComponents.STRENGTH_APPLE),
                         FabricRecipeProvider.conditionsFromItem(AppleFoodComponents.STRENGTH_APPLE))
