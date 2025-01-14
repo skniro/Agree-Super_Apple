@@ -12,45 +12,47 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.registries.RegistryObject;
 
-
 import java.util.OptionalInt;
 
-public class LeafCropBlock extends Block {
+public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
     public static final IntegerProperty AGE;
-    private static final VoxelShape SMALL_SHAPE;
-    private static final VoxelShape LARGE_SHAPE;
+    private static final VoxelShape SHAPE;
     private final RegistryObject<Item> fruitItem;
+    public static final BooleanProperty PERSISTENT;
     public static final IntegerProperty DISTANCE;
+    public static final BooleanProperty WATERLOGGED;
 
     public LeafCropBlock(Properties settings, RegistryObject<Item> fruitItem) {
-        super(settings);
+        super(settings.noOcclusion());
+        this.registerDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(DISTANCE, 7)).setValue(PERSISTENT, false)).setValue(WATERLOGGED, false));
         this.fruitItem = fruitItem;
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        if ((Integer)state.getValue(AGE) == 0) {
-            return SMALL_SHAPE;
-        } else {
-            return (Integer)state.getValue(AGE) < 2 ? LARGE_SHAPE : super.getShape(state, world, pos, context);
-        }
+            return SHAPE;
     }
-    @Override
+
     public boolean isRandomlyTicking(BlockState state) {
         return (Integer)state.getValue(AGE) < 2;
     }
@@ -72,18 +74,25 @@ public class LeafCropBlock extends Block {
 
 
     protected boolean shouldDecay(BlockState state) {
-        return (Integer)state.getValue(DISTANCE) == 7;
+        return !(Boolean)state.getValue(PERSISTENT) &&(Integer)state.getValue(DISTANCE) == 7;
     }
+
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        world.setBlock(pos, updateDistance(state, world, pos), 3);
+        world.setBlock(pos, updateDistanceFromLogs(state, world, pos), 3);
     }
+
     @Override
     public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
         return 1;
     }
+
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
+        if ((Boolean)state.getValue(WATERLOGGED)) {
+            world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+        }
+
         int i = getDistanceFromLog(neighborState) + 1;
         if (i != 1 || (Integer)state.getValue(DISTANCE) != i) {
             world.scheduleTick(pos, this, 1);
@@ -108,12 +117,19 @@ public class LeafCropBlock extends Block {
             return super.use(state, world, pos, player, hand, hit);
         }
     }
+
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{AGE, DISTANCE});
+    public FluidState getFluidState(BlockState state) {
+        return (Boolean)state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(new Property[]{AGE, DISTANCE, PERSISTENT, WATERLOGGED});
+    }
+
+
+    public boolean canGrow(Level world, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
@@ -122,13 +138,13 @@ public class LeafCropBlock extends Block {
         world.setBlock(pos, (BlockState)state.setValue(AGE, i), 2);
     }
 
-    private static BlockState updateDistance(BlockState state, LevelAccessor world, BlockPos pos) {
+    private static BlockState updateDistanceFromLogs(BlockState state, LevelAccessor world, BlockPos pos) {
         var i = 7;
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+        var blockpos$mutable = new BlockPos.MutableBlockPos();
 
         for(Direction direction : Direction.values()) {
-            blockpos$mutableblockpos.setWithOffset(pos, direction);
-            i = Math.min(i, getDistanceFromLog(world.getBlockState(blockpos$mutableblockpos)) + 1);
+            blockpos$mutable.setWithOffset(pos, direction);
+            i = Math.min(i, getDistanceFromLog(world.getBlockState(blockpos$mutable)) + 1);
             if (i == 1) {
                 break;
             }
@@ -136,7 +152,6 @@ public class LeafCropBlock extends Block {
 
         return state.setValue(DISTANCE, i);
     }
-
 
     private static int getDistanceFromLog(BlockState state) {
         return getOptionalDistanceFromLog(state).orElse(7);
@@ -150,11 +165,19 @@ public class LeafCropBlock extends Block {
         }
     }
 
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        BlockState blockState = (BlockState)((BlockState)this.defaultBlockState().setValue(PERSISTENT, true)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+        return updateDistanceFromLogs(blockState, ctx.getLevel(), ctx.getClickedPos());
+    }
+
 
     static {
         AGE = BlockStateProperties.AGE_2;
         DISTANCE = BlockStateProperties.DISTANCE;
-        SMALL_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-        LARGE_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+        PERSISTENT = BlockStateProperties.PERSISTENT;
+        WATERLOGGED = BlockStateProperties.WATERLOGGED;
+        SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     }
 }
