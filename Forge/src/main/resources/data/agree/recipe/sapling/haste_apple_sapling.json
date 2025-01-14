@@ -1,11 +1,12 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "agree:haste_apple",
-        "minecraft:oak_sapling"
-    ],
-    "result": {
-        "id": "agree:haste_apple_sapling",
-        "count": 1
-    }
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "agree:haste_apple",
+    "minecraft:oak_sapling"
+  ],
+  "result": {
+    "count": 1,
+    "id": "agree:haste_apple_sapling"
+  }
 }

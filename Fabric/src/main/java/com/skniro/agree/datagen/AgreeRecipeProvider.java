@@ -6,9 +6,8 @@ import com.skniro.agree.item.Apples.AppleFoodComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.RecipeGenerator;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -86,7 +85,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
 
                 createShapeless(RecipeCategory.FOOD, AgreeBlocks.SPEED_APPLE_SAPLING)
-                        .input(AppleFoodComponents.NIGHT_VISION_APPLE)
+                        .input(AppleFoodComponents.SPEED_APPLE)
                         .input(Blocks.OAK_SAPLING)
                         .criterion(hasItem(AppleFoodComponents.SPEED_APPLE),
                                 conditionsFromItem(AppleFoodComponents.SPEED_APPLE))
@@ -95,7 +94,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                         .offerTo(exporter);
 
                 createShapeless(RecipeCategory.FOOD, AgreeBlocks.STRENGTH_SAPLING)
-                        .input(AppleFoodComponents.NIGHT_VISION_APPLE)
+                        .input(AppleFoodComponents.STRENGTH_APPLE)
                         .input(Blocks.OAK_SAPLING)
                         .criterion(hasItem(AppleFoodComponents.STRENGTH_APPLE),
                                 conditionsFromItem(AppleFoodComponents.STRENGTH_APPLE))
