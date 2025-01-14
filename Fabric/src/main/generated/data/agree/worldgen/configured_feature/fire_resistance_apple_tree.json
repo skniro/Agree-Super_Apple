@@ -33,7 +33,9 @@
             "Name": "agree:fire_resistance_leave",
             "Properties": {
               "age": "0",
-              "distance": "1"
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
             }
           },
           "weight": 1
