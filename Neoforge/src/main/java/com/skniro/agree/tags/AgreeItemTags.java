@@ -9,13 +9,9 @@ import net.minecraft.world.item.Item;
 
 
 public class AgreeItemTags {
-    public static class Items {
-        private Items(){
-        }
+    public static final TagKey<Item> REPAIRS_RUBY_ARMOR = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, "repairs_ruby_armor"));
+    public static final TagKey<Item> RUBY_TOOL_MATERIALS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, "ruby_tool_materials"));
 
-        public static final TagKey<Item> REPAIRS_RUBY_ARMOR = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, "repairs_ruby_armor"));
-        public static final TagKey<Item> RUBY_TOOL_MATERIALS = ItemTags.create(ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, "ruby_tool_materials"));
-    }
 
     private AgreeItemTags() {
     }
