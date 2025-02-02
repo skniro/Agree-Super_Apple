@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "agree:ruby"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "agree:ruby"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "agree:ruby"
+      }
+    ]
+  }
+}

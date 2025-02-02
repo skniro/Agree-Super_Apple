@@ -18,7 +18,7 @@ public interface AgreeArmorMaterials
         map.put(ArmorType.CHESTPLATE, 8);
         map.put(ArmorType.HELMET, 3);
         map.put(ArmorType.BODY, 11);
-    }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F, AgreeItemTags.REPAIRS_RUBY_ARMOR, EquipmentAssets.DIAMOND);
+    }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F, AgreeItemTags.REPAIRS_RUBY_ARMOR, AgreeEquipmentAssetKeys.Ruby);
 
     public static final int Ruby_DURABILITY_MULTIPLIER = 37;
 }
