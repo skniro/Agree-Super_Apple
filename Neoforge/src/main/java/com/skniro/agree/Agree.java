@@ -4,6 +4,7 @@ import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.item.ModCreativeModeTabs;
+import com.skniro.agree.item.init.AgreeToolMaterials;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.tags.AgreeItemTags;
 import net.neoforged.bus.api.IEventBus;

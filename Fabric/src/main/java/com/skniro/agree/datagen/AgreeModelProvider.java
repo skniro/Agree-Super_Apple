@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
+import net.minecraft.util.Identifier;
 
 public class AgreeModelProvider extends FabricModelProvider {
     public AgreeModelProvider(FabricDataOutput dataGenerator){
@@ -31,10 +32,10 @@ public class AgreeModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(AgreeItems.RUBY_AXE, Models.GENERATED);
-        itemModelGenerator.registerArmor(AgreeItems.RUBY_BOOTS, AgreeEquipmentAssetKeys.RUBY,"helmet", false);
-        itemModelGenerator.registerArmor(AgreeItems.RUBY_CHESTPLATE, AgreeEquipmentAssetKeys.RUBY,"chestplate", false);
-        itemModelGenerator.registerArmor(AgreeItems.RUBY_HELMET, AgreeEquipmentAssetKeys.RUBY,"leggings", false);
-        itemModelGenerator.registerArmor(AgreeItems.RUBY_LEGGINGS, AgreeEquipmentAssetKeys.RUBY,"boots",false);
+        itemModelGenerator.registerArmor(AgreeItems.RUBY_BOOTS, AgreeEquipmentAssetKeys.RUBY, Identifier.of("helmet"), false);
+        itemModelGenerator.registerArmor(AgreeItems.RUBY_CHESTPLATE, AgreeEquipmentAssetKeys.RUBY, Identifier.of("chestplate"), false);
+        itemModelGenerator.registerArmor(AgreeItems.RUBY_HELMET, AgreeEquipmentAssetKeys.RUBY, Identifier.of("leggings"), false);
+        itemModelGenerator.registerArmor(AgreeItems.RUBY_LEGGINGS, AgreeEquipmentAssetKeys.RUBY, Identifier.of("boots"),false);
         itemModelGenerator.register(AgreeItems.RUBY_HOE, Models.GENERATED);
         itemModelGenerator.register(AgreeItems.RUBY_PICKAXE, Models.GENERATED);
         itemModelGenerator.register(AgreeItems.RUBY_SHOVEL, Models.GENERATED);

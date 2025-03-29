@@ -37,7 +37,7 @@ public class AppleFoodComponents {
                                             .alwaysEdible()
                                             .build()
                                     , Consumables.defaultFood()
-                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.DIG_SPEED,
+                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.HASTE,
                                                     6000,
                                                     2),
                                                     1.0F)
@@ -59,7 +59,7 @@ public class AppleFoodComponents {
                                             .alwaysEdible()
                                             .build()
                                     , Consumables.defaultFood()
-                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED,6000,2),1.0F)
+                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.SPEED,6000,2),1.0F)
                                             )
                                             .build()
                             )
@@ -138,7 +138,7 @@ public class AppleFoodComponents {
                                             .alwaysEdible()
                                             .build()
                                     , Consumables.defaultFood()
-                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 6000, 2), 1.0F)
+                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.STRENGTH, 6000, 2), 1.0F)
                                             )
                                             .build()
                             )
@@ -176,7 +176,7 @@ public class AppleFoodComponents {
                                             .alwaysEdible()
                                             .build()
                                     , Consumables.defaultFood()
-                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.JUMP ,6000,1),1.0F)
+                                            .onConsume(new ApplyStatusEffectsConsumeEffect(new MobEffectInstance(MobEffects.JUMP_BOOST ,6000,1),1.0F)
                                             )
                                             .build()
                             )
@@ -195,12 +195,12 @@ public class AppleFoodComponents {
                                             .build()
                                     , Consumables.defaultFood()
                                             .onConsume(new ApplyStatusEffectsConsumeEffect(List.of(
-                                                            new MobEffectInstance(MobEffects.DIG_SPEED,12000,2),
-                                                            new MobEffectInstance(MobEffects.MOVEMENT_SPEED,12000,2),
-                                                            new MobEffectInstance(MobEffects.DAMAGE_BOOST,12000,2),
+                                                            new MobEffectInstance(MobEffects.HASTE,12000,2),
+                                                            new MobEffectInstance(MobEffects.SPEED,12000,2),
+                                                            new MobEffectInstance(MobEffects.STRENGTH,12000,2),
                                                             new MobEffectInstance(MobEffects.REGENERATION,1200,2),
-                                                            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,6000,2),
-                                                            new MobEffectInstance(MobEffects.JUMP,12000,1),
+                                                            new MobEffectInstance(MobEffects.RESISTANCE,6000,2),
+                                                            new MobEffectInstance(MobEffects.JUMP_BOOST,12000,1),
                                                             new MobEffectInstance(MobEffects.FIRE_RESISTANCE,12000,2),
                                                             new MobEffectInstance(MobEffects.WATER_BREATHING,12000,2),
                                                             new MobEffectInstance(MobEffects.HEALTH_BOOST,6000,2),

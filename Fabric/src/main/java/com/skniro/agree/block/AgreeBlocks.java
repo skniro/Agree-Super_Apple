@@ -66,7 +66,7 @@ public class AgreeBlocks {
     public static final Block JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
             (settings)-> new LeafCropBlock(settings, AppleFoodComponents.JUMP_BOOST_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
     public static final Block Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            LeavesBlock::new, AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (properties)-> new TintedParticleLeavesBlock(0.01F, properties), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
 
     //Potted Plant
     public static final Block POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",

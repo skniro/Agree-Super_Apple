@@ -8,7 +8,7 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.collection.Pool;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
@@ -30,8 +30,8 @@ public class AgreeTreeConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> NIGHT_VISION_APPLE_TREE = registerKey("night_vision_apple_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> JUMP_BOOST_APPLE_TREE = registerKey("jump_boost_apple_tree");
 
-    static DataPool.Builder<BlockState> pool() {
-        return DataPool.builder();
+    static Pool.Builder<BlockState> pool() {
+        return Pool.builder();
     }
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {

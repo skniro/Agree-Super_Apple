@@ -3,10 +3,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.component.type.SuspiciousStewEffectsComponent;
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
@@ -27,8 +29,8 @@ public class SuspiciousAppleItem
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
-        super.appendTooltip(stack, context, tooltip, type);
+    public void appendTooltip(ItemStack stack, TooltipContext context, TooltipDisplayComponent tooltip, Consumer<Text> textConsumer, TooltipType type) {
+        super.appendTooltip(stack, context, tooltip, textConsumer, type);
         if (type.isCreative()) {
             List<StatusEffectInstance> list = new ArrayList();
             SuspiciousStewEffectsComponent suspiciousStewEffectsComponent = (SuspiciousStewEffectsComponent)stack.getOrDefault(DataComponentTypes.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffectsComponent.DEFAULT);
@@ -39,8 +41,8 @@ public class SuspiciousAppleItem
                 list.add(stewEffect.createStatusEffectInstance());
             }
 
-            Objects.requireNonNull(tooltip);
-            PotionContentsComponent.buildTooltip(list, tooltip::add, 1.0F, context.getUpdateTickRate());
+            Objects.requireNonNull(textConsumer);
+            PotionContentsComponent.buildTooltip(list, textConsumer, 1.0F, context.getUpdateTickRate());
         }
 
     }

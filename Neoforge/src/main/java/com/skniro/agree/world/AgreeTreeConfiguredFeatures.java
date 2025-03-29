@@ -7,7 +7,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,8 +37,8 @@ public class AgreeTreeConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> NIGHT_VISION_APPLE_TREE = registerKey("night_vision_apple_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> JUMP_BOOST_APPLE_TREE = registerKey("jump_boost_apple_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_Ruby_ORE = registerKey("overworld_ruby_ore");
-    static SimpleWeightedRandomList.Builder<BlockState> pool() {
-        return SimpleWeightedRandomList.builder();
+    static WeightedList.Builder<BlockState> pool() {
+        return WeightedList.builder();
     }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable) {

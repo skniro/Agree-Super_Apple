@@ -21,17 +21,17 @@ public class AgreeItems {
 
     public static final Supplier<Item> RUBY = registerItem("ruby", Item::new, new Item.Properties());
     //Tool
-    public static final Supplier<Item> RUBY_SWORD = registerItem("ruby_sword", (settings)-> new SwordItem(AgreeToolMaterials.RUBY,  3, -2.4F,settings), new Item.Properties().enchantable(25));
+    public static final Supplier<Item> RUBY_SWORD = registerItem("ruby_sword", Item::new, new Item.Properties().sword(AgreeToolMaterials.RUBY,  3, -2.4F).enchantable(25));
     public static final Supplier<Item> RUBY_SHOVEL = registerItem("ruby_shovel", (settings)->  new ShovelItem(AgreeToolMaterials.RUBY,2, -3.0F, settings), new Item.Properties().enchantable(25));
-    public static final Supplier<Item> RUBY_PICKAXE = registerItem("ruby_pickaxe", (settings)->  new PickaxeItem(AgreeToolMaterials.RUBY,1, -2.8F, settings), new Item.Properties().enchantable(25));
+    public static final Supplier<Item> RUBY_PICKAXE = registerItem("ruby_pickaxe", Item::new, new Item.Properties().pickaxe(AgreeToolMaterials.RUBY,1, -2.8F).enchantable(25));
     public static final Supplier<Item> RUBY_AXE = registerItem("ruby_axe", (settings)->  new AxeItem(AgreeToolMaterials.RUBY,5, -3.0F, settings), new Item.Properties().enchantable(25));
     public static final Supplier<Item> RUBY_HOE = registerItem("ruby_hoe", (settings)->  new HoeItem(AgreeToolMaterials.RUBY,-3, 0.0F, settings), new Item.Properties().enchantable(25));
 
     //Armor
-    public static final Supplier<Item> RUBY_HELMET = registerItem("ruby_helmet", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, ArmorType.HELMET, settings), new Item.Properties().enchantable(25).durability(ArmorType.HELMET.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
-    public static final Supplier<Item> RUBY_CHESTPLATE = registerItem("ruby_chestplate", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, ArmorType.CHESTPLATE, settings), new Item.Properties().enchantable(25).durability(ArmorType.CHESTPLATE.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
-    public static final Supplier<Item> RUBY_LEGGINGS = registerItem("ruby_leggings", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, ArmorType.LEGGINGS, settings), new Item.Properties().enchantable(25).durability(ArmorType.LEGGINGS.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
-    public static final Supplier<Item> RUBY_BOOTS = registerItem("ruby_boots", (settings)->  new ArmorItem(AgreeArmorMaterials.Ruby, ArmorType.BOOTS, settings), new Item.Properties().enchantable(25).durability(ArmorType.BOOTS.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Supplier<Item> RUBY_HELMET = registerItem("ruby_helmet", Item::new, new Item.Properties().enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.HELMET).durability(ArmorType.HELMET.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Supplier<Item> RUBY_CHESTPLATE = registerItem("ruby_chestplate", Item::new, new Item.Properties().enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.CHESTPLATE).durability(ArmorType.CHESTPLATE.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Supplier<Item> RUBY_LEGGINGS = registerItem("ruby_leggings", Item::new, new Item.Properties().enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.LEGGINGS).durability(ArmorType.LEGGINGS.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
+    public static final Supplier<Item> RUBY_BOOTS = registerItem("ruby_boots", Item::new, new Item.Properties().enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.BOOTS).durability(ArmorType.BOOTS.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item, Item.Properties properties) {
         DeferredItem<T> toReturn = ITEMS.registerItem(name, item, properties.setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, name))));
