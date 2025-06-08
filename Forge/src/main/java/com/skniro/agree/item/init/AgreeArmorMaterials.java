@@ -3,6 +3,7 @@ package com.skniro.agree.item.init;
 import com.skniro.agree.tags.AgreeItemTags;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.EquipmentAssets;
@@ -18,7 +19,7 @@ public interface AgreeArmorMaterials
         map.put(ArmorType.CHESTPLATE, 8);
         map.put(ArmorType.HELMET, 3);
         map.put(ArmorType.BODY, 11);
-    }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F, AgreeItemTags.REPAIRS_RUBY_ARMOR, AgreeEquipmentAssetKeys.Ruby);
+    }), 25, SoundEvents.ARMOR_EQUIP_DIAMOND, 3.0F, 0.1F, ItemTags.REPAIRS_DIAMOND_ARMOR, AgreeEquipmentAssetKeys.Ruby);
 
     public static final int Ruby_DURABILITY_MULTIPLIER = 37;
 }

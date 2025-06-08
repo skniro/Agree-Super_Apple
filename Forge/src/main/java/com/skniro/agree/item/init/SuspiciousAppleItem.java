@@ -9,10 +9,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
+import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 
 public class SuspiciousAppleItem
@@ -23,8 +25,8 @@ public class SuspiciousAppleItem
     }
 
     @Override
-    public void appendHoverText(ItemStack p_260314_, Item.TooltipContext p_333118_, List<Component> p_259700_, TooltipFlag p_260021_) {
-        super.appendHoverText(p_260314_, p_333118_, p_259700_, p_260021_);
+    public void appendHoverText(ItemStack p_260314_, TooltipContext p_333118_, TooltipDisplay p_399753_, Consumer<Component> p_259700_, TooltipFlag p_260021_) {
+        super.appendHoverText(p_260314_, p_333118_, p_399753_, p_259700_, p_260021_);
         if (p_260021_.isCreative()) {
             List<MobEffectInstance> list = new ArrayList<>();
             SuspiciousStewEffects suspicioussteweffects = p_260314_.getOrDefault(DataComponents.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffects.EMPTY);
@@ -33,7 +35,7 @@ public class SuspiciousAppleItem
                 list.add(suspicioussteweffects$entry.createEffectInstance());
             }
 
-            PotionContents.addPotionTooltip(list, p_259700_::add, 1.0F, p_333118_.tickRate());
+            PotionContents.addPotionTooltip(list, p_259700_, 1.0F, p_333118_.tickRate());
         }
     }
 

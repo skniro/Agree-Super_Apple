@@ -70,7 +70,7 @@ public class AgreeBlocks {
     public static final RegistryObject<Block> JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
             (properties)-> new LeafCropBlock(properties, AppleFoodComponents.JUMP_BOOST_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            LeavesBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new TintedParticleLeavesBlock(0.01F, properties), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
 
     //Potted Plant
     public static final RegistryObject<Block> POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",
