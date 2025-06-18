@@ -2,6 +2,7 @@ package com.skniro.agree.datagen;
 
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.tags.AgreeItemTags;
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
@@ -19,7 +20,7 @@ public class AgreeItemTagGeneration extends FabricTagProvider<Item> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
+      /*  getOrCreateTagBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
                 .add(AgreeItems.RUBY);
         getOrCreateTagBuilder(AgreeItemTags.RUBY_TOOL_MATERIALS)
                 .add(AgreeItems.RUBY);
@@ -41,7 +42,7 @@ public class AgreeItemTagGeneration extends FabricTagProvider<Item> {
                 .add(AgreeItems.RUBY_HOE);
         getOrCreateTagBuilder(ItemTags.SHOVELS)
                 .add(AgreeItems.RUBY_SHOVEL);
-
+*/
     }
 
 }
