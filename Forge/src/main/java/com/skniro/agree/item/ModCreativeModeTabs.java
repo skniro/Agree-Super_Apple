@@ -6,7 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -87,7 +87,7 @@ public class ModCreativeModeTabs {
     }
 
 
-    public static void register(IEventBus eventBus) {
+    public static void register(BusGroup eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);
     }
 }

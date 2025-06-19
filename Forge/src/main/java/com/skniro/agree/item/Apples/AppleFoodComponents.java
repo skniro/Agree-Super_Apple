@@ -13,12 +13,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.*;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class AppleFoodComponents {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Agree.MOD_ID);
@@ -238,7 +237,7 @@ public class AppleFoodComponents {
     }
 
 
-    public static void registerModItems(IEventBus eventBus) {
+    public static void registerModItems(BusGroup eventBus) {
         ITEMS.register(eventBus);
     }
 }

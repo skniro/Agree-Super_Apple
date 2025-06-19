@@ -4,7 +4,6 @@ import com.skniro.agree.Agree;
 import com.skniro.agree.block.init.LeafCropBlock;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.world.Tree.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -15,7 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.*;
 
 import java.util.function.Function;
@@ -113,7 +112,7 @@ public class AgreeBlocks {
                 new Item.Properties().useBlockDescriptionPrefix().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(Agree.MOD_ID, name)))));
     }
 
-    public static void registerAgreeBlocks(IEventBus eventBus) {
+    public static void registerAgreeBlocks(BusGroup eventBus) {
         BLOCKS.register(eventBus);
     }
 }

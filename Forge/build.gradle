@@ -79,6 +79,7 @@ minecraft {
             // "SCAN": For mods scan.
             // "REGISTRIES": For firing of registry events.
             // "REGISTRYDUMP": For getting the contents of all registries.
+            property 'eventbus.api.strictRuntimeChecks', 'true'
             property 'forge.logging.markers', 'REGISTRIES'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
@@ -98,7 +99,7 @@ minecraft {
             taskName 'runClientForge'
             property 'mixin.env.remapRefMap', 'true'
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
@@ -155,7 +156,7 @@ dependencies {
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0-beta.7'
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
