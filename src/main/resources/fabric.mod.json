@@ -23,9 +23,6 @@
     ],
     "main": [
       "com.skniro.agree.Agree"
-    ],
-    "jade": [
-      "com.skniro.agree.compat.jade.GoldenAppleWailaPlugin"
     ]
   },
   "mixins": [
