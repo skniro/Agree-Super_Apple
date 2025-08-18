@@ -50,23 +50,23 @@ public class AgreeBlocks {
 
     //LEAVES
     public static final Block HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HASTE_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HASTE_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.SPEED_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.SPEED_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HEALTH_BOOST_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HEALTH_BOOST_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.FIRE_RESISTANCE_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.FIRE_RESISTANCE_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HERO_VILLAGE_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.HERO_VILLAGE_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block STRENGTH_LEAVES =registerBlock("strength_apple_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.STRENGTH_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.STRENGTH_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.NIGHT_VISION_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.NIGHT_VISION_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
-            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.JUMP_BOOST_APPLE), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (settings)-> new LeafCropBlock(settings, AppleFoodComponents.JUMP_BOOST_APPLE), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
     public static final Block Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            (properties)-> new TintedParticleLeavesBlock(0.01F, properties), AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED));
+            (properties)-> new TintedParticleLeavesBlock(0.01F, properties), AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED));
 
     //Potted Plant
     public static final Block POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",
