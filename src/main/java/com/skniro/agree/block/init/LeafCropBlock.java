@@ -30,19 +30,19 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.OptionalInt;
+import java.util.function.Supplier;
 
 public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
     public static final IntegerProperty AGE;
     private static final VoxelShape SHAPE;
-    private final RegistryObject<Item> fruitItem;
+    public final Supplier<Item> fruitItem;
     public static final BooleanProperty PERSISTENT;
     public static final IntegerProperty DISTANCE;
     public static final BooleanProperty WATERLOGGED;
 
-    public LeafCropBlock(Properties settings, RegistryObject<Item> fruitItem) {
+    public LeafCropBlock(Properties settings, Supplier<Item> fruitItem) {
         super(settings.noOcclusion());
         this.registerDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(DISTANCE, 7)).setValue(PERSISTENT, false)).setValue(WATERLOGGED, false));
         this.fruitItem = fruitItem;
@@ -109,7 +109,7 @@ public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
             int j = 1;
             popResource(world, pos, new ItemStack(fruitItem.get(), j ));
             world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.setValue(AGE, 1);
+            BlockState blockState = (BlockState)state.setValue(AGE, 0);
             world.setBlock(pos, blockState, 2);
             world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
             return InteractionResult.sidedSuccess(world.isClientSide);
@@ -128,6 +128,7 @@ public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
         builder.add(new Property[]{AGE, DISTANCE, PERSISTENT, WATERLOGGED});
     }
 
+    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {return true;}
 
     public boolean canGrow(Level world, RandomSource random, BlockPos pos, BlockState state) {
         return true;
