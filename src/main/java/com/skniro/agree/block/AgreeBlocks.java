@@ -6,6 +6,7 @@ import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.world.Tree.*;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -43,24 +44,24 @@ public class AgreeBlocks {
             ()-> new SaplingBlock(new JumpBoostAppleSaplingGenerator(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)), ModCreativeModeTabs.Agree_Group);
 
     //LEAVES
-    public static final RegistryObject<Block> HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HASTE_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.SPEED_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HEALTH_BOOST_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.FIRE_RESISTANCE_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HERO_VILLAGE_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> STRENGTH_LEAVES =registerBlock("strength_apple_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.STRENGTH_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.NIGHT_VISION_APPLE),ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
-            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.JUMP_BOOST_APPLE), ModCreativeModeTabs.Agree_Group);
-    public static final RegistryObject<Block> Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            ()-> new LeavesBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GREEN)),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HASTE_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.SPEED_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HEALTH_BOOST_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.FIRE_RESISTANCE_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.HERO_VILLAGE_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> STRENGTH_LEAVES =registerBlock("strength_apple_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.STRENGTH_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.NIGHT_VISION_APPLE),ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
+            ()-> new LeafCropBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN), AppleFoodComponents.JUMP_BOOST_APPLE), ModCreativeModeTabs.Agree_Group);
+    public static final Supplier<Block> Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
+            ()-> new LeavesBlock(BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.COLOR_GREEN)),ModCreativeModeTabs.Agree_Group);
 
     //Potted Plant
     public static final RegistryObject<Block> POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",
