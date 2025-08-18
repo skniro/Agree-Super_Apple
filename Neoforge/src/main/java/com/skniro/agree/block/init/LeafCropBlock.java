@@ -36,7 +36,7 @@ import java.util.function.Supplier;
 public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
     public static final IntegerProperty AGE;
     private static final VoxelShape SHAPE;
-    private final Supplier<Item> fruitItem;
+    public final Supplier<Item> fruitItem;
     public static final BooleanProperty PERSISTENT;
     public static final IntegerProperty DISTANCE;
     public static final BooleanProperty WATERLOGGED;
@@ -108,7 +108,7 @@ public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
             int j = 1;
             popResource(world, pos, new ItemStack(fruitItem.get(), j ));
             world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.setValue(AGE, 1);
+            BlockState blockState = (BlockState)state.setValue(AGE, 0);
             world.setBlock(pos, blockState, 2);
             world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
             return InteractionResult.sidedSuccess(world.isClientSide);

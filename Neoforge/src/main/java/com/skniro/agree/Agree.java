@@ -2,6 +2,7 @@ package com.skniro.agree;
 
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.block.Gemstone_ore;
+import com.skniro.agree.event.GoldenAppleDispenserBehaviors;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.item.Gemstone;
@@ -42,6 +43,7 @@ public class Agree {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        GoldenAppleDispenserBehaviors.register();
     }
 
     @SubscribeEvent
