@@ -4,8 +4,10 @@ import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.RegistryWrapper;
 
 import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvider {
     public AgreeSimplifiedChineseLanguageProvider(FabricDataOutput dataGenerator){
@@ -54,6 +56,8 @@ public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvid
         translationBuilder.add(AgreeBlocks.POTTED_STRENGTH_SAPLING,"力量苹果盆栽");
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING,"夜视苹果盆栽");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"跳跃提升苹果盆栽");
+
+        translationBuilder.add("config.jade.plugin_agree.apple_progress", "苹果生长进度");
 
         // Load an existing language file.
         try {

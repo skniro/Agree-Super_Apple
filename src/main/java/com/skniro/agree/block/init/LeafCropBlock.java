@@ -1,12 +1,15 @@
 package com.skniro.agree.block.init;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -26,29 +29,26 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 import java.util.OptionalInt;
 
-public class LeafCropBlock extends Block {
+public class LeafCropBlock extends Block implements Waterloggable {
     public static final IntProperty AGE;
-    private static final VoxelShape SMALL_SHAPE;
-    private static final VoxelShape LARGE_SHAPE;
-    private final Item fruitItem;
+    private static final VoxelShape SHAPE;
+    public final Item fruitItem;
+    public static final BooleanProperty PERSISTENT;
     public static final IntProperty DISTANCE;
+    public static final BooleanProperty WATERLOGGED;
 
     public LeafCropBlock(Settings settings, Item fruitItem) {
         super(settings);
+        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(DISTANCE, 7)).with(PERSISTENT, false)).with(WATERLOGGED, false));
         this.fruitItem = fruitItem;
     }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if ((Integer)state.get(AGE) == 0) {
-            return SMALL_SHAPE;
-        } else {
-            return (Integer)state.get(AGE) < 2 ? LARGE_SHAPE : super.getOutlineShape(state, world, pos, context);
-        }
+            return SHAPE;
     }
 
     public boolean hasRandomTicks(BlockState state) {
@@ -71,7 +71,7 @@ public class LeafCropBlock extends Block {
     }
 
     protected boolean shouldDecay(BlockState state) {
-        return (Integer)state.get(DISTANCE) == 7;
+        return !(Boolean)state.get(PERSISTENT) &&(Integer)state.get(DISTANCE) == 7;
     }
 
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
@@ -83,6 +83,10 @@ public class LeafCropBlock extends Block {
     }
 
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if ((Boolean)state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
         int i = getDistanceFromLog(neighborState) + 1;
         if (i != 1 || (Integer)state.get(DISTANCE) != i) {
             world.scheduleBlockTick(pos, this, 1);
@@ -98,7 +102,7 @@ public class LeafCropBlock extends Block {
             int j = 1;
             dropStack(world, pos, new ItemStack(fruitItem, j ));
             world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.with(AGE, 1);
+            BlockState blockState = (BlockState)state.with(AGE, 0);
             world.setBlockState(pos, blockState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
             return ActionResult.success(world.isClient);
@@ -107,8 +111,12 @@ public class LeafCropBlock extends Block {
         }
     }
 
+    public FluidState getFluidState(BlockState state) {
+        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{AGE, DISTANCE});
+        builder.add(new Property[]{AGE, DISTANCE, PERSISTENT, WATERLOGGED});
     }
 
 
@@ -148,11 +156,18 @@ public class LeafCropBlock extends Block {
         }
     }
 
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        BlockState blockState = (BlockState)((BlockState)this.getDefaultState().with(PERSISTENT, true)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        return updateDistanceFromLogs(blockState, ctx.getWorld(), ctx.getBlockPos());
+    }
+
 
     static {
         AGE = Properties.AGE_2;
         DISTANCE = Properties.DISTANCE_1_7;
-        SMALL_SHAPE = Block.createCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-        LARGE_SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+        PERSISTENT = Properties.PERSISTENT;
+        WATERLOGGED = Properties.WATERLOGGED;
+        SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     }
 }

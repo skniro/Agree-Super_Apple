@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_ruby",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_ruby"
     ]
   ],
   "rewards": {
     "recipes": [
       "agree:ruby_helmet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

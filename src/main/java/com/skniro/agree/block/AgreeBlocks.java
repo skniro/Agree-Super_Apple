@@ -4,7 +4,6 @@ import com.skniro.agree.Agree;
 import com.skniro.agree.block.init.LeafCropBlock;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.world.Tree.*;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -32,23 +31,23 @@ public class AgreeBlocks {
 
     //LEAVES
     public static final Block HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.HASTE_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.HASTE_APPLE),Agree.Agree_Group);
     public static final Block SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.SPEED_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.SPEED_APPLE),Agree.Agree_Group);
     public static final Block HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.HEALTH_BOOST_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.HEALTH_BOOST_APPLE),Agree.Agree_Group);
     public static final Block FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.FIRE_RESISTANCE_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.FIRE_RESISTANCE_APPLE),Agree.Agree_Group);
     public static final Block HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.HERO_VILLAGE_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.HERO_VILLAGE_APPLE),Agree.Agree_Group);
     public static final Block STRENGTH_LEAVES =registerBlock("strength_apple_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.STRENGTH_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.STRENGTH_APPLE),Agree.Agree_Group);
     public static final Block NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.NIGHT_VISION_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.NIGHT_VISION_APPLE),Agree.Agree_Group);
     public static final Block JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
-            new LeafCropBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED), AppleFoodComponents.JUMP_BOOST_APPLE),Agree.Agree_Group);
+            new LeafCropBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED), AppleFoodComponents.JUMP_BOOST_APPLE),Agree.Agree_Group);
     public static final Block Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            new LeavesBlock(AbstractBlock.Settings.create().mapColor(MapColor.DARK_RED)),Agree.Agree_Group);
+            new LeavesBlock(AbstractBlock.Settings.create().nonOpaque().mapColor(MapColor.DARK_RED)),Agree.Agree_Group);
 
     //Potted Plant
     public static final Block POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",
@@ -71,15 +70,15 @@ public class AgreeBlocks {
 
     private static Block registerBlock(String name, Block block, RegistryKey<ItemGroup> tab) {
         registerBlockItem(name, block, tab);
-        return Registry.register(Registries.BLOCK, new Identifier(Agree.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(Agree.MOD_ID, name), block);
     }
 
     private static Item registerBlockItem(String name, Block block, RegistryKey<ItemGroup> tab) {
-        return Registry.register(Registries.ITEM, new Identifier(Agree.MOD_ID, name),
-                new BlockItem(block, new FabricItemSettings()));
+        return Registry.register(Registries.ITEM, Identifier.of(Agree.MOD_ID, name),
+                new BlockItem(block, new Item.Settings()));
     }
 
     private static Block registerBlockWithoutItem(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(Agree.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(Agree.MOD_ID, name), block);
     }
 }

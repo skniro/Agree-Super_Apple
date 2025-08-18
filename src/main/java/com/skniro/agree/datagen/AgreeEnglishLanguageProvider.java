@@ -1,17 +1,13 @@
 package com.skniro.agree.datagen;
 
-import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
-import com.skniro.agree.block.init.LeafCropBlock;
 import com.skniro.agree.item.AgreeItems;
-import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.world.Tree.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.registry.RegistryWrapper;
 
 import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 
 public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
     public AgreeEnglishLanguageProvider(FabricDataOutput dataGenerator) {
@@ -61,7 +57,7 @@ public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING, "Potted Night Vision Apple Sapling");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"Potted Jump boost Apple Sapling");
 
-
+        translationBuilder.add("config.jade.plugin_agree.apple_progress", "Apple Progress");
 
         // Load an existing language file.
         try {

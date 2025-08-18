@@ -34,15 +34,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_village_hero_apple",
-      "has_oak_sapling",
-      "has_the_recipe"
+      "has_oak_sapling"
     ]
   ],
   "rewards": {
     "recipes": [
       "agree:village_hero_apple_sapling"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
