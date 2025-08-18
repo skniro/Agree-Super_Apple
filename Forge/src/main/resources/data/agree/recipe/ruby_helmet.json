@@ -1,16 +1,15 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "equipment",
-    "key": {
-        "b": "agree:ruby"
-    },
-    "pattern": [
-        "bbb",
-        "b b"
-    ],
-    "result": {
-        "id": "agree:ruby_helmet",
-        "count": 1
-    },
-    "show_notification": true
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "b": "agree:ruby"
+  },
+  "pattern": [
+    "bbb",
+    "b b"
+  ],
+  "result": {
+    "count": 1,
+    "id": "agree:ruby_helmet"
+  }
 }

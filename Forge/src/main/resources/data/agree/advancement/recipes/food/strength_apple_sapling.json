@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:oak_sapling"
-            ]
+            "items": "minecraft:oak_sapling"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "agree:strength_apple"
-            ]
+            "items": "agree:strength_apple"
           }
         ]
       },
@@ -34,15 +30,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_strength_apple",
-      "has_oak_sapling",
-      "has_the_recipe"
+      "has_oak_sapling"
     ]
   ],
   "rewards": {
     "recipes": [
       "agree:strength_apple_sapling"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

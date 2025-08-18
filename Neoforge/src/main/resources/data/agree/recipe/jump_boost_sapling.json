@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "agree:jump_boost_apple",
+    "minecraft:oak_sapling"
+  ],
+  "result": {
+    "count": 1,
+    "id": "agree:jump_boost_sapling"
+  }
+}

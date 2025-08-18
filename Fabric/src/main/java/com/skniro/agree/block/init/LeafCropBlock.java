@@ -37,7 +37,7 @@ import java.util.OptionalInt;
 public class LeafCropBlock extends Block implements Waterloggable {
     public static final IntProperty AGE;
     private static final VoxelShape SHAPE;
-    private final Item fruitItem;
+    public final Item fruitItem;
     public static final BooleanProperty PERSISTENT;
     public static final IntProperty DISTANCE;
     public static final BooleanProperty WATERLOGGED;
@@ -108,7 +108,7 @@ public class LeafCropBlock extends Block implements Waterloggable {
             int j = 1;
             dropStack(world, pos, new ItemStack(fruitItem, j ));
             world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.with(AGE, 1);
+            BlockState blockState = (BlockState)state.with(AGE, 0);
             world.setBlockState(pos, blockState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
             return ActionResult.SUCCESS;
