@@ -3,6 +3,7 @@ package com.skniro.agree;
 import com.skniro.agree.Enchantment.EnchantmentModule;
 import com.skniro.agree.conifg.AgreeConfig;
 import com.skniro.agree.conifg.Configuration;
+import com.skniro.agree.event.GoldenAppleDispenserBehaviors;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
@@ -47,5 +48,6 @@ public class Agree implements ModInitializer {
         }
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();
+        GoldenAppleDispenserBehaviors.register();
     }
 }

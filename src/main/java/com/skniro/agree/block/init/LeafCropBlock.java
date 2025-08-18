@@ -1,13 +1,15 @@
 package com.skniro.agree.block.init;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -27,7 +29,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 import java.util.OptionalInt;
@@ -35,7 +36,7 @@ import java.util.OptionalInt;
 public class LeafCropBlock extends Block implements Waterloggable {
     public static final IntProperty AGE;
     private static final VoxelShape SHAPE;
-    private final Item fruitItem;
+    public final Item fruitItem;
     public static final BooleanProperty PERSISTENT;
     public static final IntProperty DISTANCE;
     public static final BooleanProperty WATERLOGGED;
@@ -101,7 +102,7 @@ public class LeafCropBlock extends Block implements Waterloggable {
             int j = 1;
             dropStack(world, pos, new ItemStack(fruitItem, j ));
             world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.with(AGE, 1);
+            BlockState blockState = (BlockState)state.with(AGE, 0);
             world.setBlockState(pos, blockState, 2);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
             return ActionResult.success(world.isClient);
