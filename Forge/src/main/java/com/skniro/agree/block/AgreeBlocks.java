@@ -4,7 +4,6 @@ import com.skniro.agree.Agree;
 import com.skniro.agree.block.init.LeafCropBlock;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import com.skniro.agree.item.ModCreativeModeTabs;
 import com.skniro.agree.world.Tree.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -16,7 +15,9 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.*;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -54,23 +55,23 @@ public class AgreeBlocks {
 
     //LEAVES
     public static final RegistryObject<Block> HASTE_APPLE_LEAVES =registerBlock("haste_apple_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HASTE_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HASTE_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> SPEED_APPLE_LEAVES =registerBlock("speed_apple_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.SPEED_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.SPEED_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> HEALTH_BOOST_LEAVES =registerBlock("health_boost_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HEALTH_BOOST_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HEALTH_BOOST_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> FIRE_RESISTANCE_LEAVES =registerBlock("fire_resistance_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.FIRE_RESISTANCE_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.FIRE_RESISTANCE_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> HERO_VILLAGE_LEAVES =registerBlock("village_hero_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HERO_VILLAGE_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.HERO_VILLAGE_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> STRENGTH_LEAVES =registerBlock("strength_apple_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.STRENGTH_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.STRENGTH_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> NIGHT_VISION_LEAVES =registerBlock("night_vision_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.NIGHT_VISION_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.NIGHT_VISION_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> JUMP_BOOST_LEAVES =registerBlock("jump_boost_leave",
-            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.JUMP_BOOST_APPLE), BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            (properties)-> new LeafCropBlock(properties, AppleFoodComponents.JUMP_BOOST_APPLE), BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
     public static final RegistryObject<Block> Apple_Tree_LEAVES =registerBlock("apple_tree_leave",
-            LeavesBlock::new, BlockBehaviour.Properties.of().mapColor(MapColor.NETHER));
+            LeavesBlock::new, BlockBehaviour.Properties.of().noOcclusion().mapColor(MapColor.NETHER));
 
     //Potted Plant
     public static final RegistryObject<Block> POTTED_HASTE_APPLE_SAPLING = registerBlockWithoutItem("potted_haste_apple_sapling",

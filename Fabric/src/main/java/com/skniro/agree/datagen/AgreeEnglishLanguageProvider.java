@@ -57,7 +57,7 @@ public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING, "Potted Night Vision Apple Sapling");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"Potted Jump boost Apple Sapling");
 
-
+        translationBuilder.add("config.jade.plugin_agree.apple_progress", "Apple Progress");
 
         // Load an existing language file.
         try {
