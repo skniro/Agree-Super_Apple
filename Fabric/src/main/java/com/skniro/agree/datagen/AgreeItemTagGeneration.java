@@ -13,36 +13,35 @@ import net.minecraft.registry.tag.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
 
-public class AgreeItemTagGeneration extends FabricTagProvider<Item> {
+public class AgreeItemTagGeneration extends FabricTagProvider.ItemTagProvider {
     public AgreeItemTagGeneration(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
-        super(dataGenerator, RegistryKeys.ITEM, completableFuture);
+        super(dataGenerator, completableFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-      /*  getOrCreateTagBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
+        valueLookupBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
                 .add(AgreeItems.RUBY);
-        getOrCreateTagBuilder(AgreeItemTags.RUBY_TOOL_MATERIALS)
+        valueLookupBuilder(AgreeItemTags.RUBY_TOOL_MATERIALS)
                 .add(AgreeItems.RUBY);
-        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+        valueLookupBuilder(ItemTags.HEAD_ARMOR)
                 .add(AgreeItems.RUBY_HELMET);
-        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+        valueLookupBuilder(ItemTags.CHEST_ARMOR)
                 .add(AgreeItems.RUBY_CHESTPLATE);
-        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+        valueLookupBuilder(ItemTags.LEG_ARMOR)
                 .add(AgreeItems.RUBY_LEGGINGS);
-        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+        valueLookupBuilder(ItemTags.FOOT_ARMOR)
                 .add(AgreeItems.RUBY_BOOTS);
-        getOrCreateTagBuilder(ItemTags.SWORDS)
+        valueLookupBuilder(ItemTags.SWORDS)
                 .add(AgreeItems.RUBY_SWORD);
-        getOrCreateTagBuilder(ItemTags.AXES)
+        valueLookupBuilder(ItemTags.AXES)
                 .add(AgreeItems.RUBY_AXE);
-        getOrCreateTagBuilder(ItemTags.PICKAXES)
+        valueLookupBuilder(ItemTags.PICKAXES)
                 .add(AgreeItems.RUBY_PICKAXE);
-        getOrCreateTagBuilder(ItemTags.HOES)
+        valueLookupBuilder(ItemTags.HOES)
                 .add(AgreeItems.RUBY_HOE);
-        getOrCreateTagBuilder(ItemTags.SHOVELS)
+        valueLookupBuilder(ItemTags.SHOVELS)
                 .add(AgreeItems.RUBY_SHOVEL);
-*/
     }
 
 }

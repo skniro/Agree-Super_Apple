@@ -57,6 +57,8 @@ public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvid
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING,"夜视苹果盆栽");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"跳跃提升苹果盆栽");
 
+        translationBuilder.add("config.jade.plugin_agree.apple_progress", "苹果生长进度");
+
         // Load an existing language file.
         try {
             Path existingFilePath = dataOutput.getModContainer().findPath("assets/agree/lang/zh_cn.existing.json").get();

@@ -2,6 +2,5 @@
   "parent": "minecraft:block/cross",
   "textures": {
     "cross": "agree:block/fire_resistance_apple_sapling"
-  },
-  "render_type": "cutout"
+  }
 }

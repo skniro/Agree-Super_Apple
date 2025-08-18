@@ -2,6 +2,6 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "agree:item/ruby_boots",
-    "layer1": "minecraft:trims/items/helmet_trim_copper"
+    "layer1": "minecraft:helmet_copper"
   }
 }

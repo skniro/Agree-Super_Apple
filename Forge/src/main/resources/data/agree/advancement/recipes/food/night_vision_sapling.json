@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "agree:fire_resistance_apple"
-            ]
+            "items": "agree:fire_resistance_apple"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:oak_sapling"
-            ]
+            "items": "minecraft:oak_sapling"
           }
         ]
       },
@@ -34,15 +30,14 @@
   },
   "requirements": [
     [
+      "has_the_recipe",
       "has_night_vision_apple",
-      "has_oak_sapling",
-      "has_the_recipe"
+      "has_oak_sapling"
     ]
   ],
   "rewards": {
     "recipes": [
       "agree:night_vision_sapling"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
