@@ -12,7 +12,8 @@
     "Mixin_UnbreakingEnchantment",
     "Mixin_PowerEnchantment",
     "Mixin_PunchEnchantment",
-    "Mixin_LureEnchantment"
+    "Mixin_LureEnchantment",
+    "ShearsDispenseItemBehaviorMixin"
   ],
   "client": [
   ],

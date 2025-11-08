@@ -8,7 +8,6 @@ version="${forge_mod_version}"
 displayName="${mod_name}"
 authors="${mod_author}"
 description='''${mod_description}'''
-credits = "Rafan,gilnet,All translators"
 
 
 [[dependencies.agree]]
