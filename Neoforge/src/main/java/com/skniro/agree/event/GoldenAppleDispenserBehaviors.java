@@ -1,10 +1,10 @@
 package com.skniro.agree.event;
 
-
 import com.skniro.agree.block.init.LeafCropBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,10 +17,17 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 public class GoldenAppleDispenserBehaviors {
     public static void register() {
-        DispenserBlock.registerBehavior(Items.SHEARS, new ShearsDispenserBehavior());
+        var oldBehavior = DispenserBlock.DISPENSER_REGISTRY.get(Items.SHEARS);
+        DispenserBlock.registerBehavior(Items.SHEARS, new ShearsDispenserBehavior(oldBehavior));
     }
 
     private static class ShearsDispenserBehavior extends DefaultDispenseItemBehavior {
+        private final DispenseItemBehavior original;
+
+        public ShearsDispenserBehavior(DispenseItemBehavior original) {
+            this.original = original;
+        }
+
         @Override
         protected ItemStack execute(BlockSource source, ItemStack stack) {
             ServerLevel world = source.level();
@@ -29,7 +36,7 @@ public class GoldenAppleDispenserBehaviors {
             if (tryShearBlock(world, targetPos, state, stack)) {
                 return stack;
             }
-            return super.execute(source, stack);
+            return original != null ? original.dispense(source, stack) : super.execute(source, stack);
         }
 
         private static boolean tryShearBlock(ServerLevel world, BlockPos pos, BlockState state, ItemStack stack) {
