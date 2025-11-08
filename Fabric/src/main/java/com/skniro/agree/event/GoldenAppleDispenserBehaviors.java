@@ -5,6 +5,7 @@ import com.skniro.agree.block.init.LeafCropBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.DispenserBehavior;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -21,10 +22,17 @@ import net.minecraft.world.event.GameEvent;
 public class GoldenAppleDispenserBehaviors {
 
     public static void register() {
-        DispenserBlock.registerBehavior(Items.SHEARS, new ShearsDispenserBehavior());
+        var oldBehavior = DispenserBlock.BEHAVIORS.get(Items.SHEARS);
+        DispenserBlock.registerBehavior(Items.SHEARS, new ShearsDispenserBehavior(oldBehavior));
     }
 
     private static class ShearsDispenserBehavior extends FallibleItemDispenserBehavior {
+        private final DispenserBehavior original;
+
+        public ShearsDispenserBehavior(DispenserBehavior original) {
+            this.original = original;
+        }
+
         protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
             ServerWorld serverWorld = pointer.world();
             if (!serverWorld.isClient()) {
@@ -36,7 +44,7 @@ public class GoldenAppleDispenserBehaviors {
                 }
             }
 
-            return stack;
+            return original != null ? original.dispense(pointer, stack) : super.dispenseSilently(pointer, stack);
         }
 
         private static boolean tryShearBlock(ServerWorld world, BlockPos pos) {
