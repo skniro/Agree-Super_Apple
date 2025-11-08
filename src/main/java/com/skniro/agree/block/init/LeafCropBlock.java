@@ -34,7 +34,7 @@ public class LeafCropBlock extends Block {
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
-    private final RegistryObject<Item> fruitItem;
+    public final RegistryObject<Item> fruitItem;
     public static final IntegerProperty DISTANCE;
 
     public LeafCropBlock(Properties settings, RegistryObject<Item> fruitItem) {
