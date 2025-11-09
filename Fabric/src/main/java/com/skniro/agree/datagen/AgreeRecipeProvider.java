@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 
@@ -100,6 +101,13 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                                 conditionsFromItem(AppleFoodComponents.STRENGTH_APPLE))
                         .criterion(hasItem(Blocks.OAK_SAPLING),
                                 conditionsFromItem(Blocks.OAK_SAPLING))
+                        .offerTo(exporter);
+
+                createShaped(RecipeCategory.FOOD, AppleFoodComponents.HEALTH_BOOST_APPLE).pattern("###").pattern("#G#").pattern("###")
+                        .input('G', Items.GOLDEN_APPLE)
+                        .input('#', Items.APPLE)
+                        .criterion(hasItem(Items.APPLE),
+                                conditionsFromItem(Items.APPLE))
                         .offerTo(exporter);
             }
         };

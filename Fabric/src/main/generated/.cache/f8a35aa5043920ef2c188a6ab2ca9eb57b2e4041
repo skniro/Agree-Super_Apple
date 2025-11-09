@@ -1,7 +1,8 @@
-// 1.21.7	-999999999-01-01T00:00:00	Agree/
+// 1.21.10	-999999999-01-01T00:00:00	Agree/
 f401adee0ccdc3abbe41c00da4c77b6b6b1a1edb data/agree/advancement/recipes/combat/ruby_helmet.json
 c35a032701606ea37dcd079508db9cd9ed4f4bef data/agree/advancement/recipes/food/fire_resistance_apple_sapling.json
 1d7966c00061b7a11e9506453847f67d0c42626f data/agree/advancement/recipes/food/haste_apple_sapling.json
+3626005011b1b15efb02982b799a816ef1f8cc8e data/agree/advancement/recipes/food/health_boost_apple.json
 61da76011c943c9965c4fb7c828e5b7f2daf5377 data/agree/advancement/recipes/food/health_boost_apple_sapling.json
 d750854ff25c065d5c902cbc6bb8f6619d025a25 data/agree/advancement/recipes/food/jump_boost_sapling.json
 e0c217442f47fe7653b269b353c79dfda96ac721 data/agree/advancement/recipes/food/night_vision_sapling.json
@@ -10,6 +11,7 @@ e0c217442f47fe7653b269b353c79dfda96ac721 data/agree/advancement/recipes/food/nig
 0b12806f3e8526e80b59641b91a96a69d4b1f586 data/agree/advancement/recipes/food/village_hero_apple_sapling.json
 f19504bcd8c228fa095550544c8a2758613763e5 data/agree/recipe/fire_resistance_apple_sapling.json
 806bf959ac74903da4257e36ede6bbcbb68cec52 data/agree/recipe/haste_apple_sapling.json
+d6d205e955e13da714e41809f04124ba98992677 data/agree/recipe/health_boost_apple.json
 7582361ddf99e8de18490c4177b42a297288fac5 data/agree/recipe/health_boost_apple_sapling.json
 d9c3135dcfa268da83412a65a411cb381622f057 data/agree/recipe/jump_boost_sapling.json
 0656a468717c055184037904284ba3d7e7448269 data/agree/recipe/night_vision_sapling.json
