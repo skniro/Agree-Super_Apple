@@ -2,22 +2,15 @@ package com.skniro.agree.item.init;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 import com.skniro.agree.tags.AgreeItemTags;
-import net.minecraft.Util;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.util.Util;
 import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
-import net.minecraft.world.item.equipment.EquipmentAssets;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 public interface AgreeArmorMaterials {
-    ArmorMaterial Ruby = new ArmorMaterial(5, (Map)Util.make(new EnumMap(ArmorType.class), (map) -> {
+    ArmorMaterial Ruby = new ArmorMaterial(5, (Map) Util.make(new EnumMap(ArmorType.class), (map) -> {
         map.put(ArmorType.BOOTS, 3);
         map.put(ArmorType.LEGGINGS, 6);
         map.put(ArmorType.CHESTPLATE, 8);

@@ -19,7 +19,6 @@ pluginManagement {
     }
 }
 
-
 rootProject.name = 'Agree-SuperApple-1.21.6'
 //include("Fabric", "Neoforge")
 include("Fabric", "Forge", "Neoforge")
