@@ -5,8 +5,8 @@ import com.skniro.agree.world.AgreeTreeConfiguredFeatures;
 import com.skniro.agree.world.AgreeTreePlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
     @Override
@@ -19,11 +19,12 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(AgreeEnglishLanguageProvider::new);
         pack.addProvider(AgreeSimplifiedChineseLanguageProvider::new);
         pack.addProvider(AgreeItemTagGeneration::new);
+        pack.addProvider(AgreeBlockTagGeneration::new);
     }
 
     @Override
-    public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, AgreeTreeConfiguredFeatures::bootstrap);
-        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, AgreeTreePlacedFeatures::bootstrap);
+    public void buildRegistry(RegistrySetBuilder registryBuilder) {
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, AgreeTreeConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, AgreeTreePlacedFeatures::bootstrap);
     }
 }

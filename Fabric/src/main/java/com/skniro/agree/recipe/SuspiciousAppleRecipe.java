@@ -4,36 +4,36 @@
 package com.skniro.agree.recipe;
 
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import net.minecraft.block.SuspiciousStewIngredient;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.SpecialCraftingRecipe;
-import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.world.World;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.CustomRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SuspiciousEffectHolder;
 
 public class SuspiciousAppleRecipe
-extends SpecialCraftingRecipe {
-    public SuspiciousAppleRecipe(CraftingRecipeCategory craftingRecipeCategory) {
+extends CustomRecipe {
+    public SuspiciousAppleRecipe(CraftingBookCategory craftingRecipeCategory) {
         super(craftingRecipeCategory);
     }
 
     @Override
-    public boolean matches(CraftingRecipeInput craftingRecipeInput, World world) {
+    public boolean matches(CraftingInput craftingRecipeInput, Level world) {
         boolean bl = false;
         boolean bl2 = false;
         for (int i = 0; i < craftingRecipeInput.size(); ++i) {
-            ItemStack itemStack = craftingRecipeInput.getStackInSlot(i);
+            ItemStack itemStack = craftingRecipeInput.getItem(i);
             if (itemStack.isEmpty()) continue;
-            if (itemStack.isIn(ItemTags.SMALL_FLOWERS) && !bl) {
+            if (itemStack.is(ItemTags.SMALL_FLOWERS) && !bl) {
                 bl = true;
                 continue;
             }
-            if (itemStack.isOf(Items.APPLE) && !bl2) {
+            if (itemStack.is(Items.APPLE) && !bl2) {
                 bl2 = true;
                 continue;
             }
@@ -43,14 +43,14 @@ extends SpecialCraftingRecipe {
     }
 
     @Override
-    public ItemStack craft(CraftingRecipeInput craftingRecipeInput, RegistryWrapper.WrapperLookup wrapperLookup) {
+    public ItemStack assemble(CraftingInput craftingRecipeInput, HolderLookup.Provider wrapperLookup) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE, 1);
         for(int i = 0; i < craftingRecipeInput.size(); ++i) {
-            ItemStack itemStack2 = craftingRecipeInput.getStackInSlot(i);
+            ItemStack itemStack2 = craftingRecipeInput.getItem(i);
             if (!itemStack2.isEmpty()) {
-                SuspiciousStewIngredient suspiciousStewIngredient = SuspiciousStewIngredient.of(itemStack2.getItem());
+                SuspiciousEffectHolder suspiciousStewIngredient = SuspiciousEffectHolder.tryGet(itemStack2.getItem());
                 if (suspiciousStewIngredient != null) {
-                    itemStack.set(DataComponentTypes.SUSPICIOUS_STEW_EFFECTS, suspiciousStewIngredient.getStewEffects());
+                    itemStack.set(DataComponents.SUSPICIOUS_STEW_EFFECTS, suspiciousStewIngredient.getSuspiciousEffects());
                     break;
                 }
             }
@@ -60,7 +60,7 @@ extends SpecialCraftingRecipe {
 
 
     @Override
-    public RecipeSerializer<? extends SpecialCraftingRecipe> getSerializer() {
+    public RecipeSerializer<? extends CustomRecipe> getSerializer() {
         return AgreeRecipeSerializer.SUSPICIOUS_APPLE;
     }
 }

@@ -1,15 +1,15 @@
 package com.skniro.agree.item.init;
 
 import com.skniro.agree.Agree;
-import net.minecraft.item.equipment.EquipmentAsset;
-import net.minecraft.item.equipment.EquipmentAssetKeys;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.EquipmentAssets;
 
 public interface AgreeEquipmentAssetKeys {
-    RegistryKey<EquipmentAsset> RUBY = register("ruby");
+    ResourceKey<EquipmentAsset> RUBY = register("ruby");
 
-    static RegistryKey<EquipmentAsset> register(String name) {
-        return RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(Agree.MOD_ID, name));
+    static ResourceKey<EquipmentAsset> register(String name) {
+        return ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Agree.MOD_ID, name));
     }
 }

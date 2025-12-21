@@ -1,10 +1,10 @@
 package com.skniro.agree.tags;
 
 import com.skniro.agree.Agree;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 
 public class AgreeItemTags {
     public static final TagKey<Item> REPAIRS_RUBY_ARMOR = of("repairs_ruby_armor");
@@ -15,6 +15,6 @@ public class AgreeItemTags {
     }
 
     private static TagKey<Item> of(String id) {
-        return TagKey.of(RegistryKeys.ITEM, Identifier.of(Agree.MOD_ID, id));
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Agree.MOD_ID, id));
     }
 }

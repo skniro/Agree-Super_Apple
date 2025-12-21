@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "b": "agree:ruby"
+    "X": "agree:ruby"
   },
   "pattern": [
-    "bbb",
-    "b b"
+    "XXX",
+    "X X"
   ],
   "result": {
     "count": 1,

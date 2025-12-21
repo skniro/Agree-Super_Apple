@@ -2,62 +2,62 @@ package com.skniro.agree.event;
 
 
 import com.skniro.agree.block.init.LeafCropBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.dispenser.DispenserBehavior;
-import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPointer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.dispenser.BlockSource;
+import net.minecraft.core.dispenser.DispenseItemBehavior;
+import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class GoldenAppleDispenserBehaviors {
 
     public static void register() {
-        var oldBehavior = DispenserBlock.BEHAVIORS.get(Items.SHEARS);
+        var oldBehavior = DispenserBlock.DISPENSER_REGISTRY.get(Items.SHEARS);
         DispenserBlock.registerBehavior(Items.SHEARS, new ShearsDispenserBehavior(oldBehavior));
     }
 
-    private static class ShearsDispenserBehavior extends FallibleItemDispenserBehavior {
-        private final DispenserBehavior original;
+    private static class ShearsDispenserBehavior extends OptionalDispenseItemBehavior {
+        private final DispenseItemBehavior original;
 
-        public ShearsDispenserBehavior(DispenserBehavior original) {
+        public ShearsDispenserBehavior(DispenseItemBehavior original) {
             this.original = original;
         }
 
-        protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
-            ServerWorld serverWorld = pointer.world();
-            if (!serverWorld.isClient()) {
-                BlockPos blockPos = pointer.pos().offset((Direction)pointer.state().get(DispenserBlock.FACING));
+        protected ItemStack execute(BlockSource pointer, ItemStack stack) {
+            ServerLevel serverWorld = pointer.level();
+            if (!serverWorld.isClientSide()) {
+                BlockPos blockPos = pointer.pos().relative((Direction)pointer.state().getValue(DispenserBlock.FACING));
                 this.setSuccess(tryShearBlock(serverWorld, blockPos));
                 if (this.isSuccess()) {
-                    stack.damage(1, serverWorld, (ServerPlayerEntity)null, (item) -> {
+                    stack.hurtAndBreak(1, serverWorld, (ServerPlayer)null, (item) -> {
                     });
                 }
             }
 
-            return original != null ? original.dispense(pointer, stack) : super.dispenseSilently(pointer, stack);
+            return original != null ? original.dispense(pointer, stack) : super.execute(pointer, stack);
         }
 
-        private static boolean tryShearBlock(ServerWorld world, BlockPos pos) {
+        private static boolean tryShearBlock(ServerLevel world, BlockPos pos) {
             BlockState blockState = world.getBlockState(pos);
             if (blockState.getBlock() instanceof LeafCropBlock leafCrop) {
-                int age = blockState.get(LeafCropBlock.AGE);
+                int age = blockState.getValue(LeafCropBlock.AGE);
                 if (age > 1) {
-                    world.playSound((Entity)null, pos, SoundEvents.BLOCK_BEEHIVE_SHEAR, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.playSound((Entity)null, pos, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0F, 1.0F);
                     ItemStack drop = new ItemStack(leafCrop.fruitItem, 1);
-                    Block.dropStack(world, pos, drop);
-                    BlockState newState = blockState.with(LeafCropBlock.AGE, 1);
-                    world.setBlockState(pos, newState, 2);
-                    world.emitGameEvent((Entity)null, GameEvent.SHEAR, pos);
+                    Block.popResource(world, pos, drop);
+                    BlockState newState = blockState.setValue(LeafCropBlock.AGE, 1);
+                    world.setBlock(pos, newState, 2);
+                    world.gameEvent((Entity)null, GameEvent.SHEAR, pos);
                     return true;
                 }
             }

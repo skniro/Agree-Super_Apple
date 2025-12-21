@@ -105,7 +105,7 @@ public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
         if (i > 1) {
             int j = 1;
             popResource(world, pos, new ItemStack(fruitItem.get(), j ));
-            world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.getRandom().nextFloat() * 0.4F);
             BlockState blockState = (BlockState)state.setValue(AGE, 0);
             world.setBlock(pos, blockState, 2);
             world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));

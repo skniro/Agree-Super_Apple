@@ -1,73 +1,72 @@
 package com.skniro.agree.block.init;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.event.GameEvent;
-import net.minecraft.world.tick.ScheduledTickView;
-
 import java.util.OptionalInt;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class LeafCropBlock extends Block implements Waterloggable {
-    public static final IntProperty AGE;
+public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
+    public static final IntegerProperty AGE;
     private static final VoxelShape SHAPE;
     public final Item fruitItem;
     public static final BooleanProperty PERSISTENT;
-    public static final IntProperty DISTANCE;
+    public static final IntegerProperty DISTANCE;
     public static final BooleanProperty WATERLOGGED;
 
-    public LeafCropBlock(Settings settings, Item fruitItem) {
-        super(settings.nonOpaque());
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(DISTANCE, 7)).with(PERSISTENT, false)).with(WATERLOGGED, false));
+    public LeafCropBlock(Properties settings, Item fruitItem) {
+        super(settings.noOcclusion());
+        this.registerDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(DISTANCE, 7)).setValue(PERSISTENT, false)).setValue(WATERLOGGED, false));
         this.fruitItem = fruitItem;
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
             return SHAPE;
     }
 
-    public boolean hasRandomTicks(BlockState state) {
-        return (Integer)state.get(AGE) < 2;
+    public boolean isRandomlyTicking(BlockState state) {
+        return (Integer)state.getValue(AGE) < 2;
     }
 
 
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int i = (Integer)state.get(AGE);
-        if (i < 2 && random.nextInt(40) == 0 && world.getBaseLightLevel(pos.up(), 0) >= 9) {
-            BlockState blockState = (BlockState)state.with(AGE, i + 1);
-            world.setBlockState(pos, blockState, 2);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(blockState));
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        int i = (Integer)state.getValue(AGE);
+        if (i < 2 && random.nextInt(40) == 0 && world.getRawBrightness(pos.above(), 0) >= 9) {
+            BlockState blockState = (BlockState)state.setValue(AGE, i + 1);
+            world.setBlock(pos, blockState, 2);
+            world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
         }
         if (this.shouldDecay(state)) {
-            dropStacks(state, world, pos);
+            dropResources(state, world, pos);
             world.removeBlock(pos, false);
         }
 
@@ -75,79 +74,79 @@ public class LeafCropBlock extends Block implements Waterloggable {
 
 
     protected boolean shouldDecay(BlockState state) {
-        return !(Boolean)state.get(PERSISTENT) &&(Integer)state.get(DISTANCE) == 7;
+        return !(Boolean)state.getValue(PERSISTENT) &&(Integer)state.getValue(DISTANCE) == 7;
     }
 
     @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        world.setBlockState(pos, updateDistanceFromLogs(state, world, pos), 3);
+    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        world.setBlock(pos, updateDistanceFromLogs(state, world, pos), 3);
     }
 
-    public int getOpacity(BlockState state) {
+    public int getLightBlock(BlockState state) {
         return 1;
     }
 
-    public BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
-        if ((Boolean)state.get(WATERLOGGED)) {
-            tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+    public BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        if ((Boolean)state.getValue(WATERLOGGED)) {
+            tickView.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         }
 
         int i = getDistanceFromLog(neighborState) + 1;
-        if (i != 1 || (Integer)state.get(DISTANCE) != i) {
-            tickView.scheduleBlockTick(pos, this, 1);
+        if (i != 1 || (Integer)state.getValue(DISTANCE) != i) {
+            tickView.scheduleTick(pos, this, 1);
         }
 
         return state;
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        int i = (Integer)state.get(AGE);
+    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        int i = (Integer)state.getValue(AGE);
         boolean bl = i == 2;
         if (i > 1) {
             int j = 1;
-            dropStack(world, pos, new ItemStack(fruitItem, j ));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
-            BlockState blockState = (BlockState)state.with(AGE, 0);
-            world.setBlockState(pos, blockState, 2);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
-            return ActionResult.SUCCESS;
+            popResource(world, pos, new ItemStack(fruitItem, j ));
+            world.playSound((Player)null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.getRandom().nextFloat() * 0.4F);
+            BlockState blockState = (BlockState)state.setValue(AGE, 0);
+            world.setBlock(pos, blockState, 2);
+            world.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
+            return InteractionResult.SUCCESS;
         } else {
-            return super.onUse(state, world, pos, player, hit);
+            return super.useWithoutItem(state, world, pos, player, hit);
         }
     }
 
     public FluidState getFluidState(BlockState state) {
-        return (Boolean)state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+        return (Boolean)state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(new Property[]{AGE, DISTANCE, PERSISTENT, WATERLOGGED});
     }
 
 
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+    public boolean canGrow(Level world, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        int i = Math.min(2, (Integer)state.get(AGE) + 1);
-        world.setBlockState(pos, (BlockState)state.with(AGE, i), 2);
+    public void grow(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
+        int i = Math.min(2, (Integer)state.getValue(AGE) + 1);
+        world.setBlock(pos, (BlockState)state.setValue(AGE, i), 2);
     }
 
-    private static BlockState updateDistanceFromLogs(BlockState state, WorldAccess world, BlockPos pos) {
+    private static BlockState updateDistanceFromLogs(BlockState state, LevelAccessor world, BlockPos pos) {
         var i = 7;
-        var blockpos$mutable = new BlockPos.Mutable();
+        var blockpos$mutable = new BlockPos.MutableBlockPos();
 
         for(Direction direction : Direction.values()) {
-            blockpos$mutable.set(pos, direction);
+            blockpos$mutable.setWithOffset(pos, direction);
             i = Math.min(i, getDistanceFromLog(world.getBlockState(blockpos$mutable)) + 1);
             if (i == 1) {
                 break;
             }
         }
 
-        return state.with(DISTANCE, i);
+        return state.setValue(DISTANCE, i);
     }
 
     private static int getDistanceFromLog(BlockState state) {
@@ -155,25 +154,25 @@ public class LeafCropBlock extends Block implements Waterloggable {
     }
 
     public static OptionalInt getOptionalDistanceFromLog(BlockState state) {
-        if (state.isIn(BlockTags.LOGS)) {
+        if (state.is(BlockTags.LOGS)) {
             return OptionalInt.of(0);
         } else {
-            return state.contains(DISTANCE) ? OptionalInt.of((Integer)state.get(DISTANCE)) : OptionalInt.empty();
+            return state.hasProperty(DISTANCE) ? OptionalInt.of((Integer)state.getValue(DISTANCE)) : OptionalInt.empty();
         }
     }
 
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        BlockState blockState = (BlockState)((BlockState)this.getDefaultState().with(PERSISTENT, true)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-        return updateDistanceFromLogs(blockState, ctx.getWorld(), ctx.getBlockPos());
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        BlockState blockState = (BlockState)((BlockState)this.defaultBlockState().setValue(PERSISTENT, true)).setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
+        return updateDistanceFromLogs(blockState, ctx.getLevel(), ctx.getClickedPos());
     }
 
 
     static {
-        AGE = Properties.AGE_2;
-        DISTANCE = Properties.DISTANCE_1_7;
-        PERSISTENT = Properties.PERSISTENT;
-        WATERLOGGED = Properties.WATERLOGGED;
-        SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+        AGE = BlockStateProperties.AGE_2;
+        DISTANCE = BlockStateProperties.DISTANCE;
+        PERSISTENT = BlockStateProperties.PERSISTENT;
+        WATERLOGGED = BlockStateProperties.WATERLOGGED;
+        SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     }
 }

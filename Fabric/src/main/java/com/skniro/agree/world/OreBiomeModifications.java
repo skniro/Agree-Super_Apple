@@ -3,13 +3,16 @@ package com.skniro.agree.world;
 import com.skniro.agree.Agree;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BiomeTags;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.placementmodifier.*;
-
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.BiomeFilter;
+import net.minecraft.world.level.levelgen.placement.CountPlacement;
+import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
+import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -21,26 +24,26 @@ public class OreBiomeModifications
     {
 
         // Inject into Biomes
-        BiomeModifications.addFeature(overworldSelector(), GenerationStep.Feature.UNDERGROUND_ORES, RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Agree.MOD_ID, "ore_ruby_overworld")));
+        BiomeModifications.addFeature(overworldSelector(), GenerationStep.Decoration.UNDERGROUND_ORES, ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(Agree.MOD_ID, "ore_ruby_overworld")));
     }
 
     public static Predicate<BiomeSelectionContext> overworldSelector()
     {
-        return context -> context.getBiomeRegistryEntry().isIn(BiomeTags.IS_OVERWORLD);
+        return context -> context.getBiomeRegistryEntry().is(BiomeTags.IS_OVERWORLD);
     }
 
 
     // Used here because the vanilla ones are private
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
-        return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
+        return List.of(countModifier, InSquarePlacement.spread(), heightModifier, BiomeFilter.biome());
     }
 
     private static List<PlacementModifier> modifiersWithCount(int count, PlacementModifier heightModifier) {
-        return modifiers(CountPlacementModifier.of(count), heightModifier);
+        return modifiers(CountPlacement.of(count), heightModifier);
     }
 
     private static List<PlacementModifier> modifiersWithRarity(int chance, PlacementModifier heightModifier) {
-        return modifiers(RarityFilterPlacementModifier.of(chance), heightModifier);
+        return modifiers(RarityFilter.onAverageOnceEvery(chance), heightModifier);
     }
 }
 

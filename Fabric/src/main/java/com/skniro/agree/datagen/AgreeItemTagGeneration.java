@@ -5,21 +5,18 @@ import com.skniro.agree.tags.AgreeItemTags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
 
 public class AgreeItemTagGeneration extends FabricTagProvider.ItemTagProvider {
-    public AgreeItemTagGeneration(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+    public AgreeItemTagGeneration(FabricDataOutput dataGenerator, CompletableFuture<HolderLookup.Provider> completableFuture) {
         super(dataGenerator, completableFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup arg) {
+    protected void addTags(HolderLookup.Provider arg) {
         valueLookupBuilder(AgreeItemTags.REPAIRS_RUBY_ARMOR)
                 .add(AgreeItems.RUBY);
         valueLookupBuilder(AgreeItemTags.RUBY_TOOL_MATERIALS)
@@ -42,6 +39,13 @@ public class AgreeItemTagGeneration extends FabricTagProvider.ItemTagProvider {
                 .add(AgreeItems.RUBY_HOE);
         valueLookupBuilder(ItemTags.SHOVELS)
                 .add(AgreeItems.RUBY_SHOVEL);
+        valueLookupBuilder(ItemTags.BEACON_PAYMENT_ITEMS)
+                .add(AgreeItems.RUBY);
+        valueLookupBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(AgreeItems.RUBY_BOOTS)
+                .add(AgreeItems.RUBY_HELMET)
+                .add(AgreeItems.RUBY_LEGGINGS)
+                .add(AgreeItems.RUBY_CHESTPLATE);
     }
 
 }

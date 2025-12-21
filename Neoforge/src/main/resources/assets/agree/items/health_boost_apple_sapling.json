@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "agree:block/health_boost_apple_sapling"
+    "model": "agree:item/health_boost_apple_sapling"
   }
 }

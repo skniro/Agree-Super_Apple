@@ -1,4 +1,4 @@
-// 1.21.11	-999999999-01-01T00:00:00	Agree/Block Loot Tables
+// 26.1-snapshot-1	-999999999-01-01T00:00:00	Agree/Block Loot Tables
 3e318f38f65d584e0a7cbd248ac43c81071deaed data/agree/loot_table/blocks/apple_tree_leave.json
 2a8cee466774feec4a35e142763d4898c6402152 data/agree/loot_table/blocks/deepslate_ruby_ore.json
 bd8168fda80896ba016efc24e62768c3922983f7 data/agree/loot_table/blocks/fire_resistance_apple_sapling.json
@@ -11,6 +11,7 @@ e33552b4afbab2ae35b5f6741e6dcc11d1126edc data/agree/loot_table/blocks/health_boo
 b4eff972dc5b2455e711c75687e09ac578e65be1 data/agree/loot_table/blocks/jump_boost_sapling.json
 61cc510ada575521ae03cf50dbec2cd433d061ba data/agree/loot_table/blocks/night_vision_leave.json
 6ba94d9d11b8ea0c84833bc9a7e4999b343af20e data/agree/loot_table/blocks/night_vision_sapling.json
+486b405f60267605b4dbb6ee0dc8d79ff13e0cce data/agree/loot_table/blocks/ruby_block.json
 1b87daf50ce29b350116dec7c7b413f7ac3764ea data/agree/loot_table/blocks/ruby_ore.json
 10f1e88764b0f10cbf6004018baa271639deb39c data/agree/loot_table/blocks/speed_apple_leave.json
 b8bfc2655d6be441215405efac6c991058bcce6c data/agree/loot_table/blocks/speed_apple_sapling.json

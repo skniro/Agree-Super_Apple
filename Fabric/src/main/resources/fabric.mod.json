@@ -12,7 +12,7 @@
     "sources": "https://github.com/skniro/Agree-Super_Apple",
     "issues": "https://github.com/skniro/Agree-Super_Apple/issues"},
   "license": "MIT",
-  "icon": "assets/agree/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
@@ -33,7 +33,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.15.11",
-    "fabric": "*",
-    "minecraft": "1.21.x"
+    "fabric-api": "*",
+    "minecraft": "26.1.x"
   }
 }

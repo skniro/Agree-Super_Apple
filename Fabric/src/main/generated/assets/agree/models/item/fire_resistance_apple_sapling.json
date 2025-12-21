@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "agree:block/fire_resistance_apple_sapling"
+  }
+}

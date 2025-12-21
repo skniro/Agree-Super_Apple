@@ -1,0 +1,120 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ruby_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_axe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_shovel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_shovel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": "agree:ruby_sword"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "agree:ruby_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ruby_pickaxe",
+      "has_ruby_shovel",
+      "has_ruby_axe",
+      "has_ruby_hoe",
+      "has_ruby_sword",
+      "has_ruby_helmet",
+      "has_ruby_chestplate",
+      "has_ruby_leggings",
+      "has_ruby_boots"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "agree:ruby_from_blasting"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "agree:block/speed_apple_sapling"
+    "model": "agree:item/speed_apple_sapling"
   }
 }

@@ -1,0 +1,4 @@
+// 26.1-snapshot-1	-999999999-01-01T00:00:00	Agree/Tags for minecraft:block
+bc8d45f1260a6a0e50244709925eb5754ebf98e3 data/minecraft/tags/block/beacon_base_blocks.json
+47152c943521cb6da2283d35f397055b6a312eb3 data/minecraft/tags/block/mineable/pickaxe.json
+47152c943521cb6da2283d35f397055b6a312eb3 data/minecraft/tags/block/needs_diamond_tool.json

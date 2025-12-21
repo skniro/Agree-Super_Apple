@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "agree:block/health_boost_apple_sapling"
+  }
+}

@@ -1,21 +1,22 @@
 package com.skniro.agree.datagen;
 
+import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.Apples.AppleFoodComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
-    public AgreeEnglishLanguageProvider(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup){
+    public AgreeEnglishLanguageProvider(FabricDataOutput dataGenerator, CompletableFuture<HolderLookup.Provider> registryLookup){
         super(dataGenerator, "en_us", registryLookup);
     }
 
     @Override
-    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(AgreeItems.RUBY_HELMET,"Ruby Helmet");
         translationBuilder.add(AgreeItems.RUBY_BOOTS,"Ruby Boots");
         translationBuilder.add(AgreeItems.RUBY_AXE,"Ruby Axe");
@@ -57,14 +58,33 @@ public class AgreeEnglishLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING, "Potted Night Vision Apple Sapling");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"Potted Jump boost Apple Sapling");
 
+        //Apple
+        translationBuilder.add(AppleFoodComponents.HASTE_APPLE, "Haste Apple");
+        translationBuilder.add(AppleFoodComponents.SUPER_APPLE, "Super Apple");
+        translationBuilder.add(AppleFoodComponents.SPEED_APPLE, "Speed Apple");
+        translationBuilder.add(AppleFoodComponents.NIGHT_VISION_APPLE, "Night Vision Apple");
+        translationBuilder.add(AppleFoodComponents.STRENGTH_APPLE, "Strength Apple");
+        translationBuilder.add(AppleFoodComponents.HEALTH_BOOST_APPLE, "Health Boost Apple");
+        translationBuilder.add(AppleFoodComponents.FIRE_RESISTANCE_APPLE, "Fire Resistance Apple");
+        translationBuilder.add(AppleFoodComponents.HERO_VILLAGE_APPLE, "Village Hero Apple");
+        translationBuilder.add(AppleFoodComponents.JUMP_BOOST_APPLE, "Jump Boost Apple");
+        translationBuilder.add(AppleFoodComponents.SUSPICIOUS_APPLE, "Suspicious Apple");
+        translationBuilder.add(AgreeItems.RUBY, "Ruby");
+
+        translationBuilder.add(AgreeBlocks.RUBY_ORE, "Ruby Ore");
+        translationBuilder.add(AgreeBlocks.DEEPSLATE_RUBY_ORE, "Deepslate Ruby Ore");
+        translationBuilder.add(AgreeBlocks.RUBY_BLOCK, "Ruby Block");
+
+        translationBuilder.add(Agree.Agree_Group, "Super Apple");
+
         translationBuilder.add("config.jade.plugin_agree.apple_progress", "Apple Progress");
 
         // Load an existing language file.
-        try {
+/*        try {
             Path existingFilePath = dataOutput.getModContainer().findPath("assets/agree/lang/en_us.existing.json").get();
             translationBuilder.add(existingFilePath);
         } catch (Exception e) {
             throw new RuntimeException("Failed to add existing language file!", e);
-        }
+        }*/
     }
 }

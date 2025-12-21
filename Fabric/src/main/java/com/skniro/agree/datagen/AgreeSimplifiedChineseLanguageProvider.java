@@ -1,21 +1,22 @@
 package com.skniro.agree.datagen;
 
+import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
+import com.skniro.agree.item.Apples.AppleFoodComponents;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
 public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvider {
-    public AgreeSimplifiedChineseLanguageProvider(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup){
+    public AgreeSimplifiedChineseLanguageProvider(FabricDataOutput dataGenerator, CompletableFuture<HolderLookup.Provider> registryLookup){
         super(dataGenerator,"zh_cn", registryLookup);
     }
 
     @Override
-    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
+    public void generateTranslations(HolderLookup.Provider registryLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add(AgreeItems.RUBY_HELMET,"红宝石头盔");
         translationBuilder.add(AgreeItems.RUBY_BOOTS,"红宝石靴子");
         translationBuilder.add(AgreeItems.RUBY_AXE,"红宝石斧");
@@ -57,14 +58,32 @@ public class AgreeSimplifiedChineseLanguageProvider extends FabricLanguageProvid
         translationBuilder.add(AgreeBlocks.POTTED_NIGHT_VISION_SAPLING,"夜视苹果盆栽");
         translationBuilder.add(AgreeBlocks.POTTED_JUMP_BOOST_SAPLING,"跳跃提升苹果盆栽");
 
+        translationBuilder.add(AppleFoodComponents.HASTE_APPLE, "急迫苹果");
+        translationBuilder.add(AppleFoodComponents.SUPER_APPLE, "超级苹果");
+        translationBuilder.add(AppleFoodComponents.SPEED_APPLE, "速度苹果");
+        translationBuilder.add(AppleFoodComponents.NIGHT_VISION_APPLE, "夜视苹果");
+        translationBuilder.add(AppleFoodComponents.STRENGTH_APPLE, "力量苹果");
+        translationBuilder.add(AppleFoodComponents.HEALTH_BOOST_APPLE, "生命提升苹果");
+        translationBuilder.add(AppleFoodComponents.FIRE_RESISTANCE_APPLE, "抗火苹果");
+        translationBuilder.add(AppleFoodComponents.HERO_VILLAGE_APPLE, "村庄英雄苹果");
+        translationBuilder.add(AppleFoodComponents.JUMP_BOOST_APPLE, "跳跃提升苹果");
+        translationBuilder.add(AppleFoodComponents.SUSPICIOUS_APPLE, "可疑苹果");
+        translationBuilder.add(AgreeItems.RUBY, "红宝石");
+
+        translationBuilder.add(AgreeBlocks.RUBY_ORE, "红宝石矿");
+        translationBuilder.add(AgreeBlocks.DEEPSLATE_RUBY_ORE, "深板岩红宝石矿");
+        translationBuilder.add(AgreeBlocks.RUBY_BLOCK, "红宝石块");
+
+        translationBuilder.add(Agree.Agree_Group, "超级苹果");
+
         translationBuilder.add("config.jade.plugin_agree.apple_progress", "苹果生长进度");
 
         // Load an existing language file.
-        try {
+/*        try {
             Path existingFilePath = dataOutput.getModContainer().findPath("assets/agree/lang/zh_cn.existing.json").get();
             translationBuilder.add(existingFilePath);
         } catch (Exception e) {
             throw new RuntimeException("Failed to add existing language file!", e);
-        }
+        }*/
     }
 }

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "agree:block/jump_boost_sapling"
+    "model": "agree:item/jump_boost_sapling"
   }
 }

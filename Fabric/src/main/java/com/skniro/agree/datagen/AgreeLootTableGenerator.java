@@ -4,40 +4,41 @@ import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryWrapper;
-
+import net.minecraft.core.HolderLookup;
+import net.minecraft.world.level.block.Blocks;
 import java.util.concurrent.CompletableFuture;
 
 
 public class AgreeLootTableGenerator extends FabricBlockLootTableProvider {
-    public AgreeLootTableGenerator(FabricDataOutput dataGenerator, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    public AgreeLootTableGenerator(FabricDataOutput dataGenerator, CompletableFuture<HolderLookup.Provider> registryLookup) {
         super(dataGenerator, registryLookup);
     }
 
     @Override
     public void generate() {
-            addDrop(AgreeBlocks.HASTE_APPLE_SAPLING,drops(AgreeBlocks.HASTE_APPLE_SAPLING));
-            addDrop(AgreeBlocks.SPEED_APPLE_SAPLING,drops(AgreeBlocks.SPEED_APPLE_SAPLING));
-            addDrop(AgreeBlocks.HEALTH_BOOST_SAPLING,drops(AgreeBlocks.HEALTH_BOOST_SAPLING));
-            addDrop(AgreeBlocks.FIRE_RESISTANCE_SAPLING,drops(AgreeBlocks.FIRE_RESISTANCE_SAPLING));
-            addDrop(AgreeBlocks.HERO_VILLAGE_SAPLING,drops(AgreeBlocks.HERO_VILLAGE_SAPLING));
-            addDrop(AgreeBlocks.STRENGTH_SAPLING,drops(AgreeBlocks.STRENGTH_SAPLING));
-            addDrop(AgreeBlocks.NIGHT_VISION_SAPLING,drops(AgreeBlocks.NIGHT_VISION_SAPLING));
-            addDrop(AgreeBlocks.JUMP_BOOST_SAPLING,drops(AgreeBlocks.JUMP_BOOST_SAPLING));
+            add(AgreeBlocks.HASTE_APPLE_SAPLING,createSingleItemTable(AgreeBlocks.HASTE_APPLE_SAPLING));
+            add(AgreeBlocks.SPEED_APPLE_SAPLING,createSingleItemTable(AgreeBlocks.SPEED_APPLE_SAPLING));
+            add(AgreeBlocks.HEALTH_BOOST_SAPLING,createSingleItemTable(AgreeBlocks.HEALTH_BOOST_SAPLING));
+            add(AgreeBlocks.FIRE_RESISTANCE_SAPLING,createSingleItemTable(AgreeBlocks.FIRE_RESISTANCE_SAPLING));
+            add(AgreeBlocks.HERO_VILLAGE_SAPLING,createSingleItemTable(AgreeBlocks.HERO_VILLAGE_SAPLING));
+            add(AgreeBlocks.STRENGTH_SAPLING,createSingleItemTable(AgreeBlocks.STRENGTH_SAPLING));
+            add(AgreeBlocks.NIGHT_VISION_SAPLING,createSingleItemTable(AgreeBlocks.NIGHT_VISION_SAPLING));
+            add(AgreeBlocks.JUMP_BOOST_SAPLING,createSingleItemTable(AgreeBlocks.JUMP_BOOST_SAPLING));
 
-            addDrop(AgreeBlocks.HASTE_APPLE_LEAVES,leavesDrops(AgreeBlocks.HASTE_APPLE_LEAVES,AgreeBlocks.HASTE_APPLE_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.SPEED_APPLE_LEAVES,leavesDrops(AgreeBlocks.SPEED_APPLE_LEAVES,AgreeBlocks.SPEED_APPLE_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.HEALTH_BOOST_LEAVES,leavesDrops(AgreeBlocks.HEALTH_BOOST_LEAVES,AgreeBlocks.HEALTH_BOOST_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.FIRE_RESISTANCE_LEAVES,leavesDrops(AgreeBlocks.FIRE_RESISTANCE_LEAVES,AgreeBlocks.FIRE_RESISTANCE_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.HERO_VILLAGE_LEAVES,leavesDrops(AgreeBlocks.HERO_VILLAGE_LEAVES,AgreeBlocks.HERO_VILLAGE_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.STRENGTH_LEAVES,leavesDrops(AgreeBlocks.STRENGTH_LEAVES,AgreeBlocks.STRENGTH_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.NIGHT_VISION_LEAVES,leavesDrops(AgreeBlocks.NIGHT_VISION_LEAVES,AgreeBlocks.NIGHT_VISION_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.JUMP_BOOST_LEAVES ,leavesDrops(AgreeBlocks.JUMP_BOOST_LEAVES,AgreeBlocks.JUMP_BOOST_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.Apple_Tree_LEAVES ,leavesDrops(AgreeBlocks.Apple_Tree_LEAVES, Blocks.OAK_SAPLING,SAPLING_DROP_CHANCE));
-            addDrop(AgreeBlocks.DEEPSLATE_RUBY_ORE, oreDrops(AgreeBlocks.DEEPSLATE_RUBY_ORE, AgreeItems.RUBY));
-            addDrop(AgreeBlocks.RUBY_ORE, oreDrops(AgreeBlocks.RUBY_ORE, AgreeItems.RUBY));
+            add(AgreeBlocks.HASTE_APPLE_LEAVES,createLeavesDrops(AgreeBlocks.HASTE_APPLE_LEAVES,AgreeBlocks.HASTE_APPLE_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.SPEED_APPLE_LEAVES,createLeavesDrops(AgreeBlocks.SPEED_APPLE_LEAVES,AgreeBlocks.SPEED_APPLE_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.HEALTH_BOOST_LEAVES,createLeavesDrops(AgreeBlocks.HEALTH_BOOST_LEAVES,AgreeBlocks.HEALTH_BOOST_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.FIRE_RESISTANCE_LEAVES,createLeavesDrops(AgreeBlocks.FIRE_RESISTANCE_LEAVES,AgreeBlocks.FIRE_RESISTANCE_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.HERO_VILLAGE_LEAVES,createLeavesDrops(AgreeBlocks.HERO_VILLAGE_LEAVES,AgreeBlocks.HERO_VILLAGE_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.STRENGTH_LEAVES,createLeavesDrops(AgreeBlocks.STRENGTH_LEAVES,AgreeBlocks.STRENGTH_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.NIGHT_VISION_LEAVES,createLeavesDrops(AgreeBlocks.NIGHT_VISION_LEAVES,AgreeBlocks.NIGHT_VISION_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.JUMP_BOOST_LEAVES ,createLeavesDrops(AgreeBlocks.JUMP_BOOST_LEAVES,AgreeBlocks.JUMP_BOOST_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.Apple_Tree_LEAVES ,createLeavesDrops(AgreeBlocks.Apple_Tree_LEAVES, Blocks.OAK_SAPLING,NORMAL_LEAVES_SAPLING_CHANCES));
+            add(AgreeBlocks.DEEPSLATE_RUBY_ORE, createOreDrop(AgreeBlocks.DEEPSLATE_RUBY_ORE, AgreeItems.RUBY));
+            add(AgreeBlocks.RUBY_ORE, createOreDrop(AgreeBlocks.RUBY_ORE, AgreeItems.RUBY));
+
+            dropSelf(AgreeBlocks.RUBY_BLOCK);
     }
 
-    public static final float[] SAPLING_DROP_CHANCE = new float[]{0.028F, 0.0225F, 0.022333336F, 0.1F};
+    public static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.028F, 0.0225F, 0.022333336F, 0.1F};
 }

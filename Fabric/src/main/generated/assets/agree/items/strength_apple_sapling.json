@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "agree:block/strength_apple_sapling"
+    "model": "agree:item/strength_apple_sapling"
   }
 }
