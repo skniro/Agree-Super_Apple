@@ -3,15 +3,15 @@ package com.skniro.agree.datagen;
 import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.tags.AgreeItemTags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
 
-public class AgreeItemTagGeneration extends FabricTagProvider.ItemTagProvider {
-    public AgreeItemTagGeneration(FabricDataOutput dataGenerator, CompletableFuture<HolderLookup.Provider> completableFuture) {
+public class AgreeItemTagGeneration extends FabricTagsProvider.ItemTagsProvider {
+    public AgreeItemTagGeneration(FabricPackOutput dataGenerator, CompletableFuture<HolderLookup.Provider> completableFuture) {
         super(dataGenerator, completableFuture);
     }
 

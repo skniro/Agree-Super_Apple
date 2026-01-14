@@ -3,7 +3,7 @@ package com.skniro.agree;
 
 import com.skniro.agree.block.AgreeBlocks;
 import com.skniro.agree.item.AgreeItems;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +30,7 @@ public class ModContent {
     }
 
     public static void CreativeTab() {
-        ItemGroupEvents.modifyEntriesEvent(Agree_Group).register(content -> {
+        CreativeModeTabEvents.modifyOutputEvent(Agree_Group).register(content -> {
             content.accept(HASTE_APPLE);
             content.accept(STRENGTH_APPLE);
             content.accept(SPEED_APPLE);

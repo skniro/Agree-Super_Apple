@@ -5,7 +5,7 @@ import com.skniro.agree.item.AgreeItems;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
 import com.skniro.agree.item.init.AgreeEquipmentAssetKeys;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.Items;
 import static net.minecraft.client.data.models.ItemModelGenerators.*;
 
 public class AgreeModelProvider extends FabricModelProvider {
-    public AgreeModelProvider(FabricDataOutput dataGenerator){
+    public AgreeModelProvider(FabricPackOutput dataGenerator){
         super(dataGenerator);
     }
 

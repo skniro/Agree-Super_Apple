@@ -7,7 +7,7 @@ import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
 import com.skniro.agree.world.OreBiomeModifications;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -34,7 +34,7 @@ public class Agree implements ModInitializer {
     @Override
     public void onInitialize() {
         new Configuration(AgreeConfig.class, MOD_ID);
-        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Agree_Group, FabricItemGroup.builder()
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, Agree_Group, FabricCreativeModeTab.builder()
                 .icon(() -> new ItemStack(HASTE_APPLE))
                 .title(Component.translatable("itemGroup.agree.test_group"))
                 .build()); // build() no longer registers by itself

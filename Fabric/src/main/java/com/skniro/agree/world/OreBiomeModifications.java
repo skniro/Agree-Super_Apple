@@ -29,7 +29,7 @@ public class OreBiomeModifications
 
     public static Predicate<BiomeSelectionContext> overworldSelector()
     {
-        return context -> context.getBiomeRegistryEntry().is(BiomeTags.IS_OVERWORLD);
+        return context -> context.getBiomeHolder().is(BiomeTags.IS_OVERWORLD);
     }
 
 
