@@ -34,7 +34,7 @@ public class AgreeItems {
     public static final DeferredItem<Item> RUBY_BOOTS = registerItem("ruby_boots", (settings) -> new Item(settings.enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.BOOTS).durability(ArmorType.BOOTS.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER))));
 
     private static <T extends Item> DeferredItem<T> registerItem(String name, Function<Item.Properties, ? extends T> item) {
-        DeferredItem<T> toReturn = ITEMS.registerItem(name, item, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Agree.MOD_ID, name))));
+        DeferredItem<T> toReturn = ITEMS.registerItem(name, item, ()-> new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Agree.MOD_ID, name))));
         return toReturn;
     }
 
