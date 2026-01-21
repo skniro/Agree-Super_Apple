@@ -43,7 +43,7 @@ extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingInput craftingRecipeInput, HolderLookup.Provider wrapperLookup) {
+    public ItemStack assemble(CraftingInput craftingRecipeInput) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE, 1);
         for(int i = 0; i < craftingRecipeInput.size(); ++i) {
             ItemStack itemStack2 = craftingRecipeInput.getItem(i);

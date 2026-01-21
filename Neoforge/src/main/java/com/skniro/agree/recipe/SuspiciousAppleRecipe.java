@@ -43,7 +43,7 @@ extends CustomRecipe {
     }
 
     @Override
-    public ItemStack assemble(CraftingInput recipeInputInventory,  HolderLookup.Provider dynamicRegistryManager) {
+    public ItemStack assemble(CraftingInput recipeInputInventory) {
         ItemStack itemStack = new ItemStack(AppleFoodComponents.SUSPICIOUS_APPLE.get(), 1);
         for (int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemstack1 = recipeInputInventory.getItem(i);

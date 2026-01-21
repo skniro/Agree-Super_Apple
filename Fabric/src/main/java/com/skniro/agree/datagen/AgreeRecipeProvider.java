@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -238,7 +239,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
 
                 SimpleCookingRecipeBuilder.smelting
                         (Ingredient.of(AgreeItems.RUBY_PICKAXE, AgreeItems.RUBY_SHOVEL, AgreeItems.RUBY_AXE, AgreeItems.RUBY_HOE, AgreeItems.RUBY_SWORD, AgreeItems.RUBY_HELMET, AgreeItems.RUBY_CHESTPLATE, AgreeItems.RUBY_LEGGINGS, AgreeItems.RUBY_BOOTS)
-                                , RecipeCategory.MISC, AgreeItems.RUBY, 0.1F, 200)
+                                , RecipeCategory.MISC, CookingBookCategory.MISC, AgreeItems.RUBY, 0.1F, 200)
                         .unlockedBy(getHasName(AgreeItems.RUBY_PICKAXE), has(AgreeItems.RUBY_PICKAXE))
                         .unlockedBy(getHasName(AgreeItems.RUBY_SHOVEL), has(AgreeItems.RUBY_SHOVEL))
                         .unlockedBy(getHasName(AgreeItems.RUBY_AXE), has(AgreeItems.RUBY_AXE))
@@ -252,7 +253,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
 
                 SimpleCookingRecipeBuilder.blasting
                                 (Ingredient.of(AgreeItems.RUBY_PICKAXE, AgreeItems.RUBY_SHOVEL, AgreeItems.RUBY_AXE, AgreeItems.RUBY_HOE, AgreeItems.RUBY_SWORD, AgreeItems.RUBY_HELMET, AgreeItems.RUBY_CHESTPLATE, AgreeItems.RUBY_LEGGINGS, AgreeItems.RUBY_BOOTS)
-                                        , RecipeCategory.MISC, AgreeItems.RUBY, 0.1F, 200)
+                                        , RecipeCategory.MISC, CookingBookCategory.MISC, AgreeItems.RUBY, 0.1F, 200)
                         .unlockedBy(getHasName(AgreeItems.RUBY_PICKAXE), has(AgreeItems.RUBY_PICKAXE))
                         .unlockedBy(getHasName(AgreeItems.RUBY_SHOVEL), has(AgreeItems.RUBY_SHOVEL))
                         .unlockedBy(getHasName(AgreeItems.RUBY_AXE), has(AgreeItems.RUBY_AXE))

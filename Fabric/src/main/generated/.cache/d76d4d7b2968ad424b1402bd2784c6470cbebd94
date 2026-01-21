@@ -1,4 +1,4 @@
-// 26.1-snapshot-1	-999999999-01-01T00:00:00	Agree/Block Loot Tables
+// 26.1-snapshot-3	-999999999-01-01T00:00:00	Agree/Block Loot Tables
 3e318f38f65d584e0a7cbd248ac43c81071deaed data/agree/loot_table/blocks/apple_tree_leave.json
 2a8cee466774feec4a35e142763d4898c6402152 data/agree/loot_table/blocks/deepslate_ruby_ore.json
 bd8168fda80896ba016efc24e62768c3922983f7 data/agree/loot_table/blocks/fire_resistance_apple_sapling.json
