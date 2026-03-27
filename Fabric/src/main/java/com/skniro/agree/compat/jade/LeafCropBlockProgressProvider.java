@@ -9,15 +9,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-/*import snownee.jade.api.BlockAccessor;
+import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.theme.IThemeHelper;
 import snownee.jade.api.ui.Element;
-import snownee.jade.api.ui.JadeUI;*/
+import snownee.jade.api.ui.JadeUI;
 
-public class LeafCropBlockProgressProvider {}/*implements IBlockComponentProvider {
+public class LeafCropBlockProgressProvider implements IBlockComponentProvider {
     public static final LeafCropBlockProgressProvider INSTANCE = new LeafCropBlockProgressProvider();
     public static final Identifier GoldenAppleWaila = Identifier.fromNamespaceAndPath(Agree.MOD_ID, "apple_progress");
 
@@ -56,4 +56,4 @@ public class LeafCropBlockProgressProvider {}/*implements IBlockComponentProvide
     public Identifier getUid() {
         return GoldenAppleWaila;
     }
-}*/
+}
