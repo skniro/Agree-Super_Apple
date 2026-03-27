@@ -82,7 +82,8 @@ public class LeafCropBlock extends Block implements SimpleWaterloggedBlock {
         world.setBlock(pos, updateDistanceFromLogs(state, world, pos), 3);
     }
 
-    public int getLightBlock(BlockState state) {
+    @Override
+    public int getLightDampening(BlockState state) {
         return 1;
     }
 
