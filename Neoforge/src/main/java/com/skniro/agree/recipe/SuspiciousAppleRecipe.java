@@ -3,23 +3,29 @@
  */
 package com.skniro.agree.recipe;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.skniro.agree.item.Apples.AppleFoodComponents;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CustomRecipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
 
 public class SuspiciousAppleRecipe
 extends CustomRecipe {
+    private final CraftingBookCategory category;
     public SuspiciousAppleRecipe(CraftingBookCategory craftingRecipeCategory) {
-        super(craftingRecipeCategory);
+        this.category = craftingRecipeCategory;
+    }
+
+    @Override
+    public CraftingBookCategory category() {
+        return this.category;
     }
 
     @Override
@@ -62,5 +68,35 @@ extends CustomRecipe {
     public RecipeSerializer<? extends CustomRecipe> getSerializer() {
         return AgreeRecipeSerializer.SUSPICIOUS_APPLE.get();
     }
+
+    private static final MapCodec<SuspiciousAppleRecipe> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(
+                    CraftingBookCategory.CODEC
+                            .fieldOf("category")
+                            .orElse(CraftingBookCategory.MISC)
+                            .forGetter(CraftingRecipe::category)
+            ).apply(instance, SuspiciousAppleRecipe::new)
+    );
+
+    private static final StreamCodec<RegistryFriendlyByteBuf, SuspiciousAppleRecipe> STREAM_CODEC =
+            StreamCodec.composite(
+                    CraftingBookCategory.STREAM_CODEC,
+                    CraftingRecipe::category,
+                    SuspiciousAppleRecipe::new
+            );
+
+
+    public static final RecipeSerializer<SuspiciousAppleRecipe> SERIALIZER =
+            new RecipeSerializer<>(CODEC, STREAM_CODEC);
+
+
+    public MapCodec<SuspiciousAppleRecipe> codec() {
+        return CODEC;
+    }
+
+    public StreamCodec<RegistryFriendlyByteBuf, SuspiciousAppleRecipe> streamCodec() {
+        return STREAM_CODEC;
+    }
+
 }
 

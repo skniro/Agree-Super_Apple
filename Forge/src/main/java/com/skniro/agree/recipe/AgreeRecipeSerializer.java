@@ -14,7 +14,7 @@ public class AgreeRecipeSerializer{
 
     public static final RegistryObject<RecipeSerializer<SuspiciousAppleRecipe>> SUSPICIOUS_APPLE =
             RECIPE_SERIALIZER.register("crafting_special_suspiciousapple",
-                    ()-> new CustomRecipe.Serializer<>(SuspiciousAppleRecipe::new));
+                    ()-> SuspiciousAppleRecipe.SERIALIZER);
 
     public static void agreerecipeseroalizer(BusGroup eventBus) {
         RECIPE_SERIALIZER.register(eventBus);

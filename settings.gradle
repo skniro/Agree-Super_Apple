@@ -20,6 +20,6 @@ pluginManagement {
 }
 
 rootProject.name = 'Agree-SuperApple-26.1'
-include("Fabric", "Neoforge")
-//include("Fabric", "Forge", "Neoforge")
+//include("Fabric", "Neoforge")
+include("Fabric", "Forge", "Neoforge")
 
