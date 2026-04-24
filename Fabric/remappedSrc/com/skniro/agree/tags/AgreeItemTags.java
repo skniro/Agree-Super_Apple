@@ -1,0 +1,20 @@
+package com.skniro.agree.tags;
+
+import com.skniro.agree.Agree;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+
+public class AgreeItemTags {
+    public static final TagKey<Item> REPAIRS_RUBY_ARMOR = of("repairs_ruby_armor");
+    public static final TagKey<Item> RUBY_TOOL_MATERIALS = of("ruby_tool_materials");
+
+
+    private AgreeItemTags() {
+    }
+
+    private static TagKey<Item> of(String id) {
+        return TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Agree.MOD_ID, id));
+    }
+}
