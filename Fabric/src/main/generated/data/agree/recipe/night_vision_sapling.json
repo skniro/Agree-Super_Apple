@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "agree:night_vision_apple",
     "minecraft:oak_sapling"

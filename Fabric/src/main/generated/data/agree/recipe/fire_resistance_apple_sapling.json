@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "agree:fire_resistance_apple",
     "minecraft:oak_sapling"

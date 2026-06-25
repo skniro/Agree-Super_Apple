@@ -1,9 +1,8 @@
 {
-  "replace": false,
   "values": [
+    "agree:ruby_boots",
     "agree:ruby_helmet",
-    "agree:ruby_chestplate",
     "agree:ruby_leggings",
-    "agree:ruby_boots"
+    "agree:ruby_chestplate"
   ]
 }

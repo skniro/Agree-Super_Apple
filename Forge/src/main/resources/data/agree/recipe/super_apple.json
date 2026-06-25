@@ -1,18 +1,22 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        "minecraft:iron_block",
-        "minecraft:redstone_block",
-        "minecraft:diamond_block",
-        "minecraft:gold_block",
-        "minecraft:enchanted_golden_apple",
-        "agree:ruby_block",
-        "minecraft:lapis_block",
-        "minecraft:emerald_block",
-        "minecraft:netherite_ingot"
-    ],
-    "result": {
-        "id": "agree:super_apple",
-        "count": 1
-    }
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": "minecraft:enchanted_golden_apple",
+    "B": "agree:ruby_block",
+    "D": "minecraft:diamond_block",
+    "E": "minecraft:emerald_block",
+    "G": "minecraft:gold_block",
+    "I": "minecraft:iron_block",
+    "L": "minecraft:lapis_block",
+    "N": "minecraft:netherite_ingot",
+    "R": "minecraft:redstone_block"
+  },
+  "pattern": [
+    "IRD",
+    "GAB",
+    "LEN"
+  ],
+  "result": {
+    "id": "agree:super_apple"
+  }
 }

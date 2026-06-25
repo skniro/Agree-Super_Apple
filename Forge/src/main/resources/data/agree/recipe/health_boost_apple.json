@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "#": "minecraft:apple",
     "G": "minecraft:golden_apple"
@@ -11,7 +10,6 @@
     "###"
   ],
   "result": {
-    "count": 1,
     "id": "agree:health_boost_apple"
   }
 }

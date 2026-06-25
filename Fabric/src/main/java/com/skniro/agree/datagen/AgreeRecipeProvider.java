@@ -125,7 +125,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
 
                 shaped(RecipeCategory.FOOD, AppleFoodComponents.JUMP_BOOST_APPLE).pattern("###").pattern("#G#").pattern("###")
                         .define('G', Items.GOLDEN_APPLE)
-                        .define('#', Items.COPPER_BLOCK)
+                        .define('#', Items.COPPER_BLOCK.weathering().unaffected())
                         .unlockedBy(getHasName(Items.GOLDEN_APPLE),
                                 has(Items.GOLDEN_APPLE))
                         .save(output);

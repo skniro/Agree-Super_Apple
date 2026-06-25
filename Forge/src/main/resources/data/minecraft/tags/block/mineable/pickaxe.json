@@ -1,8 +1,7 @@
 {
-  "replace": false,
   "values": [
-    "agree:ruby_ore",
+    "agree:ruby_block",
     "agree:deepslate_ruby_ore",
-    "agree:ruby_block"
+    "agree:ruby_ore"
   ]
 }

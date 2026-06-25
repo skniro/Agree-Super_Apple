@@ -1,17 +1,7 @@
 {
-  "replace": false,
   "values": [
-    {
-      "id": "agree:deepslate_ruby_ore",
-      "required": false
-    },
-    {
-      "id": "agree:ruby_ore",
-      "required": false
-    },
-    {
-      "id": "agree:ruby_block",
-      "required": false
-    }
+    "agree:ruby_block",
+    "agree:deepslate_ruby_ore",
+    "agree:ruby_ore"
   ]
 }

@@ -9,6 +9,7 @@ import com.skniro.agree.item.Apples.AppleFoodComponents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.tags.BlockItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -35,7 +36,7 @@ extends CustomRecipe {
         for (int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getItem(i);
             if (itemStack.isEmpty()) continue;
-            if (itemStack.is(ItemTags.SMALL_FLOWERS) && !bl) {
+            if (itemStack.is(BlockItemTags.SMALL_FLOWERS.item()) && !bl) {
                 bl = true;
                 continue;
             }

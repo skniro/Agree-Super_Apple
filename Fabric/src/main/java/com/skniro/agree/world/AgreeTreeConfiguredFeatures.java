@@ -2,12 +2,14 @@ package com.skniro.agree.world;
 
 import com.skniro.agree.Agree;
 import com.skniro.agree.block.AgreeBlocks;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.WeightedList;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -35,62 +37,72 @@ public class AgreeTreeConfiguredFeatures {
     }
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> featureRegisterable) {
+        HolderGetter<Biome> biomes = featureRegisterable.lookup(Registries.BIOME);
+        BlockStateProvider belowTrunkProvider = TreeConfiguration.defaultPlaceBelowTreeTrunkProvider(biomes);
         register(featureRegisterable, HASTE_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG),
                 new StraightTrunkPlacer(4, 2, 0),
                 new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.HASTE_APPLE_LEAVES.defaultBlockState(), 1)),
                 new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                new TwoLayersFeatureSize(1, 0, 1)).build());
+                new TwoLayersFeatureSize(1, 0, 1),
+                belowTrunkProvider).build());
         register(featureRegisterable, SPEED_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.SPEED_APPLE_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, FIRE_RESISTANCE_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.FIRE_RESISTANCE_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, HERO_VILLAGE_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.HERO_VILLAGE_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, STRENGTH_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.STRENGTH_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, NIGHT_VISION_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.NIGHT_VISION_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, JUMP_BOOST_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.JUMP_BOOST_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
         register(featureRegisterable, HEALTH_BOOST_APPLE_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(Blocks.OAK_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         new WeightedStateProvider(pool().add(AgreeBlocks.Apple_Tree_LEAVES.defaultBlockState(), 3).add(AgreeBlocks.HEALTH_BOOST_LEAVES.defaultBlockState(), 1)),
                         new BlobFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0), 3),
-                        new TwoLayersFeatureSize(1, 0, 1)).build());
+                        new TwoLayersFeatureSize(1, 0, 1),
+                        belowTrunkProvider).build());
     }
 
 

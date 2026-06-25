@@ -20,16 +20,16 @@ public class AgreeBlockTagGeneration extends FabricTagsProvider.BlockTagsProvide
 
     @Override
     protected void addTags(HolderLookup.Provider arg) {
-        valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS)
-                .add(AgreeBlocks.RUBY_BLOCK);
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(AgreeBlocks.RUBY_BLOCK)
-                .add(AgreeBlocks.DEEPSLATE_RUBY_ORE)
-                .add(AgreeBlocks.RUBY_ORE);
-        valueLookupBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
-                .add(AgreeBlocks.RUBY_BLOCK)
-                .add(AgreeBlocks.DEEPSLATE_RUBY_ORE)
-                .add(AgreeBlocks.RUBY_ORE);
+        builder(BlockTags.BEACON_BASE_BLOCKS)
+                .add(AgreeBlocks.RUBY_BLOCK.builtInRegistryHolder().key());
+        builder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(AgreeBlocks.RUBY_BLOCK.builtInRegistryHolder().key())
+                .add(AgreeBlocks.DEEPSLATE_RUBY_ORE.builtInRegistryHolder().key())
+                .add(AgreeBlocks.RUBY_ORE.builtInRegistryHolder().key());
+        builder(BlockTags.NEEDS_DIAMOND_TOOL)
+                .add(AgreeBlocks.RUBY_BLOCK.builtInRegistryHolder().key())
+                .add(AgreeBlocks.DEEPSLATE_RUBY_ORE.builtInRegistryHolder().key())
+                .add(AgreeBlocks.RUBY_ORE.builtInRegistryHolder().key());
 
     }
 
