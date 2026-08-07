@@ -1,17 +1,16 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "equipment",
-    "key": {
-        "#": "minecraft:stick",
-        "X": "agree:ruby"
-    },
-    "pattern": [
-        "X",
-        "X",
-        "#"
-    ],
-    "result": {
-        "id": "agree:ruby_sword"
-    },
-    "show_notification": true
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "#agree:ruby_tool_materials"
+  },
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "result": {
+    "id": "agree:ruby_sword"
+  }
 }

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#agree:ruby_tool_materials"
+            "items": "agree:ruby"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:diamond_sword"
+        "recipe": "agree:ruby_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "agree:diamond_sword"
+      "agree:ruby_boots"
     ]
   }
 }

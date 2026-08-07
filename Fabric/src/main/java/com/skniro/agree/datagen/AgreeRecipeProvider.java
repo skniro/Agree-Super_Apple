@@ -207,7 +207,7 @@ public class AgreeRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(AgreeItems.RUBY), has(AgreeItems.RUBY))
                         .save(this.output);
 
-                shaped(RecipeCategory.COMBAT, Items.DIAMOND_SWORD).pattern("X").pattern("X").pattern("#")
+                shaped(RecipeCategory.COMBAT, AgreeItems.RUBY_SWORD).pattern("X").pattern("X").pattern("#")
                         .define('#', Items.STICK)
                         .define('X', AgreeItemTags.RUBY_TOOL_MATERIALS)
                         .unlockedBy("has_ruby", has(AgreeItemTags.RUBY_TOOL_MATERIALS))
