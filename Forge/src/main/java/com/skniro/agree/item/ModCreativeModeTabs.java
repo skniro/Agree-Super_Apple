@@ -58,7 +58,6 @@ public class ModCreativeModeTabs {
                         pOutput.accept(NIGHT_VISION_LEAVES.get());
                         pOutput.accept(JUMP_BOOST_LEAVES.get());
                         pOutput.accept(Apple_Tree_LEAVES.get());
-                        pOutput.accept(RUBY_BLOCK.get());
                         pOutput.accept(RUBY_HELMET.get());
                         pOutput.accept(RUBY_CHESTPLATE.get());
                         pOutput.accept(RUBY_LEGGINGS.get());
