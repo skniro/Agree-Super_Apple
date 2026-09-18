@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:speed_apple_sapling"
+        "recipes": "agree:speed_apple_sapling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

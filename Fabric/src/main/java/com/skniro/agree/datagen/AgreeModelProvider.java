@@ -10,6 +10,9 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.equipment.trim.TrimMaterials;
+
+import java.util.Map;
 
 import static net.minecraft.client.data.models.ItemModelGenerators.*;
 
@@ -39,10 +42,10 @@ public class AgreeModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         itemModelGenerator.generateFlatItem(AgreeItems.RUBY_AXE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_BOOTS, AgreeEquipmentAssetKeys.RUBY, TRIM_PREFIX_HELMET, false);
-        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_CHESTPLATE, AgreeEquipmentAssetKeys.RUBY, TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_HELMET, AgreeEquipmentAssetKeys.RUBY, TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_LEGGINGS, AgreeEquipmentAssetKeys.RUBY, TRIM_PREFIX_BOOTS,false);
+        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_BOOTS, TRIM_PREFIX_HELMET, false , Map.of());
+        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_CHESTPLATE, TRIM_PREFIX_CHESTPLATE, false , Map.of());
+        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_HELMET, TRIM_PREFIX_LEGGINGS, false, Map.of());
+        itemModelGenerator.generateTrimmableItem(AgreeItems.RUBY_LEGGINGS, TRIM_PREFIX_BOOTS, false, Map.of());
         itemModelGenerator.generateFlatItem(AgreeItems.RUBY_HOE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(AgreeItems.RUBY_PICKAXE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(AgreeItems.RUBY_SHOVEL, ModelTemplates.FLAT_ITEM);

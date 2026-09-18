@@ -22,10 +22,10 @@ public class AgreeItems {
 
 
     public static final DeferredItem<Item> RUBY_SWORD = registerItem("ruby_sword", (settings) -> new Item(AgreeToolMaterials.RUBY.applySwordProperties(settings, 3, 2.4F).enchantable(25)));
-    public static final DeferredItem<Item> RUBY_SHOVEL = registerItem("ruby_shovel", (settings)->  new ShovelItem(AgreeToolMaterials.RUBY,2, -3.0F, settings.enchantable(25)));
+    public static final DeferredItem<Item> RUBY_SHOVEL = registerItem("ruby_shovel", (settings)->  new Item(AgreeToolMaterials.RUBY.applyToolProperties(settings, BlockTags.MINEABLE_WITH_SHOVEL,2, -3.0F, 0.0F).enchantable(25)));
     public static final DeferredItem<Item> RUBY_PICKAXE = registerItem("ruby_pickaxe",  (settings) -> new Item(AgreeToolMaterials.RUBY.applyToolProperties(settings, BlockTags.MINEABLE_WITH_PICKAXE,1, -2.8F, 0.0F).enchantable(25)));
-    public static final DeferredItem<Item> RUBY_AXE = registerItem("ruby_axe", (settings)->  new AxeItem(AgreeToolMaterials.RUBY,5, -3.0F, settings.enchantable(25)));
-    public static final DeferredItem<Item> RUBY_HOE = registerItem("ruby_hoe", (settings)->  new HoeItem(AgreeToolMaterials.RUBY,-3, 0.0F, settings.enchantable(25)));
+    public static final DeferredItem<Item> RUBY_AXE = registerItem("ruby_axe", (settings)->  new Item(AgreeToolMaterials.RUBY.applyToolProperties(settings, BlockTags.MINEABLE_WITH_AXE,5, -3.0F, 0.0F).enchantable(25)));
+    public static final DeferredItem<Item> RUBY_HOE = registerItem("ruby_hoe", (settings)->  new Item(AgreeToolMaterials.RUBY.applyToolProperties(settings, BlockTags.MINEABLE_WITH_HOE,-3, 0.0F, 0.0F).enchantable(25)));
 
     //Armor
     public static final DeferredItem<Item> RUBY_HELMET = registerItem("ruby_helmet", (settings) -> new Item(settings.humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.HELMET).enchantable(25).durability(ArmorType.HELMET.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER))));

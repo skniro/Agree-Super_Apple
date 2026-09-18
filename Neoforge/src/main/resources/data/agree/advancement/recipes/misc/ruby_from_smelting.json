@@ -93,7 +93,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:ruby_from_smelting"
+        "recipes": "agree:ruby_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

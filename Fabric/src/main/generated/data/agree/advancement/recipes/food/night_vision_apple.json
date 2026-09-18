@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:night_vision_apple"
+        "recipes": "agree:night_vision_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -9,11 +9,10 @@ import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
+
 import java.util.List;
 
 public class AgreeTreePlacedFeatures {
@@ -25,9 +24,10 @@ public class AgreeTreePlacedFeatures {
     public static final ResourceKey<PlacedFeature> STRENGTH_APPLE_TREE_PLACED = registerKey("strength_apple_tree_placed");
     public static final ResourceKey<PlacedFeature> NIGHT_VISION_APPLE_TREE_PLACED = registerKey("night_vision_apple_tree_placed");
     public static final ResourceKey<PlacedFeature> JUMP_BOOST_APPLE_TREE_PLACED = registerKey("jump_boost_tree_placed");
+    public static final ResourceKey<PlacedFeature> Ruby_PLACED = registerKey("ruby_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
-        var configuredFeatureRegistryEntryLookup = context.lookup(Registries.CONFIGURED_FEATURE);
+        var configuredFeatureRegistryEntryLookup = context.lookup(Registries.FEATURE);
 
         register(context, HASTE_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.HASTE_APPLE_TREE),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2), AgreeBlocks.HASTE_APPLE_SAPLING));
@@ -45,20 +45,33 @@ public class AgreeTreePlacedFeatures {
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2), AgreeBlocks.NIGHT_VISION_SAPLING));
         register(context, JUMP_BOOST_APPLE_TREE_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.JUMP_BOOST_APPLE_TREE),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 2), AgreeBlocks.JUMP_BOOST_SAPLING));
+        register(context, Ruby_PLACED, configuredFeatureRegistryEntryLookup.getOrThrow(AgreeTreeConfiguredFeatures.OVERWORLD_Ruby_ORE),
+                modifiersWithCount(16, // veins per chunk
+                        HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(-64), VerticalAnchor.absolute(80))));
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Identifier.fromNamespaceAndPath(Agree.MOD_ID, name));
     }
 
-    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
-                                 List<PlacementModifier> modifiers) {
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<Feature> configuration, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
 
-    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key,
-                                                                                   Holder<ConfiguredFeature<?, ?>> configuration,
-                                                                                   PlacementModifier... modifiers) {
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<Feature> configuration, PlacementModifier... modifiers) {
         register(context, key, configuration, List.of(modifiers));
+    }
+
+    // Used here because the vanilla ones are private
+    private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
+        return List.of(countModifier, InSquarePlacement.spread(), heightModifier, BiomeFilter.biome());
+    }
+
+    private static List<PlacementModifier> modifiersWithCount(int count, PlacementModifier heightModifier) {
+        return modifiers(CountPlacement.of(count), heightModifier);
+    }
+
+    private static List<PlacementModifier> modifiersWithRarity(int chance, PlacementModifier heightModifier) {
+        return modifiers(RarityFilter.onAverageOnceEvery(chance), heightModifier);
     }
 }

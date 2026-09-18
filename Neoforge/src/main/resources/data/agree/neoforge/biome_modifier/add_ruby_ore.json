@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
   "biomes": "#minecraft:is_overworld",
-  "features": "agree:ore_ruby_overworld",
+  "features": "agree:ruby_placed",
   "step": "underground_ores"
 }

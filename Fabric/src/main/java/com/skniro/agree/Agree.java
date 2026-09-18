@@ -5,7 +5,7 @@ import com.skniro.agree.conifg.Configuration;
 import com.skniro.agree.event.GoldenAppleDispenserBehaviors;
 import com.skniro.agree.recipe.AgreeRecipeSerializer;
 import com.skniro.agree.util.ModLootTableModifiers;
-import com.skniro.agree.world.OreBiomeModifications;
+import com.skniro.agree.world.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.Registry;
@@ -41,7 +41,7 @@ public class Agree implements ModInitializer {
         ModContent.registerItem();
         ModContent.registerBlock();
         ModContent.CreativeTab();
-        OreBiomeModifications.addOres();
+        ModOreGeneration.generateOres();
         ModLootTableModifiers.modifyLootTables();
         AgreeRecipeSerializer.agreerecipeseroalizer();
         GoldenAppleDispenserBehaviors.register();

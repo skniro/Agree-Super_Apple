@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:fire_resistance_apple_sapling"
+        "recipes": "agree:fire_resistance_apple_sapling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

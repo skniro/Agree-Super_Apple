@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:health_boost_apple"
+        "recipes": "agree:health_boost_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

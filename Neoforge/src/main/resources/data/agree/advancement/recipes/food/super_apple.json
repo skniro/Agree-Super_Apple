@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:super_apple"
+        "recipes": "agree:super_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

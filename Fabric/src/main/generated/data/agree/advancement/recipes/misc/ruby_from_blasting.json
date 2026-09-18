@@ -93,7 +93,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:ruby_from_blasting"
+        "recipes": "agree:ruby_from_blasting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

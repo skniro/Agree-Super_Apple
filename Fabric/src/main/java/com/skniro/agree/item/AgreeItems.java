@@ -8,10 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.equipment.ArmorType;
 import java.util.function.Function;
 
@@ -20,10 +17,10 @@ public class AgreeItems {
 
     //Tool
     public static final Item RUBY_SWORD = registerItem("ruby_sword", Item::new, new Item.Properties().enchantable(25).sword(AgreeToolMaterials.RUBY,  3, -2.4F));
-    public static final Item RUBY_SHOVEL = registerItem("ruby_shovel", (settings)->  new ShovelItem(AgreeToolMaterials.RUBY,2, -3.0F, settings), new Item.Properties().enchantable(25));
+    public static final Item RUBY_SHOVEL = registerItem("ruby_shovel", Item::new, new Item.Properties().enchantable(25).shovel(AgreeToolMaterials.RUBY,2, -3.0F));
     public static final Item RUBY_PICKAXE = registerItem("ruby_pickaxe", Item::new, new Item.Properties().enchantable(25).pickaxe(AgreeToolMaterials.RUBY,1, -2.8F));
-    public static final Item RUBY_AXE = registerItem("ruby_axe", (settings)->  new AxeItem(AgreeToolMaterials.RUBY,5, -3.0F, settings), new Item.Properties().enchantable(25));
-    public static final Item RUBY_HOE = registerItem("ruby_hoe", (settings)->  new HoeItem(AgreeToolMaterials.RUBY,-3, 0.0F, settings), new Item.Properties().enchantable(25));
+    public static final Item RUBY_AXE = registerItem("ruby_axe", Item::new, new Item.Properties().enchantable(25).axe(AgreeToolMaterials.RUBY,5, -3.0F));
+    public static final Item RUBY_HOE = registerItem("ruby_hoe", Item::new, new Item.Properties().enchantable(25).hoe(AgreeToolMaterials.RUBY,-3, 0.0F));
 
     //Armor
     public static final Item RUBY_HELMET = registerItem("ruby_helmet", Item::new, new Item.Properties().enchantable(25).humanoidArmor(AgreeArmorMaterials.Ruby, ArmorType.HELMET).durability(ArmorType.HELMET.getDurability(AgreeArmorMaterials.Ruby_DURABILITY_MULTIPLIER)));

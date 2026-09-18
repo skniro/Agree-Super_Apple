@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:speed_apple"
+        "recipes": "agree:speed_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
