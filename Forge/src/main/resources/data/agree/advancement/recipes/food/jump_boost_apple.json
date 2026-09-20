@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:jump_boost_apple"
+        "recipes": "agree:jump_boost_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

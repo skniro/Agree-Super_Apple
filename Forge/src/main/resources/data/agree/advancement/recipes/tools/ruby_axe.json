@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:ruby_axe"
+        "recipes": "agree:ruby_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

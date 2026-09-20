@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:fire_resistance_apple"
+        "recipes": "agree:fire_resistance_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

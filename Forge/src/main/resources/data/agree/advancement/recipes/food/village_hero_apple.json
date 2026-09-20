@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:village_hero_apple"
+        "recipes": "agree:village_hero_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

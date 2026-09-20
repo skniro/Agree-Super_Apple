@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:jump_boost_sapling"
+        "recipes": "agree:jump_boost_sapling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

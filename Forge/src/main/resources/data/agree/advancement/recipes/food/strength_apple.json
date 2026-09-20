@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "agree:strength_apple"
+        "recipes": "agree:strength_apple"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
